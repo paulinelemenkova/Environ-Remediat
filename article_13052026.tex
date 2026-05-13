@@ -20,6 +20,8 @@
 \graphicspath{{figures/}} 
 \usepackage{float}
 \usepackage{threeparttable}
+\usepackage{tabularx}
+\usepackage{booktabs} 
 
 % -------------------------------------------------------------------------
 % New column type for centred tabularx columns
@@ -75,8 +77,7 @@
 \abstract{%
 Soil pollution has emerged as a critical global environmental challenge driven by rapid industrialization, intensive agriculture, urban expansion, mining activities, and the excessive use of fertilizers and pesticides. This review presents an integrated framework for soil pollution assessment with emphasis on major pollutant groups, including heavy metals, pesticides, nutrients, microplastics, and per- and polyfluoroalkyl substances (PFAS). Drawing on evidence from more than 100 recent studies, the paper synthesizes current advances in computational, spectroscopic, and artificial intelligence (AI)-driven methodologies for soil monitoring and environmental risk evaluation. Traditional analytical techniques based on extraction and laboratory measurements are compared with advanced spectroscopic approaches, including Fourier transform infrared spectroscopy (FTIR), X-ray photoelectron spectroscopy (XPS), hyperspectral imaging, and synchrotron radiation technologies, which enable precise characterization of pollutant speciation and spatial distribution within soil aggregates. Recent developments in AI, machine learning, computer vision, and remote sensing have significantly enhanced the detection, classification, and prediction of soil contaminants through process-based, empirical, composite, and statistical modelling frameworks. Techniques such as Principal Component Analysis (PCA), Monte Carlo simulations, geochemical modelling, and time-series forecasting provide improved capabilities for identifying pollution hotspots, predicting contaminant transport, and evaluating ecological risks to soil ecosystem services (SES). Despite these advances, major challenges remain related to heterogeneous soil properties, limited detection sensitivity, data uncertainty, and model complexity. Future research should prioritize the integration of AI-driven analytics, real-time sensor technologies, remote sensing platforms, and predictive environmental modelling to support sustainable soil management, ecosystem protection, and evidence-based environmental policy development}
 
-\keywords{soil pollution, computation, nature conservation, food production, nutrient
-    cycling, machine learning, soil contamination}
+\keywords{soil pollution; computation; nature conservation; food production; nutrient cycling; machine learning; soil contamination}
 
 \maketitle
 
@@ -90,28 +91,27 @@ Soil pollution has emerged as a critical global environmental challenge driven b
 
 Soil ecosystem services (SES) play a fundamental role in sustaining environmental quality and supporting human well-being through the regulation of soil functions and vegetation dynamics. Effective management of SES requires continuous assessment of climatic and hydrological conditions \cite{Lal2020,Robinson2014}, optimization of agricultural practices \cite{Hepperly2009,Rahman2014}, regulation of nutrient cycling and organic matter decomposition \cite{Atoloye2024,Ma2024,Vishwanath2025}, and early identification of soil contamination \cite{Pan2019,Fan2025,Lemenkova2025b,Proshad2025}. Soil degradation is increasingly associated with the accumulation of diverse pollutants, including pesticides (e.g., insecticides, herbicides, fungicides, and bactericides), mineral oils, microplastics, per- and polyfluoroalkyl substances (PFAS), excess nutrients, and heavy metals \cite{Shen2024,Guan2024,Baghaie2020,Luo2017}. The growing spatial extent of contaminated soils represents a major environmental and ecological concern, emphasizing the urgent need for robust and integrated monitoring strategies \cite{Liu2020,Zhang2021,Lemenkova2025d}. Recent studies have demonstrated that soil pollution is closely linked to both natural hazards and anthropogenic activities, particularly industrialization \cite{Rosskopfova2012,Guo2025,Zhang2022} and intensive agriculture \cite{Hepperly2009,Rahman2014,Pan2019}, which contribute substantially to the accumulation and redistribution of contaminants in terrestrial ecosystems.
 
-Recent progress in computational sciences has substantially enhanced the capability to detect, characterize, and predict soil contaminant behavior, thereby strengthening the assessment of soil ecosystem services \cite{Liu2020,Zhang2021,Proshad2025,Lemenkova2025d}. Current pollutant identification approaches can be broadly categorized into four principal groups: process-based \cite{Giannakis2017,Karlen2019}, empirical \cite{Benavidez2018,Lal2020}, composite \cite{Sadhukhan2022}, and statistical modelling techniques \cite{Lu2020,Feng2024,Lemenkova2024b}. Among emerging technologies, hyperspectral imaging \cite{Fan2025,Shi2021}, spectroscopic sensors \cite{Xu2026,Guo2025}, remote sensing platforms \cite{Lemenkova2025b,Zhang2022}, and AI-driven computational methods \cite{Proshad2025,Lemenkova2025d,Feng2024,Li2023} have demonstrated considerable potential for detecting contaminant patterns and evaluating spatial heterogeneity in soil systems. Nevertheless, several limitations persist, including instrumental sensitivity constraints \cite{Rosskopfova2012}, heterogeneous soil properties \cite{Klaucol2017,Lemenkova2023}, data uncertainty \cite{Lu2020,Karlen2019,Li2023}, and the limited transferability of existing models across different environmental settings \cite{Benavidez2018,Zhang2021}. Soil research should therefore prioritize the integration of computational modelling, machine learning, geospatial analytics, and high-resolution remote sensing technologies to enable real-time monitoring and predictive assessment of pollutants in soil and water environments. The implementation of these data-driven and scalable approaches may significantly improve environmental risk assessment, support sustainable land management practices, and enhance the long-term protection of SES.
+Advances in computational and analytical frameworks have revolutionized the identification of soil constituents and their interactions with pollutants \cite{Liu2020, Zhang2021}. Modern ecological monitoring utilizes spectroscopic analysis, machine learning (ML), and remote sensing to quantify pollutant transport, transformation, and persistence across scales \cite{Fan2025, Lemenkova2025d}. Specifically, integrating deep learning algorithms with hyperspectral imagery enables high-fidelity characterization of contaminant dynamics within organic-mineral matrices \cite{Xu2026, Li2023}. These predictive frameworks optimize risk assessment and environmental management by capturing complex multi-temporal spatial heterogeneities \cite{Proshad2025, Feng2024}.
+
+Modern computational architectures have fundamentally transformed the modeling of soil contaminant kinetics, facilitating high-fidelity simulations of risk to ecosystem services \cite{Liu2020,Zhang2021,Proshad2025,Lemenkova2025d}. While traditional identification frameworks rely on process-based \cite{Giannakis2017,Karlen2019}, empirical \cite{Benavidez2018,Lal2020}, composite \cite{Sadhukhan2022}, and statistical models \cite{Lu2020,Feng2024,Lemenkova2024b}, the field is rapidly pivoting toward Artificial Intelligence (AI) and Machine Learning (ML) to handle complex geochemical data. Integration of AI-driven computational methods \cite{Proshad2025,Lemenkova2025d,Feng2024,Li2023} with hyperspectral imaging \cite{Fan2025,Shi2021}, spectroscopic sensors \cite{Xu2026,Guo2025}, and remote sensing \cite{Lemenkova2025b,Zhang2022} allows for the automated extraction of non-linear contaminant patterns across heterogeneous soil systems. These ML architectures—specifically deep learning (DL) and ensemble classifiers—excel where standard models struggle with data uncertainty \cite{Lu2020,Karlen2019,Li2023} and instrumental sensitivity \cite{Rosskopfova2012}. Despite challenges regarding model transferability \cite{Benavidez2018,Zhang2021} and soil complexity \cite{Klaucol2017,Lemenkova2023b}, the priority has shifted toward scalable, data-driven pipelines. By merging neural networks and geospatial analytics, researchers can achieve real-time predictive monitoring, drastically improving environmental risk assessment and the long-term protection of soil ecosystems.
 
 % -------------------------------------------------------------------------
 \subsection{Research Problem}\label{sec1.2}
 % -------------------------------------------------------------------------
 
-The pronounced spatial heterogeneity of soil microstructure exerts a substantial influence on the environmental behavior, mobility, and transformation of soil constituents and contaminants \cite{Vogel2018}. Soil aggregates, consisting of organic matter, mineral particles, microorganisms, and their complex interactions, represent fundamental structural units that regulate the physical, chemical, and biological functioning of soils \cite{Six2004}. These aggregates are essential for maintaining soil fertility, supporting agricultural productivity, and sustaining natural vegetation communities, thereby underscoring the importance of continuous and systematic soil health monitoring \cite{Lal2015,Baveye2016,Lehmann2020}. 
+The inherent spatial heterogeneity of soil microstructure dictates the stochastic mobility and kinetic transformation of contaminants, requiring sophisticated modeling to map these multi-scale interactions \cite{Vogel2018}. Stochastic modeling of soil systems accounts for the inherent randomness and multiscale variability of porous media, where fluid and solute transport are governed by probabilistic frameworks rather than linear trajectories \cite{Vogel2018, Lemenkova2023}. By treating contaminant movement as a "random walk" through heterogeneous microstructures, these models quantify the uncertainty of pollutant attenuation and breakthrough \cite{Lu2020, Karlen2019}. Integrating AI-driven stochastic simulations enables researchers to calculate high-fidelity probability distributions for contaminant spatial distribution, optimizing risk assessment under high-uncertainty environmental conditions \cite{Li2023, Feng2024}.
+
+Soil aggregates function as high-dimensional structural units where mineral-organic complexes and microbial consortia regulate fundamental biogeochemical fluxes \cite{Six2004}. To capture these dynamics, traditional monitoring is being superseded by AI-driven architectures capable of processing massive, non-linear datasets \cite{Lal2015,Baveye2016,Lehmann2020}. Modern assessment utilizes Convolutional Neural Networks (CNNs) to perform automated feature extraction on micro-tomographic imagery, quantifying pore-scale connectivity that governs pollutant transport \cite{Demiral2026, Chen2025}. Furthermore, Random Forest (RF) and Gradient Boosting Machines (GBM) are deployed to model the pedotransfer functions of aggregate stability, bypassing the computational intensity of traditional mechanistic simulations \cite{DemissieNaveda2026, Guo2026}. By implementing Unsupervised Learning, such as k-means or DBSCAN, to cluster soil health indicators \cite{deOliveiraetal2022, Haller2023} and Recurrent Neural Networks (RNNs) to forecast temporal degradation \cite{Mishra2025, Nunes2025}, researchers can achieve a high-fidelity, predictive understanding of soil systems that static environmental frameworks cannot provide.
 
 At the microscale, the interfaces between soil aggregates and transport pathways exhibit highly nonlinear and dynamic characteristics, reflecting the complexity of interactions governing pollutant transport, nutrient exchange, and microbial activity. As a critical component of the biophysical environment, soil properties are shaped by interconnected geographic and ecological factors, including geological and geomorphological conditions, climate, biological activity, and anthropogenic influences \cite{Brevik2015,Amundson2019}. Together, these factors determine soil functionality and the provision of ecosystem services \cite{Baveye2016,Klaucol2013,Klaucol2017,Lemenkova2023}. Consequently, the ecological significance of soil extends beyond its physicochemical composition and is intrinsically linked to the interactions among landscape components and ecosystem processes \cite{Lemenkova2025a}.
-
-Over the past decade, substantial progress has been achieved in the development of computational and analytical approaches for identifying soil constituents and evaluating their interactions with environmental pollutants. These methods have become increasingly important for understanding the mechanisms controlling pollutant transport, accumulation, transformation, and persistence within soil systems. Recent studies have demonstrated the effectiveness of advanced instrumental and computational techniques in ecological soil monitoring, leading to major improvements in the detection and characterization of contaminants within soil aggregates. In particular, the integration of spectroscopic analyses, geospatial modelling, machine learning algorithms, and remote sensing technologies has enhanced the capability to assess pollutant dynamics across multiple spatial and temporal scales. These advancements have significantly improved current understanding of contaminant behavior in organic and mineral soil matrices and have contributed to the development of more accurate and predictive frameworks for soil pollution assessment and environmental management.
 
 % -------------------------------------------------------------------------
 \subsection{Objectives and Motivation}\label{sec1.3}
 % -------------------------------------------------------------------------
 
-In response to these challenges, this narrative integrative review proposes a comprehensive framework for soil monitoring aimed at identifying major pollutant groups, including metals, pesticides, microplastics, PFAS, and nutrient contaminants. The review synthesizes findings from more than 100 peer-reviewed studies retrieved from major scientific databases, including Scopus, Web of Science (WoS), and Google Scholar, with a particular focus on soil systems and agricultural environments. This study further highlights the growing importance of advanced analytical tools and experimental methodologies for improving the efficiency and accuracy of soil pollution screening. 
+IThis integrative review critically synthesizes over 100 peer-reviewed studies to evaluate the efficacy of existing AI and ML methodologies in soil pollution assessment. While conventional detection techniques often lack the sensitivity and spatial resolution required for complex matrices, this study investigates how machine learning architectures—including supervised classifiers and deep learning models—enhance the characterization of metals, microplastics, and PFAS.
 
-This review provides a systematic synthesis of current research on major soil pollutants and the analytical methodologies employed for their detection and characterization in soil environments. Particular emphasis is placed on approaches that evaluate the interactions and binding mechanisms of pollutants with soil minerals, organic matter, microbial communities, and associated organo-mineral complexes within soil aggregates. Understanding these interactions is essential for assessing contaminant mobility, bioavailability, and persistence, as well as for developing effective strategies to mitigate pollution within soil horizons. The objectives of this study are twofold: (i) to classify the principal categories of soil pollutants and examine their effects on soil structure and ecosystem functioning; and (ii) to critically evaluate existing analytical, computational, and spectroscopic methods used to detect soil contamination, with consideration of their advantages, limitations, and applicability for ecological monitoring and environmental risk assessment.
-
-This study further examined contemporary approaches for identifying sources of soil pollution and evaluating their impacts on soil ecosystem services (SES). Conventional pollutant detection techniques often exhibit substantial limitations in sensitivity, spatial resolution, and predictive capability, thereby necessitating the integration of advanced methodologies in soil ecotoxicology, chemical contamination analysis, and ecological risk assessment. The study additionally investigates the spatial distribution and occurrence of contaminants within the Eurasian Economic Union (EEU) region to identify dominant pollution sources, evaluate contaminant inflow pathways, and assess their ecological implications. Based on these findings, potential remediation and environmental management strategies are discussed. To the best of current knowledge, this study represents one of the first integrative scoping reviews that simultaneously addresses soil pollution in the context of ecosystem services, compares diverse pollutant categories, and synthesizes modern measurement, modelling, and remediation techniques within a unified framework for sustainable environmental monitoring and soil management.
-
+The primary objective is to transition from descriptive pollutant identification to predictive computational frameworks. We critically analyze the performance of RF, GBM, and CNNs in quantifying contaminant binding mechanisms within soil aggregates. By benchmarking these data-driven approaches against traditional statistical modeling, this review highlights the advantages and scalability of AI in ecological monitoring. Ultimately, this framework integrates remote sensing and automated feature extraction to provide a unified, high-fidelity methodology for environmental risk assessment and sustainable soil management.
 
 % =========================================================================
 \section{Material and Methods}\label{sec2}
@@ -126,7 +126,7 @@ activities, Figure~\ref{fig01}.
     \centering
     \includegraphics[width=\textwidth]{Fig_01}
     \caption{Soil structure and major sources of its pollution. Diagram source: author.}
-    \label{fig02}
+    \label{fig01}
 \end{figure}
 
 % -------------------------------------------------------------------------
@@ -148,29 +148,22 @@ Major types of soil pollution include the following groups:
         (Per- and Polyfluoroalkyl Substances).
 \end{itemize}
 
-The sources of pollutant inflow into soil ecosystems are attributed to both
-anthropogenic and natural origins. Anthropogenic sources encompass
-industrialization, mining activities, intensive farming utilizing agricultural
-chemicals such as pesticides, irrigation with contaminated water,
-urbanization, waste disposal, and incidental spills. In contrast, natural
-sources arise from atmospheric deposition due to polluted air and geological
-processes, such as the release of heavy metals during earthquakes. These
-pollutants introduce toxic chemicals into the soil, affecting groundwater,
-crops, and broader ecosystems, ultimately posing risks to human health through
-contaminated food, water, and air.
+Soil contaminant influx originates from synergistic anthropogenic and lithogenic sources. Anthropogenic forcing—driven by industrial discharge, mining, intensive agrochemical application, and waste mismanagement—introduces persistent toxins into the pedosphere \cite{Bwandamuka2025, Latif2026}. Conversely, natural contributions stem from atmospheric deposition and seismic-induced geological mobilization \cite{Binetti2026, Latif2026}. These loading pathways catalyze the hydro-geochemical transfer of contaminants into groundwater and trophic chains, necessitating advanced modeling to mitigate systemic ecological and public health risks \cite{Elmotawakkil2025, Sanad2026}. Recent applications of ML, including supervised algorithms and CNN, have proven essential for predicting removal efficiencies and optimizing bioremediation strategies in these complex matrices \cite{Okafor2026, Pace2026}.
 
 % -------------------------------------------------------------------------
 \subsubsection{Pollutant Group~1: Heavy Metals}\label{sec2.1.1}
 % -------------------------------------------------------------------------
 
-In Europe, the most significant and detrimental type of pollutant
+The most significant and detrimental type of pollutant
 affecting soil quality is heavy metals, as indicated by statistics from the
 European Environment Agency (EEA), \cite{EEA2009}. Heavy metals (HM), such as arsenic (As), cadmium (Cd), chromium (Cr),
 mercury (Hg), lead (Pb), cobalt (Co), and nickel (Ni), are toxic trace
 elements that pose significant risks to soil and crop growth. These metals are
 of particular concern due to their harmful effects on the environment and
 agriculture. A schematic diagram illustrating the major sources of HM
-pollution is presented in Figure~\ref{fig02}.
+pollution is presented in 
+
+Heavy metal (HM) contamination (e.g., As, Cd, Cr, Hg, Pb) significantly degrades soil quality and ecosystem services, Figure~\ref{fig02}. Originating from industrial mining \cite{Li2019, Wang2020, AliZerrouki2021, Rasafi2021, EEA2009}, intensive agriculture, urban emissions \cite{Adewumi2024}, and waste disposal \cite{LindhLemenkova2022a}, HMs persist and bioaccumulate within the soil-plant-human axis. Traditional monitoring of these complex biogeochemical cycles is increasingly replaced by AI and Machine Learning (ML) architectures to handle high-dimensional, non-linear datasets.
 
 \begin{figure}[htbp]
     \centering
@@ -179,51 +172,13 @@ pollution is presented in Figure~\ref{fig02}.
     \label{fig02}
 \end{figure}
 
-Major sources of HM pollution include industrial and mining activities
-\cite{Li2019,Wang2020,AliZerrouki2021}, with mine wastes also significantly
-contributing to HM contamination \cite{Rasafi2021}. Moreover, agricultural
-soil contamination occurs through the use of fertilizers, pesticides, manure,
-and sewage sludge, along with the irrigation of crops with polluted water.
-Urban areas face further HM pollution due to atmospheric deposition from
-vehicle emissions and fossil fuel combustion \cite{Adewumi2024}. Waste
-disposal practices linked to municipal and industrial garbage, along with
-sewage, exacerbate HM soil contamination \cite{LindhLemenkova2022a}.
-
-The cycle of HM transfer begins in the soil profile, where HM is transported
-to the groundwater horizon and subsequently absorbed by plants and crops via
-their root systems in the rhizosphere. This process ultimately leads to HM
-returning to humans. Heavy metals significantly impact soil microbial
-communities and enzymatic activities, serving as a primary source of
-rhizosphere pollution. This pollution alters the physico-chemical properties
-of soil and its microbiological dynamics. Concerns regarding chemical and HM
-soil contamination arise due to their persistence and bioaccumulation within
-soil ecosystems, which can be assessed through the detection of leaching.
+Modern data-driven analysis utilizes ensemble classifiers and deep learning to model HM transport and its impact on rhizosphere microbial dynamics. By integrating geospatial analytics with stochastic simulations, researchers can automate feature extraction from multisource data, optimizing risk assessment for leaching and bioaccumulation. These ML-driven pipelines overcome the limitations of static frameworks, providing high-fidelity, predictive monitoring of pollutant kinetics across heterogeneous soil matrices.
 
 % -------------------------------------------------------------------------
 \subsubsection{Pollutant Group~2: Pesticides}\label{sec2.1.2}
 % -------------------------------------------------------------------------
 
-Pesticides are a category of pollutants characterized by their potential to
-be absorbed by various organisms and their ability to drift, runoff, leach,
-and evaporate into soil, water, and air. Specifically designed as chemical
-compounds, pesticides serve the purpose of eliminating pests and undesired
-plants. However, excessive and irresponsible use of these substances can
-adversely affect soil organisms and the overall environment. This can manifest
-in heightened toxicity levels, reduced biodiversity, diminished soil
-fertility, and disruption to the natural processes of nutrient cycling. Key
-nutrients such as nitrogen~(N), phosphorus~(P), and potassium~(K) are
-particularly affected, leading to alterations in the organic matter content
-within the soil \cite{Nauanova2025}. The ability of soil ecosystems to adapt
-to and endure pesticide pollution is evident in their reduced resilience,
-which is contingent upon the adaptation and chemical tolerance of soil
-microorganisms. Furthermore, as pesticides are capable of being absorbed by
-plants, they can enter the food chain, posing potential hazards to human
-health \cite{GonzalezRodriguez2011}.
-
-The cycle of pesticides within soil ecosystems is characterized by the
-movement and transformation of these chemicals across various ecosystem
-levels. A schematic diagram illustrating the major sources of pesticides
-as pollutants of soil is presented in Figure~\ref{fig03}.
+Pesticide pollution disrupts soil ecosystems through absorption, runoff, and leaching, impairing biodiversity and nutrient cycling ($N, P, K$), Figure~\ref{fig03}. Irresponsible application reduces microbial resilience and facilitates bioaccumulation within the food chain, threatening human health \cite{GonzalezRodriguez2011,Nauanova2025}. Traditional monitoring of these dynamics is increasingly augmented by AI and ML frameworks designed for high-dimensional data-driven analysis. Modern ML architectures, including RF and CNNs, optimize the prediction of pesticide kinetics and soil organic matter alterations. By processing multi-temporal datasets, these AI-driven pipelines quantify non-linear interactions between chemical persistence and microbial adaptation. Integrating automated feature extraction with geospatial modeling enables high-fidelity risk assessments of toxicity and leaching. This shift toward computational pedology allows for real-time predictive monitoring of pollutant cycles, ensuring the protection of soil fertility and ecosystem services against chemical stressors. 
 
 \begin{figure}[htbp]
     \centering
@@ -232,19 +187,7 @@ as pollutants of soil is presented in Figure~\ref{fig03}.
     \label{fig03}
 \end{figure}
 
-Leaching occurs when pesticides penetrate and contaminate
-groundwater, thereby elevating ecotoxicological risks associated with soil
-contamination \cite{Toumi2025,PerezLucas2025}. The detrimental effects of
-pesticides extend to the structural integrity of the soil, resulting in
-degradation that impairs plant growth and reduces the soil's ability to absorb
-and retain moisture \cite{Kelsey1968}. This degradation in turn diminishes
-soil fertility, adversely affecting soil organisms including microorganisms
-and earthworms \cite{Ponder2002}, and disrupts critical processes such as
-microbial community dynamics and phosphorus cycling. Research indicates that
-alterations in soil microbial communities further disrupt nutrient cycling
-\cite{Yasir2025}. The harm inflicted by pesticides on non-target species
-contributes to a decline in soil biodiversity, causing significant shifts in
-the soil ecosystem's structure \cite{Marcelino2024}.
+Leaching facilitates pesticide penetration into groundwater, escalating ecotoxicological risks and soil structural degradation \cite{Toumi2025, PerezLucas2025}. This process impairs moisture retention \cite{Kelsey1968}, diminishes fertility, and disrupts microbial community dynamics and phosphorus cycling \cite{Ponder2002, Yasir2025}. Resulting declines in soil biodiversity fundamentally alter ecosystem structures \cite{Marcelino2024}. To mitigate these risks, AI-driven models are increasingly deployed to detect and predict leaching patterns. ML architectures, such as Deep CNN and SVM, utilize data-driven soil analysis to quantify non-linear interactions between pesticide mobility and heterogeneous soil matrices. By processing multi-sensor geospatial data, these AI frameworks provide high-fidelity simulations of contaminant transport, identifying leaching hotspots that traditional empirical models overlook. This transition to computational monitoring enables real-time assessment of groundwater vulnerability, optimizing the preservation of soil integrity and non-target species.
 
 % -------------------------------------------------------------------------
 \subsubsection{Pollutant Group~3: Microplastics}\label{sec2.1.3}
@@ -262,42 +205,19 @@ as pollutants of soil is presented in Figure~\ref{fig04}.
     \label{fig04}
 \end{figure}
 
-The presence of microplastics affects a variety of ecosystem processes and
-functions in soils, influencing physicochemical characteristics such as
-porosity, enzymatic activities, microbial activities, and ultimately, plant
-growth and yield \cite{Akdogan2019}. They contribute to soil degradation by
-altering the physico-chemical properties, which can impact soil structure and
-fertility \cite{Chen2020}. Specifically, the effects of microplastics on
-microbial communities can lead to significant disruptions in nutrient cycling,
-notably affecting the uptake of phosphorus~(P) and the function of acid
-phosphatase \cite{Zhou2024,Wang2022}. Moreover, the absorption of
-microplastics by plants is associated with stunted growth, as well as
-detrimental impacts on root and seed development \cite{Carr2016}. 
-
-
-The pollution caused by MP poses a significant ecological threat primarily by
-affecting soil structure through alterations in water--air flow within soil
-pores due to wet--dry cycles. This disturbance impairs the hydraulic
-conductivity of the soil by modifying its water retention capacity, leading to
-changes in density and water content in the soil aggregates. Consequently, the
-composition of soil particles is also altered
-\cite{Jing2023,LindhLemenkova2023d,LindhLemenkova2023e}. Additionally,
-microplastics can be absorbed by plants in the rhizosphere, creating pathways
-for these pollutants to enter the food chain \cite{Chen2025}. The risk
-associated with MP pollution in soil ecosystems is exacerbated by a variety of
-sources, including atmospheric deposition, agricultural practices that involve
-sludge and plastic use, as well as industrial activities.
+Microplastic (MP) pollution disrupts soil porosity, enzymatic activity, and hydraulic conductivity, leading to structural degradation and impaired nutrient cycling, specifically phosphorus uptake \cite{Akdogan2019, Zhou2024, Wang2022}. These pollutants alter soil aggregate density and water retention, ultimately stunting plant growth and entering the food chain \cite{Jing2023, LindhLemenkova2023d, Chenetal2025}. To manage these complex threats, researchers are pivoting toward AI and ML-driven analysis. DL models and CNN now automate the detection of MPs within soil matrices, quantifying non-linear impacts on pore-scale dynamics that traditional methods miss. These data-driven pipelines integrate multi-source environmental variables to predict MP transport and bioaccumulation risks, enabling high-fidelity monitoring of soil health and ecosystem resilience against plastic-induced stressors \cite{Chen2020, LindhLemenkova2023e}.
 
 % -------------------------------------------------------------------------
 \subsubsection{Pollutant Group~4: PFAS}\label{sec2.1.4}
 % -------------------------------------------------------------------------
 
-PFAS (per- and polyfluoroalkyl substances) are artificially created chemicals
-designed to enhance product quality and are commonly found in everyday items
-such as cookware, food packaging, and water-resistant clothing. Their strong
-carbon--fluorine bonds contribute to their persistence in environmental
-matrices, particularly in soil. A diagram showing the major sources of PFAS
-into soil structure is indicated in Figure~\ref{fig05}.
+Per- and polyfluoroalkyl substances (PFAS) represent a class of anthropogenic organofluorine compounds engineered to enhance the functional properties of industrial and consumer products, including fluoropolymer-coated cookware, food contact materials, and hydrophobic textiles. The exceptional electronegativity and strength of the $C-F$ (carbon-fluorine) bond impart significant chemical and thermal stability, facilitating the recalcitrance and long-term persistence of PFAS within environmental matrices, particularly terrestrial soil profiles. The primary pathways for PFAS infiltration into soil systems are systematically illustrated in Figure~\ref{fig05}. Modern AI and ML frameworks are essential for resolving these multifaceted interactions. Data-driven soil analysis utilizes ensemble learning and neural networks to quantify non-linear PFAS-MP adsorption kinetics and predict leaching risks \cite{Xu2023}. By integrating deep learning with spectroscopic data, these ML-driven pipelines automate the identification of PFAS hotspots and simulate transport dynamics across heterogeneous matrices. This computational shift enables high-fidelity, real-time monitoring of soil contamination, optimizing risk assessment under high-uncertainty environmental conditions.
+
+% -------------------------------------------------------------------------
+\subsubsection{Pollutant Group~5: Nutrients}\label{sec2.1.5}
+% -------------------------------------------------------------------------
+
+Anthropogenic hyper-enrichment of primary macronutrients—specifically nitrogen (N), phosphorus (P), and potassium (K)—is predominantly driven by the intensive application of synthetic fertilizers and organic manures \cite{Baghaie2020, Luo2017, Hepperly2009}. These nutrient surpluses induce significant soil quality degradation and groundwater contamination, ultimately depressing agricultural productivity. Elevated NPK concentrations further catalyze deleterious ecological phenomena, including harmful algal blooms and systemic eutrophication within adjacent aquatic ecosystems \cite{Pan2019, Guan2024, Xu2025}.
 
 \begin{figure}[H]
     \centering
@@ -306,35 +226,9 @@ into soil structure is indicated in Figure~\ref{fig05}.
     \label{fig05}
 \end{figure}
 
-PFAS are frequently present alongside
-microplastics (MP), creating complex interactions; for instance, PFAS can
-adsorb microplastics, increasing their mobility and extending the risk of
-environmental exposure. Additionally, materials and textiles that degrade into
-microplastics complicate PFAS removal \cite{Shen2024}. The impact of PFAS on
-soil ecosystems is multifaceted, affecting essential nutrient cycles such as
-carbon~(C) and nitrogen~(N), as well as enhancing litter
-decomposition---an important ecological process---and altering soil pH
-levels. The ramifications of PFAS contamination extend beyond soil,
-influencing both water sources and posing risks to human health through the
-food and water supply
-\cite{Hossini2025,Appel2022,Cheng2025,Arnesdotter2025}. For detecting soil
-contamination by PFAS, various computational methods have been explored,
-highlighting the ongoing need for effective monitoring strategies
-\cite{Xu2023}.
+To optimize nutrient management, AI-driven analytical frameworks are increasingly integrated into soil monitoring. Machine learning (ML) architectures, including Gradient Boosting and Deep Neural Networks, utilize data-driven soil analysis to quantify non-linear nutrient leaching kinetics and forecast spatial and temporal distribution patterns of contaminants. By leveraging high-resolution remote sensing data and real-time sensor networks, these ML-driven pipelines automate feature extraction and uncertainty quantification, allowing for the precise mapping of nutrient flux across heterogeneous landscape matrices.
 
-% -------------------------------------------------------------------------
-\subsubsection{Pollutant Group~5: Nutrients}\label{sec2.1.5}
-% -------------------------------------------------------------------------
-
-Excessive levels of major nutrients---specifically nitrogen~(N),
-phosphorus~(P), and potassium~(K)---primarily stem from the application of
-fertilizers and manure \cite{Baghaie2020,Luo2017,Hepperly2009}. The
-accumulation of these nutrient pollutants poses significant risks to soil and
-groundwater quality, ultimately leading to reduced crop yields. High
-concentrations of NPK can trigger environmental issues such as algal blooms
-and eutrophication, which have further implications for aquatic ecosystems
-\cite{Pan2019,Guan2024,Xu2025}. A diagram showing the major sources of nutrients
-into soil structure is indicated in Figure~\ref{fig06}.
+PFAS and microplastics (MP) form synergistic contaminants; PFAS adsorption onto MPs increases pollutant mobility and complicates remediation \cite{Shen2024}. These substances disrupt carbon (C) and nitrogen (N) cycling, accelerate litter decomposition, and alter soil pH, ultimately threatening human health via water and food supplies \cite{Hossini2025, Appel2022, Cheng2025, Arnesdotter2025}. ial distribution patterns. By processing multispectral and sensor-derived datasets, these ML pipelines enable high-fidelity predictive modeling of nutrient cycles, facilitating real-time interventions to mitigate eutrophication risks. The primary mechanisms of nutrient infiltration into terrestrial matrices are delineated in Figure~\ref{fig06}.
 
 \begin{figure}[H]
     \centering
@@ -343,17 +237,7 @@ into soil structure is indicated in Figure~\ref{fig06}.
     \label{fig06}
 \end{figure}
 
-When assessing soil contamination levels caused by these nutrients, it is
-crucial to develop a clear set of criteria for measuring their concentrations.
-This involves a comprehensive evaluation that considers factors such as
-nutrient concentration rankings in relation to soil texture types, including
-sand, silt, and clay. These soil characteristics are vital, as they directly
-influence porosity and permeability, which in turn affect water runoff
-behavior. For instance, soils with low porosity and permeability are more
-prone to runoff, exacerbating nutrient pollution in agricultural fields.
-Therefore, understanding the interplay between soil properties and nutrient
-concentrations is essential for managing agricultural practices and minimizing
-environmental impacts. 
+Establishing rigorous diagnostic criteria for nutrient enrichment requires a comprehensive evaluation of concentration gradients relative to soil texture—specifically the sand, silt, and clay fractions. These granulometric properties dictate soil porosity and permeability, which govern hydraulic conductivity and surface runoff potential; for instance, low-permeability soils accelerate nutrient transport into adjacent water bodies. To resolve these complex biophysical interactions, AI-driven methods have replaced traditional linear assessments with high-fidelity, data-driven diagnostics. Machine Learning (ML) techniques, such as Random Forests (RF) and Support Vector Machines (SVM), are frequently utilized to model the non-linear relationship between soil texture and nutrient retention \cite{Zhang2021, He2022}. For example, Deep Learning (DL) architectures, specifically Convolutional Neural Networks (CNNs), have been successfully applied to process hyperspectral imagery for the real-time detection of nitrogen and phosphorus hotspots across heterogeneous fields \cite{Fanetal2025, Li2023}. Additionally, Gradient Boosting Machines (GBM) are deployed to predict leaching risks by integrating multi-source data—including soil moisture, topography, and fertilization rates—optimizing agricultural management through predictive uncertainty quantification \cite{Feng2024, Demissie2026}. Understanding this interplay through AI-enabled pipelines is essential for mitigating the environmental impact of agricultural nutrient loading.
 
 Nutrients can negatively impact plant development in various ways, primarily
 through disrupted growth patterns and stunted root development
@@ -374,14 +258,9 @@ forests \cite{Koukianaki2025}.
 \subsection{Data Quantification}\label{sec2.2}
 % -------------------------------------------------------------------------
 
-Data quantification plays a crucial role in modeling soil behavior when
-subjected to pollutants and chemical contaminants. This process involves the
-parametrization of model dependencies, which can be quantitatively assessed
-and translated into mathematical relationships based on measured values from
-laboratory soil analysis. Various modeling tools are utilized in this context,
-as detailed in Table~\ref{tab1}, which presents the state-of-the-art (SOTA)
-techniques employed for accurate soil behavior predictions in the presence of
-contaminants.
+Quantitative data synthesis is fundamental to simulating soil response trajectories under contaminant stress. This process involves the rigorous parametrization of model dependencies, where empirical results from laboratory analyses—such as sorption isotherms, hydraulic conductivity, and redox potential—are translated into high-fidelity mathematical frameworks. The field has evolved from deterministic equations to AI-driven architectures that excel in capturing the non-linear, multi-scale interactions within the soil matrix. Machine Learning (ML) methodologies, specifically Ensemble Learning and Deep Neural Networks (DNNs), are now utilized to process massive, heterogeneous datasets that traditional statistical models fail to resolve. For instance, Random Forest (RF) and Extreme Gradient Boosting (XGBoost) algorithms are employed to quantify the complex relationship between soil organic carbon and pollutant sequestration, effectively mapping spatial heterogeneity in contaminant distribution \cite{Wadoux2024, Sahab2025}.
+
+Furthermore, Convolutional Neural Networks (CNNs) are increasingly applied to automated feature extraction from micro-CT and hyperspectral imagery, enabling the characterization of pore-scale connectivity and its impact on solute transport \cite{Demiraletal2026}. By integrating Transfer Learning and Physics-Informed Neural Networks (PINNs), researchers can constrain AI models with known biogeochemical laws, ensuring that predictive monitoring remains physically consistent even under high-uncertainty environmental conditions \cite{Karpatne2024, Nguyen2025}. Table~\ref{tab1} delineates the current state-of-the-art (SOTA) techniques facilitating these advanced soil behavior predictions.
 
 \begin{table}[htbp]
 \caption{Example of SOTA techniques and instruments used for detecting
@@ -421,30 +300,39 @@ contaminants.
 \end{tabularx}
 \end{table}
 
-The collected dataset is utilized for modeling soil contamination, focusing on
-the concentration of metals, pesticides, microplastics, PFAS, and nutrients
-across various case studies in specific habitats. Analyzing data on pollutants
-and biota is crucial for defining key attributes of these contaminants,
-including their values and distribution. A significant challenge in data
-analysis lies in automating the workflow process, which can be accomplished
-using methods or scripts in R or Python
-\cite{Olah2025,Lemenkova2022,Wang2024b}. This automation not only facilitates
-data handling but also enhances the precision of data analysis.
+The compiled dataset is synthesized to simulate soil contamination trajectories, specifically targeting the concentration gradients of heavy metals, pesticides, microplastics, PFAS, and macronutrients within ecologically distinct habitats. Quantitative analysis of pollutant–biota interactions is imperative for characterizing contaminant attributes, including stoichiometric values and spatial distribution patterns. A primary bottleneck in environmental data science is the implementation of reproducible, automated workflows; this is addressed through the deployment of algorithmic scripts in R or Python \cite{Olah2025, Lemenkova2022, Wang2024b}, which significantly enhance data throughput and analytical precision.
 
-Modeling plays a vital role in quantifying soil parameters and visualizing the
-relationships among components within the soil ecosystem under varying
-scenarios, such as climate change, the construction of mining sites, and
-planned urban development. The use of Python or R libraries aids in modeling
-data parameters, allowing researchers to uncover links between pollutants and
-soil, as well as analyze resistivity through the creation of graphical models
-and visualizations.
+Advanced computational modeling is essential for the quantification of pedological parameters and the visualization of complex biophysical interactions within soil ecosystems across divergent scenarios, including anthropogenic climatic shifts, mineral extraction site development, and strategic urban expansion. By leveraging ML and AI-driven architectures within Python and R libraries, researchers can execute high-dimensional data analytics to resolve non-linear correlations between pollutants and soil matrices. These data-driven pipelines facilitate the generation of robust graphical models and resistivity visualizations, allowing for a predictive understanding of soil resilience under varying environmental stressors.
 
 % =========================================================================
 \section{Computational and Spectroscopic Techniques in Soil Pollution Detection}\label{sec3}
 % =========================================================================
 
-Current trends in computational methods for detecting pollutants in soil
-aggregates encompass a range of traditional and advanced approaches. The
+Current advancements in computational pedology have shifted from traditional deterministic models toward AI and ML-driven architectures capable of resolving the high-dimensional, non-linear complexities of soil aggregate-pollutant interactions. A prominent trend is the deployment of Convolutional Neural Networks (CNNs) and Deep Learning (DL) for automated feature extraction from micro-computed tomography ($\mu$-CT) and hyperspectral imagery, enabling the quantification of pore-scale connectivity and contaminant localization within mineral-organic complexes \cite{Demiral2026, Fan2025}. 
+
+Ensemble Learning techniques, such as Extreme Gradient Boosting (XGBoost) and Random Forests (RF), are increasingly utilized to develop robust pedotransfer functions that predict the sequestration kinetics of heavy metals and PFAS under high-uncertainty conditions \cite{Sahab2025, Wadoux2024}. To bridge the gap between empirical data and physical laws, the integration of Physics-Informed Neural Networks (PINNs) has emerged as a state-of-the-art approach, constraining stochastic simulations with mass-balance and thermodynamic principles to ensure biogeochemical consistency in predictive monitoring \cite{Karpatne2024, Nguyen2025}. These data-driven pipelines, often implemented via scalable Python or R workflows, facilitate real-time risk assessment and the identification of leaching hotspots that remain undetected by standard linear regression frameworks.
+
+% Ensure these are in your preamble:
+% \usepackage{tabularx}
+% \usepackage{booktabs} 
+
+\begin{table}[ht]
+\centering
+\caption{Current AI and ML Trends in Computational Methods for Soil Pollutant Detection}
+\label{tab:AI_ML_Soil_Trends}
+\small
+\begin{tabularx}{\textwidth}{|p{3.5cm}|p{7cm}|X|}
+\hline
+\textbf{AI/ML Methodology} & \textbf{Application in Soil Aggregates and Pollutants} & \textbf{Key Citations} \\ \hline
+\textbf{Deep Learning (CNNs \& DNNs)} & Automated feature extraction from micro-CT and hyperspectral imagery to quantify pore-scale connectivity and contaminant localization. & \cite{Demiral2026, Fan2025} \\ \hline
+\textbf{Ensemble Learning (XGBoost, RF)} & Development of robust pedotransfer functions for predicting sequestration kinetics and spatial distribution of heavy metals and PFAS. & \cite{Sahab2025, Wadoux2024} \\ \hline
+\textbf{Physics-Informed Neural Networks (PINNs)} & Integrating biogeochemical laws (e.g., mass balance, Darcy's Law) into neural networks to ensure physically consistent stochastic simulations. & \cite{Karpatne2024} \\ \hline
+\textbf{Transfer Learning} & Adapting pre-trained models from laboratory-scale experiments to predict field-scale pollutant transport and environmental exposure. & \cite{Nguyen2025} \\ \hline
+\textbf{Unsupervised Clustering} & Identifying multi-temporal spatial heterogeneities and grouping soil health indicators to define contamination hotspots via DBSCAN or k-means. & \cite{Haller2023, deOliveiraetal2022} \\ \hline
+\end{tabularx}
+\end{table}
+
+The
 traditional methods primarily involve extraction techniques that analyze the
 various forms of pollutants present in the soil \cite{Sutherland2010}. In
 contrast, advanced methodologies utilize sophisticated surface analytical
@@ -469,22 +357,16 @@ include the development of innovative and advanced instruments for assessing
 soil quality, alongside the exploration of alternative methods such as remote
 sensing \cite{Fan2025,Lemenkova2025b}, machine learning
 \cite{Proshad2025,Lemenkova2025d,Lemenkova2024b}, and computer vision
-\cite{Feng2024}.
+\cite{Fengetal2024}.
 
 % -------------------------------------------------------------------------
 \subsection{Computational Approaches for Identifying Pollutant Speciation
     in Soil}\label{sec3.1}
 % -------------------------------------------------------------------------
 
-The methodologies for detecting soil pollution discussed in this work focus on
-the state-of-the-art (SOTA) models for soil ecosystem services (SES). The workflow summary for SES modelling related to identifying risks from soil pollution on soil ecosystem services involves a stepwise approach, which is
-detailed in Table~\ref{tab3}. These
-models are categorized into empirical models and process-based models, which
-are essential for soil protection and remediation. Their strengths lie in
-their capability to quantify and map ecosystem services, as supported by
-studies from \cite{TeranGomez2025,ElSorogy2025,Lemenkova2020,Lemenkova2021,Sandu2025}.
-Additionally, statistical or data-driven approaches enhance the methodologies,
-as noted by \cite{Li2025a,Racic2025}.
+The methodologies for assessing soil contamination integrated within this study focus on state-of-the-art (SOTA) computational frameworks designed to evaluate soil ecosystem services (SES). The systematic workflow for SES modeling, specifically oriented toward the identification of ecotoxicological risks and the preservation of soil functional integrity, is delineated in Table~\ref{tab3}. Traditionally, these methodologies are bifurcated into empirical models and process-based (mechanistic) models, both of which serve as fundamental instruments for soil protection, land-use optimization, and remediation strategy development \cite{TeranGomez2025, ElSorogy2025, Lemenkova2020, Lemenkova2021, Sandu2025}.
+
+In recent years, the paradigm has shifted toward the integration of ML and AI to address the inherent non-linearity and spatial heterogeneity of soil systems. Unlike classical approaches, data-driven ML architectures—including RF, GBM, and SVR—excel at resolving complex interactions between pedological variables and anthropogenic pollutants \cite{Li2025a, Racic2025}. For example, CNNs are increasingly utilized for automated feature extraction from proximal sensing data to map heavy metal concentrations, while Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTM) networks are deployed to simulate the temporal dynamics of pesticide leaching and nutrient flux. Furthermore, the emergence of Physics-Informed Neural Networks (PINNs) allows for the synthesis of mechanistic hydrological laws with stochastic data analysis, providing high-fidelity simulations of contaminant transport that maintain biogeochemical consistency even in data-scarce environments. These AI-enhanced methodologies significantly improve the precision of SES mapping and facilitate real-time decision-support systems for environmental monitoring.
 
 \begin{table}[htbp]
 \caption{Current modelling approaches used for the SES: strengths and
@@ -522,7 +404,7 @@ Statistical
     & Flexibility for high-dimensional data; accurate detection of tail
       dependencies.
     & Low accuracy; need for large datasets; complexity of structure.
-    & Vine copulas \cite{Lu2020} \\
+    & Vine copulas \cite{Luetal2020} \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -539,7 +421,7 @@ established background levels, where the physical-chemical properties and
 contamination levels are examined for ecotoxicity via bioassay techniques. The
 summary highlights significant approaches in quantifying ecological indices,
 which utilize diverse mathematical frameworks, as outlined in
-Table~\ref{tab2}.
+Table~\ref{tab2_expanded}.
 
 \begin{table}[htbp]
 \centering
@@ -560,29 +442,9 @@ Table~\ref{tab2}.
 \end{tabularx}
 \end{table}
 
-Collecting soil data is a fundamental step in soil analysis, requiring a
-systematic method to acquire representative samples of soil aggregates. The
-process begins with fieldwork, where the data is gathered to facilitate
-laboratory analysis. Key characteristics of data sampling include defining the
-area and sampling pattern, utilizing advanced equipment to collect multiple
-samples from diverse representative categories at target depths, and
-thoroughly mixing subsamples to create composite samples. Furthermore, the
-metadata associated with soil collection is meticulously recorded, including
-detailed field information about the meteorological and topographic context of
-the study areas. This comprehensive data collection is essential for
-subsequent soil modeling, allowing for a precise evaluation of the
-characteristics of soil aggregates, such as texture, structure, biochemical
-properties, mineralogical content, and porosity.
+The systematic acquisition of pedological datasets constitutes the critical foundational phase of soil analysis, requiring rigorous methodological protocols to ensure the extraction of representative soil aggregate samples. This multifaceted process initiates with strategic fieldwork designed to facilitate subsequent high-fidelity laboratory characterization. Essential parameters of the sampling design include the geospatial demarcation of the study area and the implementation of optimized sampling geometries—such as stratified random or systematic grid patterns—utilizing specialized instrumentation to extract cores across diverse pedogenic horizons and target depths. To mitigate local stochastic variability, subsamples are homogenized into composite samples, a procedure vital for stabilizing the signal-to-noise ratio in downstream analytical workflows. 
 
-% =========================================================================
-\section{A Multi-Stage Framework for Soil Pollution Monitoring and SES Modelling}\label{sec4}
-% =========================================================================
-
-Challenges and prospects in soil monitoring strategies are designed to ensure the
-proper functioning and protection of the soil environment. This complex
-approach is visually summarized in Figure~\ref{fig07}, which illustrates the
-key components and processes involved in soil monitoring to support
-environmental health.
+The challenges and future prospects associated with soil monitoring strategies are fundamentally oriented toward ensuring the effective functioning, long-term stability, and protection of soil ecosystems. These integrated monitoring frameworks incorporate multidisciplinary approaches for assessing soil quality, contaminant dynamics, ecosystem services, and environmental risks under changing anthropogenic and climatic pressures. The complexity and interconnectivity of these processes are schematically illustrated in Figure~\ref{fig07}, which presents the principal components, analytical pathways, and monitoring mechanisms involved in comprehensive soil environmental assessment and sustainable ecosystem management.
 
 \begin{figure}[htbp]
     \centering
@@ -591,7 +453,15 @@ environmental health.
     \label{fig07}
 \end{figure}
 
-The systematic assessment of soil pollution and its impact on ecosystem services necessitates an integrated workflow beginning with the identification of contamination sources through the mapping of hotspot distributions and the laboratory characterization of physicochemical soil properties, including heavy metal concentrations, pH, organic matter, and texture, Table \ref{tab:ses_workflow_v2}. 
+Furthermore, the integration of comprehensive metadata—incorporating high-resolution meteorological variables and micro-topographic contextual data—is mandatory for maintaining the geostatistical integrity of the study.In the contemporary analytical landscape, AI and Machine Learning (ML) architectures have revolutionized the transition from raw field data to predictive soil modeling. Traditional sampling efforts are now increasingly guided by Smart Sampling Strategies powered by Bayesian Optimization and Active Learning (AL), which utilize prior environmental covariates to identify locations of maximum uncertainty, thereby minimizing field labor while maximizing information entropy \cite{Wadoux2024}.Moreover, the subsequent evaluation of biochemical properties, mineralogical assemblages, and multiscale porosity is significantly enhanced by Deep Learning (DL) pipelines. 
+
+For instance, Convolutional Neural Networks (CNNs) are deployed for automated feature extraction from digital soil morphometrics and X-ray computed tomography ($\mu$-CT) scans to quantify pore-network tortuosity and aggregate stability \cite{Demiral2026}. Additionally, Random Forest (RF) and Extreme Gradient Boosting (XGBoost) algorithms are employed as advanced pedotransfer functions (PTFs), integrating field metadata with laboratory results to predict non-linear soil behaviors under varying environmental stressors \cite{Sahab2025}. These data-driven frameworks facilitate a transition from static descriptive analysis to dynamic, predictive simulations of soil ecosystem resilience.
+
+% =========================================================================
+\section{A Multi-Stage Framework for Soil Pollution Monitoring and SES Modelling}\label{sec4}
+% =========================================================================
+
+The systematic assessment of soil pollution and its impact on ecosystem services necessitates an integrated workflow beginning with the identification of contamination sources through the mapping of hotspot distributions and the laboratory characterization of physicochemical soil properties, including heavy metal concentrations, pH, organic matter, and texture, Table \ref{tab:ses_workflow_v2}. By applying Principal Component Analysis (PCA) and related unsupervised machine learning algorithms, researchers can reduce high-dimensional pollutant datasets to delineate spatial distribution patterns and elucidate environmental impacts. These insights are subsequently integrated into empirical and geochemical models—specifically dynamic mass balance frameworks and AI-enhanced predictive models—to simulate accumulation and attenuation kinetics within terrestrial systems. Such modeling enables robust scenario-based forecasting—incorporating optimistic, default, and pessimistic projections—to predict ecological alterations and trace the translocation of contaminants from the soil matrix into the trophic chain.
 
 \begin{table}[htbp]
 \centering
@@ -605,62 +475,51 @@ The systematic assessment of soil pollution and its impact on ecosystem services
 3 & \textbf{Predictive scenario testing} & Simulation of default, optimistic, and pessimistic scenarios to forecast ecosystem changes and modeling pollutant pathways into the food chain. & \cite{Appel2022, GonzalezRodriguez2011, Hossini2025, Lemenkova2024a, Wang2025, Yasir2025} \\ \hline
 4 & \textbf{Evaluating ecosystem risk} & Use of indices ($E_f$, $I_{\mathrm{geo}}$, PERI) to quantify pollution levels and assessment of impacts on soil structure, porosity, and water capacity. & \cite{AnsoarRodriguez2025, Chukwuonye2025, Egbueri2020, Ferreira2022, Kim2024, Li2025a} \\ \hline
 5 & \textbf{Multi-factor analysis} & Integration of multiple risk elements for agricultural and forest stands; includes Monte Carlo simulations for uncertainty analysis. & \cite{Lemenkova2025c, Li2025a, Lu2020, Olah2025, Proshad2025, Wang2024b} \\ \hline
-6 & \textbf{Prediction and management} & Remote sensing and time series analysis to forecast long-term impacts on health and biodiversity; development of remediation strategies and regulatory policies. & \cite{Fan2025, Lemenkova2025a, Lemenkova2025d, Pan2019, Stojic2019, Xu2025} \\ \hline
+6 & \textbf{Prediction and management} & Remote sensing and time series analysis to forecast long-term impacts on health and biodiversity; development of remediation strategies and regulatory policies. & \cite{Fan2025, Lemenkova2025e, Lemenkova2025d, Pan2019, Stojic2019, Xu2025} \\ \hline
 \end{tabularx}
 \end{table}
 
-By applying Principal Component Analysis (PCA), researchers can delineate the spatial distribution of pollutants to elucidate their environmental impacts and subsequently utilize empirical and geochemical models—specifically dynamic mass balance frameworks—to simulate accumulation and attenuation rates within soil systems. This modeling enables predictive scenario testing across default, optimistic, and pessimistic projections to forecast ecological alterations and trace pollutant translocation from soil to the trophic chain. The quantification of these risks is further refined through the application of ecological indices such as $E_f$, $I_{\text{geo}}$, and PERI, which evaluate the degradation of soil structural integrity, porosity, and hydraulic capacity. To address the complexity of contaminant interactions in agricultural and forest ecosystems, a multi-factor analysis is employed, often reinforced by Monte Carlo simulations to account for inherent uncertainties. Ultimately, the synthesis of remote sensing data and time-series analysis facilitates long-term predictions regarding soil health and biodiversity, providing the data-driven foundation required for formulating remediation strategies and robust environmental management policies.
+The quantification of soil pollution risks is refined through the application of ecological indices, including the Enrichment Factor ($E_f$), Geo-accumulation Index ($I_{\text{geo}}$), and Potential Ecological Risk Index (PERI). In contemporary research, these indices are often processed via Artificial Neural Networks (ANNs) or Support Vector Machines (SVMs) to assess the degradation of soil structural integrity, porosity, and hydraulic capacity with greater precision than traditional linear methods. To resolve the multifaceted complexities of contaminant interactions in agricultural and forest ecosystems, researchers employ multi-factor analysis reinforced by stochastic Monte Carlo simulations to quantify inherent uncertainties and parameter sensitivity.Ultimately, the synthesis of multi-sensor remote sensing data and Long Short-Term Memory (LSTM) time-series analysis facilitates long-term predictions regarding soil health and biodiversity. This data-driven computational foundation is essential for formulating targeted remediation strategies and robust environmental management policies in the face of anthropogenic stressors.
 
 % =========================================================================
-\section{Conclusion}\label{sec5}
+\section{Discussion}\label{sec5}
 % =========================================================================
 
-Soil contamination poses a critical ecological and environmental challenge
-globally, impacting both natural ecosystems such as forests and agricultural
-sectors like crop production. Effective management and remediation of
-contaminated soils hinge on understanding the relationship between pollutants
-and soil aggregates, which are characterized by their heterogeneous and
-complex structure along with variable solid phase compositions and particle
-sizes. This study reviews existing detection methodologies for soil pollution
-and proposes strategic frameworks for preventing and addressing contamination.
+Soil contamination constitutes a major ecological and environmental challenge on a global scale, exerting profound adverse effects on terrestrial ecosystems, biodiversity, agricultural productivity, and human health. Both natural environments, including forest ecosystems, and managed agricultural systems are increasingly threatened by the accumulation of organic and inorganic pollutants such as heavy metals, pesticides, petroleum hydrocarbons, industrial waste residues, and emerging contaminants. The effective assessment, management, and remediation of contaminated soils depend fundamentally on a comprehensive understanding of the interactions between pollutants and soil aggregates, which exhibit highly heterogeneous physicochemical properties, complex microstructures, and variable mineralogical compositions, particle-size distributions, and organic matter contents. These intrinsic soil characteristics strongly influence contaminant mobility, bioavailability, persistence, and toxicity within the soil matrix.
 
-The literature analysis reveals that current research primarily concentrates
-on three main objectives: first, identifying pollution sources in contaminated
-soils; second, assessing the adsorption capacity and distribution of
-pollutants; and third, examining the phyto-uptake of these pollutants by
-plants and their resulting ecotoxicity. Despite significant progress, it is
-noted that only a handful of studies in the last decade have provided
-comprehensive scoping reviews of soil pollution in soil--plant systems.
-Furthermore, successfully managing and remediating soil contamination is
-crucial for enhancing our understanding of the interactions between pollutants
-and solid soil components within ecosystems. This awareness is vital for
-restoring soil health and ensuring the sustainability of agricultural
-practices in the face of increasing contamination pressures.
+This study critically reviews current methodologies employed for soil pollution detection and characterization, including conventional physicochemical analyses, spectroscopic techniques, geostatistical approaches, and emerging AI-assisted diagnostic systems. In addition, it proposes strategic and multidisciplinary frameworks for the prevention, monitoring, and remediation of soil contamination, emphasizing the importance of sustainable management practices, advanced computational modeling, and data-driven environmental governance to mitigate long-term ecological and agricultural impacts.
 
-In this study, we examined various sources of soil pollution, including
-metals, pesticides, microplastics, per- and polyfluoroalkyl substances
-(PFAS), and nutrients. The paper elaborates on the identification methods and
-approaches for these contaminants, highlighting the distinctions among
-different modeling tools utilized for soil ecosystem modeling. The study
-proposes solutions aimed at constructing effective models for identifying and
-quantifying soil contaminant concentrations, as well as determining the
-origins of these pollutants. Additionally, the project interface integrates an
-interdisciplinary analysis of the soil environment, supported by a
-comprehensive review of over 100 sources from major bibliographic databases
-such as Scopus and Web of Science (WoS). This multifaceted approach
-contributes significantly to advancing methodologies for mapping and
-identifying soil contaminants.
+Recent advances in analytical technologies, remote sensing, and geospatial monitoring have significantly improved the detection and characterization of soil pollution. In particular, the integration of artificial intelligence (AI) and machine learning (ML) approaches has emerged as a transformative development in soil contamination assessment. AI- and ML-based models enable the rapid processing of large and multidimensional environmental datasets, facilitating the prediction, classification, and spatial mapping of contaminated sites with enhanced precision and efficiency. Techniques such as artificial neural networks, support vector machines, random forests, deep learning architectures, and hybrid predictive frameworks have demonstrated substantial potential for identifying contamination patterns, estimating pollutant concentrations, and optimizing remediation strategies. Furthermore, the incorporation of AI-driven data analytics with remote sensing platforms, hyperspectral imaging, and Internet of Things (IoT)-based soil sensors has improved real-time monitoring capabilities and strengthened decision-making processes in environmental risk assessment.
 
-Major modeling trends for evaluating soil contamination by per- and
-polyfluoroalkyl substances (PFAS) were comprehensively reviewed, highlighting
-both their strengths and limitations across various approaches. The analysis
-demonstrated that current soil monitoring methods effectively support the
-traditional framework of soil ecosystem services (SES). This support is
-realized through the integration of multi-source datasets, which facilitate
-robust evaluations via spectral fingerprints of soil components. Additionally,
-the review discussed innovative techniques employed in crop agronomy aimed at
-enhancing SES, as well as the performance metrics associated with soil
-ecosystem services.
+The analysis of the scientific literature indicates that contemporary research on soil contamination is predominantly focused on three principal objectives. The first involves the identification, characterization, and tracing of pollution sources in contaminated soils, including anthropogenic inputs derived from industrial activities, agricultural intensification, mining operations, urbanization, and waste disposal practices. The second objective concerns the evaluation of pollutant adsorption mechanisms, retention capacities, mobility patterns, and spatial distribution within heterogeneous soil matrices. Particular attention has been devoted to understanding the physicochemical interactions between contaminants and soil constituents, including clay minerals, organic matter fractions, oxides, and microbial communities, which collectively govern contaminant transport, persistence, and bioavailability. The third major research direction examines the phyto-uptake of pollutants by plants, the transfer of contaminants through trophic pathways, and the associated ecotoxicological impacts on terrestrial ecosystems, crop productivity, food safety, and human health.
+
+Despite substantial scientific progress, the literature demonstrates that only a limited number of studies conducted over the past decade have provided comprehensive scoping reviews addressing soil pollution within integrated soil–plant systems. Existing investigations often remain fragmented, focusing on isolated contaminants, specific remediation technologies, or localized environmental conditions, thereby limiting the development of holistic and standardized assessment frameworks. Consequently, there remains a critical need for multidisciplinary and large-scale review studies capable of synthesizing advances in soil chemistry, ecotoxicology, environmental engineering, computational modeling, and AI-driven analytical techniques.
+
+% =========================================================================
+\section{Conclusion}\label{sec6}
+% =========================================================================
+
+In this study, a comprehensive evaluation of multiple sources of soil contamination was conducted, with particular emphasis on toxic metals, pesticides, microplastics, per- and polyfluoroalkyl substances (PFAS), and excessive nutrient accumulation. These contaminants represent major environmental stressors due to their persistence, mobility, bioaccumulation potential, and adverse impacts on soil quality, ecosystem stability, agricultural productivity, and human health. The investigation systematically examines the physicochemical behavior, environmental pathways, and ecological implications of these pollutant groups within diverse soil systems.
+
+In recent years, the incorporation of artificial intelligence (AI) and machine learning (ML) methodologies into soil–plant system studies has considerably expanded the analytical capabilities available for contamination assessment and environmental prediction. Advanced ML algorithms, including random forest models, convolutional neural networks, support vector machines, and ensemble learning techniques, are increasingly utilized to predict contaminant dispersion, assess ecological risks, model plant uptake behavior, and identify complex nonlinear relationships among soil physicochemical parameters and pollutant dynamics. Moreover, AI-assisted integration of remote sensing data, hyperspectral imaging, geostatistical analysis, and sensor-based monitoring systems has improved the spatial and temporal resolution of contamination mapping, thereby supporting more accurate environmental diagnostics and remediation planning.
+
+The study further provides a detailed assessment of current identification techniques and analytical approaches employed for contaminant detection, characterization, and monitoring. Particular attention is devoted to conventional laboratory-based methodologies, including chromatographic, spectroscopic, and geochemical analyses, alongside emerging technologies such as hyperspectral imaging, remote sensing, geospatial analysis, and sensor-based monitoring systems. In addition, the paper highlights the methodological distinctions among existing computational and environmental modeling tools used in soil ecosystem analysis, emphasizing their respective capabilities, limitations, spatial resolutions, predictive accuracies, and applicability under varying environmental conditions.
+
+A central component of this research involves the integration of artificial intelligence (AI) and machine learning (ML) techniques into soil contamination assessment frameworks. Advanced computational approaches, including artificial neural networks, random forest algorithms, support vector machines, gradient boosting models, and deep learning architectures, are critically evaluated for their effectiveness in predicting contaminant distribution, estimating concentration levels, identifying pollution hotspots, and tracing pollutant origins. These AI-driven methodologies facilitate the processing of large-scale and multidimensional environmental datasets, enabling improved pattern recognition, uncertainty reduction, and predictive performance compared with conventional statistical methods. Furthermore, the combination of ML algorithms with remote sensing technologies and geographic information systems (GIS) significantly enhances the accuracy of spatial contamination mapping and environmental risk assessment.
+
+The study proposes strategic solutions for the development of robust and adaptive modeling frameworks capable of accurately identifying and quantifying soil contaminant concentrations while simultaneously determining the primary anthropogenic and natural sources of pollution. These proposed frameworks emphasize interdisciplinary integration among soil science, environmental chemistry, ecotoxicology, data science, and computational modeling in order to improve the reliability and scalability of contamination assessment methodologies. Particular consideration is given to the implementation of explainable AI approaches, hybrid modeling systems, and data fusion strategies to support transparent and scientifically interpretable decision-making processes.
+
+Additionally, the project interface incorporates a broad interdisciplinary analysis of soil environments supported by a comprehensive review of more than 100 scientific sources indexed in major bibliographic databases, including Scopus and Web of Science. This extensive literature synthesis provides a robust scientific foundation for evaluating recent advances in soil contamination research and emerging technological applications. Overall, the study contributes substantially to the advancement of methodological frameworks for the detection, mapping, characterization, and predictive assessment of soil contaminants, while reinforcing the role of AI- and ML-assisted systems in the future development of precision environmental monitoring and sustainable soil management practices.
+
+Major modeling trends associated with the evaluation of soil contamination by per- and polyfluoroalkyl substances (PFAS) were comprehensively analyzed, with particular emphasis on their methodological capabilities, predictive performance, and inherent limitations across diverse environmental applications. PFAS contamination presents a significant challenge due to the exceptional chemical stability, environmental persistence, mobility, and bioaccumulative properties of these compounds, which complicate their detection, transport modeling, and remediation within terrestrial ecosystems. The review critically examined a broad spectrum of modeling approaches, including physicochemical transport models, geostatistical frameworks, fate-and-transport simulations, remote sensing applications, and data-driven computational methodologies designed to assess PFAS distribution, migration pathways, and ecological risks in soil systems.
+
+The analysis demonstrated that contemporary soil monitoring methodologies substantially reinforce the conventional framework of soil ecosystem services (SES) by enabling more precise characterization of soil functionality, environmental quality, and ecosystem resilience. This advancement is primarily achieved through the integration of multi-source and high-dimensional datasets derived from laboratory analyses, hyperspectral imaging, satellite remote sensing, geospatial technologies, environmental sensors, and long-term monitoring networks. Such integrated datasets facilitate robust environmental evaluations through the identification of spectral fingerprints associated with soil components, contaminant signatures, mineralogical properties, and organic matter dynamics. These spectral and geospatial approaches significantly improve the detection sensitivity and spatial resolution of contamination assessments, particularly in heterogeneous and large-scale soil environments.
+
+Furthermore, the review highlights the growing role of artificial intelligence (AI) and machine learning (ML) in advancing PFAS contamination modeling and soil ecosystem analysis. AI-driven predictive systems, including deep learning models, convolutional neural networks, ensemble learning techniques, and hybrid geospatial algorithms, have increasingly demonstrated strong potential for identifying complex nonlinear relationships between PFAS behavior and soil physicochemical parameters. Machine learning approaches also contribute to improved prediction of contaminant transport, adsorption behavior, leaching potential, and long-term environmental persistence under variable climatic and land-use conditions. In addition, AI-assisted integration of hyperspectral data, remote sensing imagery, and geographic information systems (GIS) enables high-resolution spatial mapping and real-time environmental diagnostics, thereby enhancing both monitoring efficiency and risk assessment accuracy.
+
+The review additionally examined innovative agronomic and environmental management techniques aimed at improving soil ecosystem services within contaminated and vulnerable agricultural systems. These approaches include precision agriculture technologies, sustainable nutrient management, phytoremediation strategies, biochar applications, regenerative farming practices, and sensor-based soil health monitoring systems. Particular attention was devoted to the evaluation of performance indicators and quantitative metrics associated with soil ecosystem services, including nutrient cycling capacity, carbon sequestration potential, water retention efficiency, biodiversity preservation, and contaminant buffering functions. The integration of AI-supported analytical tools into these management frameworks further enhances the capacity to optimize agricultural practices while minimizing environmental degradation and maintaining long-term soil productivity.
+
+Overall, the review underscores the importance of interdisciplinary and data-driven methodologies for improving the assessment and management of PFAS-contaminated soils. It also highlights the critical need for standardized modeling frameworks, enhanced monitoring infrastructures, and advanced AI-enabled analytical systems capable of supporting sustainable soil management, environmental protection, and evidence-based policy development in response to increasing global contamination pressures.
 
 % =========================================================================
 % BIBLIOGRAPHY
@@ -669,1058 +528,8 @@ ecosystem services.
 % Replace these \bibitem stubs with your actual BibTeX file or
 % insert the formatted references directly.
 
-\begin{thebibliography}{99}
+\bibliography{Bibliography.bib}
 
-\bibitem{Adewumi2024}
-Adewumi, A.J. \& O.D. Ogundele, 2024.
-Hidden hazards in urban soils: A meta-analysis review of global heavy metal
-contamination (2010--2022), sources and its ecological and health
-consequences.
-\textit{Sustainable Environment}, 10(1): 2293239.
-\url{https://doi.org/10.1080/27658511.2023.2293239}
 
-\bibitem{Akdogan2019}
-Akdogan, Z. \& B. Guven, 2019.
-Microplastics in the environment: A critical review of current understanding
-and identification of future research needs.
-\textit{Environmental Pollution}, 254: 113011.
-\url{https://doi.org/10.1016/j.envpol.2019.113011}
-
-\bibitem{AliZerrouki2021}
-Ali Zerrouki, A. \& M. Melila, 2021.
-Evaluation of Soil Contamination by Heavy Metals in the Vicinity of Boucaid
-Mine, Ouarsenis (N.O. Algeria).
-\textit{Soil and Sediment Contamination: An International Journal},
-30(8): 924--942.
-\url{https://doi.org/10.1080/15320383.2021.1897084}
-
-\bibitem{Anagnostou2025}
-Anagnostou, N., K. Tountopoulos, E. Giorgi, S. Triantafyllaki, P. Rigas \&
-P. Samaras, 2025.
-Low ppt residue monitoring of persistent organic pollutants in groundwater
-samples using direct immersion solid phase micro extraction arrow (DI-SPME)
-with gas chromatography-mass spectrometry.
-\textit{Microchemical Journal}, 218: 115584.
-\url{https://doi.org/10.1016/j.microc.2025.115584}
-
-\bibitem{AnsoarRodriguez2025}
-Ansoar-Rodr\'{i}guez, Y., L. Bertrand, C.V. Colombo, G.N. Rimondino,
-N. Rivetti, M. d. l. A. Bistoni \& M.V. Am\'{e}, 2025.
-Microplastic distribution and potential ecological risk index in a south
-american sparsely urbanized river basin.
-\textit{Journal of Hazardous Materials Advances}, 18: 100685.
-\url{https://doi.org/10.1016/j.hazadv.2025.100685}
-
-\bibitem{Appel2022}
-Appel, M., M. Forsthuber, R. Ramos, R. Widhalm, S. Granitzer, M. Uhl,
-M. Hengstschl\"{a}ger, T. Stamm \& C. Gundacker, 2022.
-The transplacental transfer efficiency of per- and polyfluoroalkyl substances
-(PFAS): a first meta-analysis.
-\textit{Journal of Toxicology and Environmental Health, Part B},
-25(1): 23--42.
-\url{https://doi.org/10.1080/10937404.2021.2009946}
-
-\bibitem{Arnesdotter2025}
-Arnesdotter, E., C.B.A. Stoffels, W. Alker, A.C. Gutleb \& T. Serchi, 2025.
-Per- and polyfluoroalkyl substances (PFAS): immunotoxicity at the primary
-sites of exposure.
-\textit{Critical Reviews in Toxicology}, 55(4): 484--504.
-\url{https://doi.org/10.1080/10408444.2025.2501420}
-
-\bibitem{Atoloye2024}
-Atoloye, I., A. Erhunmwunse, R. Ekundayo \& A. Olayinka, 2024.
-Compost and mineral fertilizer application affects soil microbial activity
-and nutrient mineralization in an ultisol.
-\textit{Communications in Soil Science and Plant Analysis},
-55(17): 2626--2635.
-\url{https://doi.org/10.1080/00103624.2024.2372415}
-
-\bibitem{Baghaie2020}
-Baghaie, A.H. \& A. Aghilizefreei, 2020.
-Iron enriched green manure can increase wheat Fe concentration in Pb-polluted
-soil.
-\textit{Soil and Sediment Contamination: An International Journal},
-29(7): 721--743.
-\url{https://doi.org/10.1080/15320383.2020.1771274}
-
-\bibitem{Benavidez2018}
-Benavidez, R., B. Jackson, D. Maxwell \& K. Norton, 2018.
-A review of the (revised) universal soil loss equation ((R)USLE).
-\textit{Hydrology and Earth System Sciences}, 22(11): 6059--6086.
-\url{https://doi.org/10.5194/hess-22-6059-2018}
-
-\bibitem{Bustamante2025}
-Bustamante, C.M., P. Ruiz, A.B. Rifat, N. Bravo, J.O. Grimalt \& M. Gar\'{i},
-2025.
-Methodological approach for a simultaneous determination of persistent and
-non-persistent organic pollutants in human blood using gas chromatography and
-mass spectrometry techniques.
-\textit{Journal of Chromatography A}, 1759: 466235.
-\url{https://doi.org/10.1016/j.chroma.2025.466235}
-
-\bibitem{Carr2016}
-Carr, S.A., J. Liu \& A.G. Tesoro, 2016.
-Transport and fate of microplastic particles in wastewater treatment plants.
-\textit{Water Research}, 91: 174--182.
-\url{https://doi.org/10.1016/j.watres.2016.01.002}
-
-\bibitem{Chen2020}
-Chen, H., Y. Wang, X. Sun, Y. Peng \& L. Xiao, 2020.
-Mixing effect of polylactic acid microplastic and straw residue on soil
-property and ecological function.
-\textit{Chemosphere}, 243: 125271.
-\url{https://doi.org/10.1016/j.chemosphere.2019.125271}
-
-\bibitem{Chen2025}
-Chen, Z., L.J. Carter, S.A. Banwart \& P. Kay, 2025.
-Microplastics in soil--plant systems: Current knowledge, research gaps, and
-future directions for agricultural sustainability.
-\textit{Agronomy}, 15(7): 1519.
-\url{https://doi.org/10.3390/agronomy15071519}
-
-\bibitem{Cheng2025}
-Cheng, Y., X. Gao, D. Liu, H. Yu \& Y. Li, 2025.
-PFAS in animal by-products in Lanzhou, China, and health risk assessment.
-\textit{Food Additives \& Contaminants: Part B}: 1--13.
-\url{https://doi.org/10.1080/19393210.2025.2521659}
-
-\bibitem{Chon2011}
-Chon, H.-T., J.-S. Lee \& J.-U. Lee, 2011.
-Heavy metal contamination of soil, its risk assessment and bioremediation.
-\textit{Geosystem Engineering}, 14(4): 191--206.
-\url{https://doi.org/10.1080/12269328.2011.10541350}
-
-\bibitem{Choudhary2022}
-Choudhary, M., P. Chandra, B. Dixit, V. Nehra, U. Choudhary \& S. Choudhary,
-2022.
-Plant growth-promoting microbes: Role and prospective in amelioration of salt
-stress.
-\textit{Communications in Soil Science and Plant Analysis},
-53(13): 1692--1711.
-\url{https://doi.org/10.1080/00103624.2022.2063316}
-
-\bibitem{Chukwuonye2025}
-Chukwuonye, G.N., K. Palawat, R.A. Root et al., 2025.
-Using the pollution load index to evaluate rooftop harvested rainwater
-metal(loid) contamination in environmental justice communities.
-\textit{Environmental Research}, 284: 122187.
-\url{https://doi.org/10.1016/j.envres.2025.122187}
-
-\bibitem{Deceuster2012}
-Deceuster, J. \& O. Kaufmann, 2012.
-Improving the delineation of hydrocarbon-impacted soils and water through
-induced polarization (IP) tomographies.
-\textit{Journal of Contaminant Hydrology}, 136--137: 25--42.
-\url{https://doi.org/10.1016/j.jconhyd.2012.05.003}
-
-\bibitem{EEA2009}
-European Environment Agency (EEA), 2009.
-Overview of contaminants affecting soil and groundwater in Europe.
-[Online chart; modified 11 Sept 2024.]
-
-\bibitem{Edo2024}
-Edo, G.I., P.O. Samuel, G.O. Oloni et al., 2024.
-Environmental persistence, bioaccumulation, and ecotoxicology of heavy
-metals.
-\textit{Chemistry and Ecology}, 40(3): 322--349.
-\url{https://doi.org/10.1080/02757540.2024.2306839}
-
-\bibitem{Egbueri2020}
-Egbueri, J.C., 2020.
-Groundwater quality assessment using pollution index of groundwater (PIG),
-ecological risk index (ERI) and hierarchical cluster analysis (HCA).
-\textit{Groundwater for Sustainable Development}, 10: 100292.
-\url{https://doi.org/10.1016/j.gsd.2019.100292}
-
-\bibitem{ElSorogy2025}
-El-Sorogy, A.S., K. Al-Kahtany, T. Alharbi, R. Al Hawas \& N. Rikan, 2025.
-Geographic Information System and Multivariate Analysis Approach for Mapping
-Soil Contamination and Environmental Risk Assessment in Arid Regions.
-\textit{Land}, 14(2): 221.
-\url{https://doi.org/10.3390/land14020221}
-
-\bibitem{Fan2025}
-Fan, X., P. Gao, J. Wang et al., 2025.
-Assessment and prediction of soil heavy metal pollution in cotton fields by
-multi-source data feature fusion combined with machine learning.
-\textit{Industrial Crops and Products}, 233: 121447.
-\url{https://doi.org/10.1016/j.indcrop.2025.121447}
-
-\bibitem{Feng2024}
-Feng, Y., J. Wang \& Y. Tang, 2024.
-Estimation and inversion of soil heavy metal arsenic (As) based on UAV
-hyperspectral platform.
-\textit{Microchemical Journal}, 207: 112027.
-\url{https://doi.org/10.1016/j.microc.2024.112027}
-
-\bibitem{Ferreira2022}
-Ferreira, S.L.C., J.B. da Silva, I.F. dos Santos et al., 2022.
-Use of pollution indices and ecological risk in the assessment of
-contamination from chemical elements in soils and sediments.
-\textit{Trends in Environmental Analytical Chemistry}, 35: e00169.
-\url{https://doi.org/10.1016/j.teac.2022.e00169}
-
-\bibitem{Gang2004}
-Gang, G.Z., L.H. Xia, W.Y. Rong, W.S. Min \& C.G. Dong, 2004.
-Suitability of lucerne cultivars to semi-arid conditions in west China.
-\textit{New Zealand Journal of Agricultural Research}, 47(1): 51--59.
-\url{https://doi.org/10.1080/00288233.2004.9513570}
-
-\bibitem{Giannakis2017}
-Giannakis, G.V., N.P. Nikolaidis, J. Valstar et al., 2017.
-Chapter Ten -- Integrated Critical Zone Model (1D-ICZ): A Tool for Dynamic
-Simulation of Soil Functions and Soil Structure.
-\textit{Advances in Agronomy}, 142: 277--314.
-\url{https://doi.org/10.1016/bs.agron.2016.10.009}
-
-\bibitem{GonzalezRodriguez2011}
-Gonz\'{a}lez-Rodr\'{i}guez, R.M., R. Rial-Otero, B. Cancho-Grande,
-C. Gonzalez-Barreiro \& J. Simal-G\'{a}ndara, 2011.
-A Review on the Fate of Pesticides during the Processes within the
-Food-Production Chain.
-\textit{Critical Reviews in Food Science and Nutrition}, 51(2): 99--114.
-\url{https://doi.org/10.1080/10408390903432625}
-
-\bibitem{Guan2024}
-Guan, R., L. Wu, Y. Li et al., 2024.
-Evaluating the Impacts of Fertilization and Rainfall on Multi-Form Phosphorus
-Losses from Agricultural Fields.
-\textit{Agronomy}, 14(9): 1922.
-\url{https://doi.org/10.3390/agronomy14091922}
-
-\bibitem{Guo2021}
-Guo, C., F. Chen, J. Li et al., 2021.
-Navel orange fine root nutrient content and rhizosphere effects varied with
-tree ages and soil depths in a hilly red soil region of China.
-\textit{Acta Agriculturae Scandinavica, Section~B}, 71(8): 696--705.
-\url{https://doi.org/10.1080/09064710.2021.1940269}
-
-\bibitem{Guo2025}
-Guo, P., X. Gu, Z. Li et al., 2025.
-A novel almond shell biochar modified with FeS and chitosan as adsorbents for
-mitigation of heavy metals from water and soil.
-\textit{Separation and Purification Technology}, 360: 130943.
-\url{https://doi.org/10.1016/j.seppur.2024.130943}
-
-\bibitem{Hepperly2009}
-Hepperly, P., D. Lotter, C.Z. Ulsh, R. Seidel \& C. Reider, 2009.
-Compost, manure and synthetic fertilizer influences crop yields, soil
-properties, nitrate leaching and crop nutrient content.
-\textit{Compost Science \& Utilization}, 17(2): 117--126.
-\url{https://doi.org/10.1080/1065657X.2009.10702410}
-
-\bibitem{Hossain2024}
-Hossain, M.I., M.A. Khaleque, M.R. Ali et al., 2024.
-Development of electrochemical sensors for quick detection of environmental
-(soil and water) NPK ions.
-\textit{RSC Advances}, 14(13): 9137--9158.
-\url{https://doi.org/10.1039/d4ra00034j}
-
-\bibitem{Hossini2025}
-Hossini, H., T. Massahi, K. Parnoon \& M. Nouri, 2025.
-Per-and polyfluoroalkyl substances (PFAS) in milk and dairy products: a
-literature review of the occurrence, contamination sources, and health risks.
-\textit{Food Additives \& Contaminants: Part A}, 42(9): 1284--1296.
-\url{https://doi.org/10.1080/19440049.2025.2538224}
-
-\bibitem{Hu2020}
-Hu, H., J. Zhao, L. Wang et al., 2020.
-Synchrotron-based techniques for studying the environmental health effects of
-heavy metals: Current status and future perspectives.
-\textit{TrAC Trends in Analytical Chemistry}, 122: 115721.
-\url{https://doi.org/10.1016/j.trac.2019.115721}
-
-\bibitem{Jing2023}
-Jing, X., L. Su, Y. Wang, M. Yu \& X. Xing, 2023.
-How do microplastics affect physical properties of silt loam soil under
-wetting--drying cycles?
-\textit{Agronomy}, 13(3): 844.
-\url{https://doi.org/10.3390/agronomy13030844}
-
-\bibitem{Kelsey1968}
-Kelsey, J.M. \& E.Z. Arlidge, 1968.
-Effects of isobenzan on soil fauna and soil structure.
-\textit{New Zealand Journal of Agricultural Research}, 11(2): 245--260.
-\url{https://doi.org/10.1080/00288233.1968.10431424}
-
-\bibitem{Kim2024}
-Kim, D., J.I. Kwak, T.-Y. Lee et al., 2024.
-Triad method to assess ecological risks of contaminated soils in abandoned
-mine sites.
-\textit{Journal of Hazardous Materials}, 461: 132535.
-\url{https://doi.org/10.1016/j.jhazmat.2023.132535}
-
-\bibitem{Klaucol2013}
-Klau\v{c}o, M., B. Gregorov\'{a}, U. Stankov, V. Markovi\'{c} \&
-P. Lemenkova, 2013.
-Determination of ecological significance based on geostatistical assessment:
-a case study from the Slovak Natura 2000 protected area.
-\textit{Open Geosciences}, 5(1): 28--42.
-\url{https://doi.org/10.2478/s13533-012-0120-0}
-
-\bibitem{Klaucol2017}
-Klau\v{c}o, M., B. Gregorov\'{a}, P. Koleda, U. Stankov, V. Markovic \&
-P. Lemenkova, 2017.
-Land Planning as a Support for Sustainable Development Based on Tourism: A
-Case Study of Slovak Rural Region.
-\textit{Environmental Engineering and Management Journal},
-16(2): 449--458.
-\url{https://doi.org/10.30638/eemj.2017.045}
-
-\bibitem{Koukianaki2025}
-Koukianaki, E.A., M.A. Lilli, D. Efstathiou et al., 2025.
-Modeling soil functions of forested ecosystems.
-\textit{Journal of Environmental Management}, 386: 125636.
-\url{https://doi.org/10.1016/j.jenvman.2025.125636}
-
-\bibitem{Lemenkova2020}
-Lemenkova, P., 2020.
-GRASS GIS for topographic and geophysical mapping of the Peru-Chile Trench.
-\textit{Forum geografic}, 19(2): 143--157.
-\url{https://doi.org/10.5775/fg.2020.009.d}
-
-\bibitem{Lemenkova2021}
-Lemenkova, P., 2021.
-Geophysical Mapping of Ghana Using Advanced Cartographic Tool GMT\@.
-\textit{Kartografija i Geoinformacije}, 20(36): 16--37.
-\url{https://doi.org/10.32909/kg.20.36.2}
-
-\bibitem{Lemenkova2022}
-Lemenkova, P., 2022.
-GRASS GIS Scripts for Satellite Image Analysis by Raster Calculations Using
-Modules r.mapcalc, d.rgb, r.slope.aspect.
-\textit{Tehnicki Vjesnik}, 29(6): 1956--1963.
-\url{https://doi.org/10.17559/TV-20220322091846}
-
-\bibitem{Lemenkova2023}
-Lemenkova, P., 2023.
-Using open-source software GRASS GIS for analysis of the environmental
-patterns in Lake Chad, Central Africa.
-\textit{Die Bodenkultur: Journal of Land Management, Food and Environment},
-74(1): 49--64.
-\url{https://doi.org/10.2478/boku-2023-0005}
-
-\bibitem{Lemenkova2024a}
-Lemenkova, P., 2024a.
-Artificial Intelligence for Computational Remote Sensing: Quantifying
-Patterns of Land Cover Types around Cheetham Wetlands, Port Phillip Bay,
-Australia.
-\textit{Journal of Marine Science and Engineering}, 12(8): 1279.
-\url{https://doi.org/10.3390/jmse12081279}
-
-\bibitem{Lemenkova2024b}
-Lemenkova, P., 2024b.
-[See author's publication list for full reference.]
-
-\bibitem{Lemenkova2025a}
-Lemenkova, P., 2025a.
-Machine Learning Algorithms of Remote Sensing Data Processing for Mapping
-Changes in Land Cover Types over Central Apennines, Italy.
-\textit{Journal of Imaging}, 11(5): 153.
-\url{https://doi.org/10.3390/jimaging11050153}
-
-\bibitem{Lemenkova2025b}
-Lemenkova, P., 2025b.
-Reclassification Scheme for Image Analysis in GRASS GIS Using Gradient
-Boosting Algorithm: A Case of Djibouti, East Africa.
-\textit{Journal of Imaging}, 11(8): 249.
-\url{https://doi.org/10.3390/jimaging11080249}
-
-\bibitem{Lemenkova2025c}
-Lemenkova, P., 2025c.
-On forest hydrology in South Tyrol: Processes, modelling and assessment.
-\textit{Agriculture and Forestry}, 71(2): 7--22.
-\url{https://doi.org/10.17707/AgricultForest.71.2.01}
-
-\bibitem{Lemenkova2025d}
-Lemenkova, P., 2025d.
-Improving Bimonthly Landscape Monitoring in Morocco, North Africa, by
-Integrating Machine Learning with GRASS GIS\@.
-\textit{Geomatics}, 5(1): 5.
-\url{https://doi.org/10.3390/geomatics5010005}
-
-\bibitem{Li2014}
-Li, Z., Z. Ma, T.J. van der Kuijp, Z. Yuan \& L. Huang, 2014.
-A review of soil heavy metal pollution from mines in China: Pollution and
-health risk assessment.
-\textit{Science of The Total Environment}, 468--469: 843--853.
-\url{https://doi.org/10.1016/j.scitotenv.2013.08.090}
-
-\bibitem{Li2019}
-Li, C., K. Zhou, W. Qin et al., 2019.
-A review on heavy metals contamination in soil: Effects, sources, and
-remediation techniques.
-\textit{Soil and Sediment Contamination: An International Journal},
-28(4): 380--394.
-\url{https://doi.org/10.1080/15320383.2019.1592108}
-
-\bibitem{Li2022b}
-Li, F.-j., H.-w. Yang, R. Ayyamperumal \& Y. Liu, 2022.
-Pollution, sources, and human health risk assessment of heavy metals in urban
-areas around industrialization and urbanization---northwest China.
-\textit{Chemosphere}, 308: 136396.
-\url{https://doi.org/10.1016/j.chemosphere.2022.136396}
-
-\bibitem{Li2025a}
-Li, X., D. Ding, X. Wang et al., 2025.
-Integration of self-organizing map and Monte Carlo simulation for ecological
-risk prediction of heavy metal attenuation in groundwater.
-\textit{Ecotoxicology and Environmental Safety}, 302: 118761.
-\url{https://doi.org/10.1016/j.ecoenv.2025.118761}
-
-\bibitem{LindhLemenkova2022a}
-Lindh, P. \& P. Lemenkova, 2022a.
-Soil contamination from heavy metals and persistent organic pollutants
-(PAH, PCB and HCB) in the coastal area of V\"{a}sternorrland, Sweden.
-\textit{Gospodarka Surowcami Mineralnymi -- Mineral Resources Management},
-38(2): 147--168.
-\url{https://doi.org/10.24425/gsm.2022.141662}
-
-\bibitem{LindhLemenkova2022b}
-Lindh, P. \& P. Lemenkova, 2022b.
-Geochemical tests to study the effects of cement ratio on potassium and TBT
-leaching and the pH of the marine sediments from the Kattegat Strait, Port of
-Gothenburg, Sweden.
-\textit{Baltica}, 35(1): 47--59.
-\url{https://doi.org/10.5200/baltica.2022.1.4}
-
-\bibitem{LindhLemenkova2022d}
-Lindh, P. \& P. Lemenkova, 2022d.
-Simplex Lattice Design and X-ray Diffraction for Analysis of Soil Structure.
-\textit{Electronics}, 11(22): 3726.
-\url{https://doi.org/10.3390/electronics11223726}
-
-\bibitem{LindhLemenkova2023a}
-Lindh, P. \& P. Lemenkova, 2023a.
-Effects of Water--Binder Ratio on Strength and Seismic Behavior of Stabilized
-Soil from Kongshavn, Port of Oslo.
-\textit{Sustainability}, 15(15): 12016.
-\url{https://doi.org/10.3390/su151512016}
-
-\bibitem{LindhLemenkova2023b}
-Lindh, P. \& P. Lemenkova, 2023b.
-Optimized Workflow Framework in Construction Projects to Control the
-Environmental Properties of Soil.
-\textit{Algorithms}, 16(6): 303.
-\url{https://doi.org/10.3390/a16060303}
-
-\bibitem{LindhLemenkova2023c}
-Lindh, P. \& P. Lemenkova, 2023c.
-Hardening Accelerators as Strength-Enhancing Admixture Solutions for Soil
-Stabilization.
-\textit{Slovak Journal of Civil Engineering}, 31(1): 10--21.
-\url{https://doi.org/10.2478/sjce-2023-0002}
-
-\bibitem{LindhLemenkova2023d}
-Lindh, P. \& P. Lemenkova, 2023d.
-Seismic monitoring of strength in stabilized foundations.
-\textit{Journal of the Mechanical Behavior of Materials}, 32(1): 20220290.
-\url{https://doi.org/10.1515/jmbm-2022-0290}
-
-\bibitem{LindhLemenkova2023e}
-Lindh, P. \& P. Lemenkova, 2023e.
-Behaviour of Moraine Soils Stabilised with OPC, GGBFS and Hydrated Lime.
-\textit{Archives of Mining Sciences}, 68(2): 319--334.
-\url{https://doi.org/10.24425/ams.2023.146182}
-
-\bibitem{Liu2021}
-Liu, X., S. Chen, X. Yan et al., 2021.
-Evaluation of potential ecological risks in potential toxic elements
-contaminated agricultural soils.
-\textit{Journal of Environmental Management}, 300: 113679.
-\url{https://doi.org/10.1016/j.jenvman.2021.113679}
-
-\bibitem{Lu2020}
-L\"{u}, T.-J., X.-S. Tang, D.-Q. Li \& X.-H. Qi, 2020.
-Modeling multivariate distribution of multiple soil parameters using vine
-copula model.
-\textit{Computers and Geotechnics}, 118: 103340.
-\url{https://doi.org/10.1016/j.compgeo.2019.103340}
-
-\bibitem{Lu2023}
-Lu, X., F. Li, W. Yang, P. Zhu \& S. Lv, 2023.
-Quantitative analysis of heavy metals in soil by X-ray fluorescence with
-improved variable selection strategy and Bayesian optimized support vector
-regression.
-\textit{Chemometrics and Intelligent Laboratory Systems}, 238: 104842.
-\url{https://doi.org/10.1016/j.chemolab.2023.104842}
-
-\bibitem{Luo2017}
-Luo, Y., M.B. Benke \& X. Hao, 2017.
-Nutrient uptake and leaching from soil amended with cattle manure and
-nitrapyrin.
-\textit{Communications in Soil Science and Plant Analysis},
-48(12): 1438--1454.
-\url{https://doi.org/10.1080/00103624.2017.1373786}
-
-\bibitem{Ma2024}
-Ma, D., W. Teng, Y.-T. Mo et al., 2024.
-Effects of nitrogen, phosphorus, and potassium fertilization on plant growth
-and element levels in \textit{Erythropalum scandens}.
-\textit{Journal of Plant Nutrition}, 47(1): 82--96.
-\url{https://doi.org/10.1080/01904167.2023.2262504}
-
-\bibitem{Marcelino2024}
-Marcelino, S.M., P.D. Gaspar, A. do Pa\c{c}o et al., 2024.
-Agricultural Practices for Biodiversity Enhancement: Evidence and
-Recommendations for the Viticultural Sector.
-\textit{AgriEngineering}, 6(2): 1175--1194.
-\url{https://doi.org/10.3390/agriengineering6020067}
-
-\bibitem{Mohammad2025}
-Mohammad, S.J., Y.E. Ling, K.A. Halim, B.S. Sani \& N.I. Abdullahi, 2025.
-Heavy metal pollution and transformation in soil: a comprehensive review of
-natural bioremediation strategies.
-\textit{Journal of Umm Al-Qura University for Applied Sciences},
-11(3): 528--544.
-\url{https://doi.org/10.1007/s43994-025-00241-6}
-
-\bibitem{Mozaffari2026}
-Mozaffari, H., A.A. Moosavi, J.M. Demat\^{e} \& W. Cornelis, 2026.
-A novel and simple method for accurate prediction of soil particle-size
-distribution from limited soil texture data.
-\textit{Soil and Tillage Research}, 256: 106858.
-\url{https://doi.org/10.1016/j.still.2025.106858}
-
-\bibitem{Mukhopadhyay2020}
-Mukhopadhyay, S., S. Chakraborty, P.B.S. Bhadoria, B. Li \&
-D.C. Weindorf, 2020.
-Assessment of heavy metal and soil organic carbon by portable X-ray
-fluorescence spectrometry and NixPro\texttrademark\ sensor in landfill soils
-of India.
-\textit{Geoderma Regional}, 20: e00249.
-\url{https://doi.org/10.1016/j.geodrs.2019.e00249}
-
-\bibitem{Nauanova2025}
-Nauanova, A., A. Kiyas, S. Kenzhegulova et al., 2025.
-The influence of crop rotations, fertilizer and pesticide application on soil
-microbial diversity, community composition, and wheat yield.
-\textit{Cogent Food \& Agriculture}, 11(1): 2529367.
-\url{https://doi.org/10.1080/23311932.2025.2529367}
-
-\bibitem{Olah2025}
-Ol\'{a}h, P. \& P. G\"{o}r\"{o}g, 2025.
-Integrating Soil Parameter Uncertainty into Slope Stability Analysis: A Case
-Study of an Open Pit Mine in Hungary.
-\textit{Geosciences}, 15(6): 222.
-\url{https://doi.org/10.3390/geosciences15060222}
-
-\bibitem{Pal2024}
-Pal, A., S.K. Dubey, S. Goel \& P.K. Kalita, 2024.
-Portable sensors in precision agriculture: assessing advances and challenges
-in soil nutrient determination.
-\textit{TrAC Trends in Analytical Chemistry}, 180: 117981.
-\url{https://doi.org/10.1016/j.trac.2024.117981}
-
-\bibitem{Pan2019}
-Pan, G., X. Miao, L. Bi et al., 2019.
-Modified Local Soil (MLS) Technology for Harmful Algal Bloom Control,
-Sediment Remediation, and Ecological Restoration.
-\textit{Water}, 11(6): 1123.
-\url{https://doi.org/10.3390/w11061123}
-
-\bibitem{PerezLucas2025}
-P\'{e}rez-Lucas, G., A. Mart\'{i}nez-Zapata \& S. Navarro, 2025.
-Valorization of agro-industrial wastes as organic amendments to reduce
-herbicide leaching into soil.
-\textit{Journal of Xenobiotics}, 15(4): 100.
-\url{https://doi.org/10.3390/jox15040100}
-
-\bibitem{Polakowski2023}
-Polakowski, C., A. Mak\'{o}, A. Sochan et al., 2023.
-Recommendations for soil sample preparation, pretreatment, and data
-conversion for texture classification in laser diffraction particle size
-analysis.
-\textit{Geoderma}, 430: 116358.
-\url{https://doi.org/10.1016/j.geoderma.2023.116358}
-
-\bibitem{Ponder2002}
-Ponder, F., 2002.
-Implications of silvicultural pesticides on forest soil animals, insects,
-fungi, and other organisms and ramifications on soil fertility and health.
-\textit{Communications in Soil Science and Plant Analysis},
-33(11--12): 1927--1940.
-\url{https://doi.org/10.1081/CSS-120004833}
-
-\bibitem{Proshad2025}
-Proshad, R., S.M. Asharaful Abedin Asha, R. Tan et al., 2025.
-Machine learning models with innovative outlier detection techniques for
-predicting heavy metal contamination in soils.
-\textit{Journal of Hazardous Materials}, 481: 136536.
-\url{https://doi.org/10.1016/j.jhazmat.2024.136536}
-
-\bibitem{Racic2025}
-Ra\v{c}i\'{c}, N., S. Ru\v{z}i\v{c}i\'{c}, G. Pehnec et al., 2025.
-Linking Atmospheric and Soil Contamination: A Comparative Study of PAHs and
-Metals in PM10 and Surface Soil near Urban Monitoring Stations.
-\textit{Toxics}, 13(10): 866.
-\url{https://doi.org/10.3390/toxics13100866}
-
-\bibitem{Rahman2014}
-Rahman, A., S. Rahman \& L. Cihacek, 2014.
-Influence of soil pH in vegetative filter strips for reducing soluble nutrient
-transport.
-\textit{Environmental Technology}, 35(14): 1744--1752.
-\url{https://doi.org/10.1080/09593330.2014.881421}
-
-\bibitem{Rasafi2021}
-Rasafi, T.E., M. Nouri \& A. Haddioui, 2021.
-Metals in mine wastes: environmental pollution and soil remediation
-approaches---a review.
-\textit{Geosystem Engineering}, 24(3): 157--172.
-\url{https://doi.org/10.1080/12269328.2017.1400474}
-
-\bibitem{Rosskopfova2012}
-Rosskopfov\'{a}, O., M. Galambos, J. Ometakov\'{a}, M. \v{C}aplo\v{c}i\v{c}ov\'{a}
-\& P. Rajec, 2012.
-Study of sorption processes of copper on synthetic hydroxyapatite.
-\textit{Journal of Radioanalytical and Nuclear Chemistry}, 293: 641--647.
-\url{https://doi.org/10.1007/s10967-012-1711-4}
-
-\bibitem{Sadhukhan2022}
-Sadhukhan, J., 2022.
-Net zero electricity systems in global economies by life cycle assessment
-(LCA).
-\textit{Renewable Energy}, 184: 960--974.
-\url{https://doi.org/10.1016/j.renene.2021.12.024}
-
-\bibitem{Sandu2025}
-Sandu, M.A., M. Preda, V. Tanase et al., 2025.
-Trends in Polychlorinated Biphenyl Contamination in Bucharest's Urban Soils:
-A Two-Decade Perspective (2002--2022).
-\textit{Processes}, 13(5): 1357.
-\url{https://doi.org/10.3390/pr13051357}
-
-\bibitem{Shen2024}
-Shen, Y., L. Wang, Y. Ding et al., 2024.
-Trends in the analysis and exploration of per- and polyfluoroalkyl substances
-(PFAS) in environmental matrices: A review.
-\textit{Critical Reviews in Analytical Chemistry}, 54(8): 3171--3195.
-\url{https://doi.org/10.1080/10408347.2023.2231535}
-
-\bibitem{Stojic2019}
-Stoji\'{c}, N., S. \v{S}trbac \& D. Proki\'{c}, 2019.
-Soil Pollution and Remediation.
-In: Hussain, C. (ed.) \textit{Handbook of Environmental Materials
-Management}. Springer, Cham.
-\url{https://doi.org/10.1007/978-3-319-73645-7_81}
-
-\bibitem{Sun2025}
-Sun, X., L. Zhang, Y. Gu et al., 2025.
-Nutrient-element-mediated alleviation of cadmium stress in plants:
-Mechanistic insights and practical implications.
-\textit{Plants}, 14(19): 3081.
-\url{https://doi.org/10.3390/plants14193081}
-
-\bibitem{Sutherland2010}
-Sutherland, R.A., 2010.
-BCR\textsuperscript{\textregistered}-701: A review of 10-years of sequential
-extraction analyses.
-\textit{Analytica Chimica Acta}, 680(1): 10--20.
-\url{https://doi.org/10.1016/j.aca.2010.09.016}
-
-\bibitem{TeranGomez2025}
-Ter\'{a}n-G\'{o}mez, V.F., A.M. Buitrago-Ram\'{i}rez, A.F. Echeverri-S\'{a}nchez,
-A. Figueroa-Casas \& J.A. Benavides-Bola\~{n}os, 2025.
-Integrating AHP and GIS for Sustainable Surface Water Planning.
-\textit{Sustainability}, 17(9): 4130.
-\url{https://doi.org/10.3390/su17094130}
-
-\bibitem{Toumi2025}
-Toumi, K., A. Arbi, N. Soudani et al., 2025.
-Ecotoxicological risk assessment and monitoring of pesticide residues in soil,
-surface water, and groundwater in northwestern Tunisia.
-\textit{Water}, 17(16): 2387.
-\url{https://doi.org/10.3390/w17162387}
-
-\bibitem{Vishwanath2025}
-Vishwanath, Kumar, S., T.J. Purakayastha et al., 2025.
-Five decades of nutrient management enhances soil microbial activity,
-resistance and resilience against drought stress.
-\textit{Communications in Soil Science and Plant Analysis},
-56(14): 2189--2206.
-\url{https://doi.org/10.1080/00103624.2025.2494849}
-
-\bibitem{Wan2019}
-Wan, M., W. Hu, M. Qu et al., 2019.
-Application of arc emission spectrometry and portable X-ray fluorescence
-spectrometry to rapid risk assessment of heavy metals in agricultural soils.
-\textit{Ecological Indicators}, 101: 583--594.
-\url{https://doi.org/10.1016/j.ecolind.2019.01.069}
-
-\bibitem{Wang2020}
-Wang, Z., Y. Luo, C. Zheng, C. An \& Z. Mi, 2020.
-Spatial distribution, source identification, and risk assessment of heavy
-metals in the soils from a mining region.
-\textit{Human and Ecological Risk Assessment: An International Journal},
-27(5): 1276--1295.
-\url{https://doi.org/10.1080/10807039.2020.1821350}
-
-\bibitem{Wang2022}
-Wang, F., Q. Wang, C.A. Adams, Y. Sun \& S. Zhang, 2022.
-Effects of microplastics on soil properties: Current knowledge and future
-perspectives.
-\textit{Journal of Hazardous Materials}, 424: 127531.
-\url{https://doi.org/10.1016/j.jhazmat.2021.127531}
-
-\bibitem{Wang2024a}
-Wang, M., X. Jiang, Z. Wei, L. Wang, J. Song \& P. Cen, 2024.
-Enhanced cadmium adsorption dynamics in water and soil by polystyrene
-microplastics and biochar.
-\textit{Nanomaterials}, 14(13): 1067.
-\url{https://doi.org/10.3390/nano14131067}
-
-\bibitem{Wang2024b}
-Wang, B., S. Xin, D. Jin, L. Zhang, J. Wu \& H. Guo, 2024.
-A New Porosity Evaluation Method Based on a Statistical Methodology for
-Granular Material.
-\textit{Applied Sciences}, 14(16): 7379.
-\url{https://doi.org/10.3390/app14167379}
-
-\bibitem{Wang2025}
-Wang, F., Y. Wu, Y. Zhang et al., 2025.
-Research on ecosystem service value and landscape ecological risk prediction
-and zoning.
-\textit{Ecological Modelling}, 507: 111173.
-\url{https://doi.org/10.1016/j.ecolmodel.2025.111173}
-
-\bibitem{Xu2023}
-Xu, B., G. Yang, A. Lehmann, S. Riedel \& M.C. Rillig, 2023.
-Effects of perfluoroalkyl and polyfluoroalkyl substances (PFAS) on soil
-structure and function.
-\textit{Soil Ecology Letters}, 5(1): 108--117.
-\url{https://doi.org/10.1007/s42832-022-0143-5}
-
-\bibitem{Xu2025}
-Xu, S., J. Lin, H. Luo et al., 2025.
-Technologies for the remediation of nitrogen pollution and advances in the
-application of metal--phenolic networks.
-\textit{Processes}, 13(7): 2131.
-\url{https://doi.org/10.3390/pr13072131}
-
-\bibitem{Xu2026}
-Xu, Y., S. Xu, Y. Cheng et al., 2026.
-Distinct molecular complexing mechanisms of smoke dissolved organic matters
-toward heavy metals: New insights based on FT-ICR-MS, two dimensional
-fluorescence EEM and FTIR\@.
-\textit{Fuel}, 405: 136646.
-\url{https://doi.org/10.1016/j.fuel.2025.136646}
-
-\bibitem{Yasir2025}
-Yasir, M., A. Hossain \& A. Pratap-Singh, 2025.
-Pesticide degradation: Impacts on soil fertility and nutrient cycling.
-\textit{Environments}, 12(8): 272.
-\url{https://doi.org/10.3390/environments12080272}
-
-\bibitem{Zireeni2023}
-Zireeni, Y., D.L. Jones \& D.R. Chadwick, 2023.
-Influence of slurry acidification with H$_2$SO$_4$ on soil pH, N, P, S, and
-C dynamics: incubation experiment.
-\textit{Environmental Advances}, 14: 100447.
-\url{https://doi.org/10.1016/j.envadv.2023.100447}
-
-\bibitem{Zhou2024}
-Zhou, J., H. Xu, Y. Xiang \& J. Wu, 2024.
-Effects of microplastics pollution on plant and soil phosphorus: A
-meta-analysis.
-\textit{Journal of Hazardous Materials}, 461: 132705.
-\url{https://doi.org/10.1016/j.jhazmat.2023.132705}
-
-\bibitem{Siddig2025}
-Siddig, M.M.S., S.B. Asabere, A.S. Al-Farraj, E.C. Brevik \& D. Sauer, 2025.
-Pollution and ecological risk assessment of heavy metals in
-anthropogenically-affected soils of Sudan: A systematic review and
-meta-analysis.
-\textit{Journal of Hazardous Materials Advances}, 17: 100601.
-\url{https://doi.org/10.1016/j.hazadv.2025.100601}
-
-\bibitem{Li2020}
-Li, R., Y. Yuan, C. Li, W. Sun, M. Yang \& X. Wang, 2020.
-Environmental Health and Ecological Risk Assessment of Soil Heavy Metal
-Pollution in the Coastal Cities of Estuarine Bay—A Case Study of Hangzhou
-Bay, China.
-\textit{Toxics}, 8(3): 75.
-\url{https://doi.org/10.3390/toxics8030075}
-
-\bibitem{Shetty2025}
-Shetty, B.R., B. Jagadeesha \& S.A. Salmataj, 2025.
-Heavy metal contamination and its impact on the food chain: exposure,
-bioaccumulation, and risk assessment.
-\textit{CyTA - Journal of Food}, 23(1): 2438726.
-\url{https://doi.org/10.1080/19476337.2024.2438726}
-
-\bibitem{Marthandan2020}
-Marthandan, V., R. Geetha, K. Kumutha et al., 2020.
-Seed Priming: A Feasible Strategy to Enhance Drought Tolerance in Crop Plants.
-\textit{International Journal of Molecular Sciences}, 21(21): 8258.
-\url{https://doi.org/10.3390/ijms21218258}
-
-\bibitem{Sidoruk2023}
-Sidoruk, M., 2023.
-Pollution and Potential Ecological Risk Evaluation of Heavy Metals in the Bottom Sediments: A Case Study of Eutrophic Bukwałd Lake Located in an Agricultural Catchment.
-\textit{International Journal of Environmental Research and Public Health}, 20(3): 2387.
-\url{https://doi.org/10.3390/ijerph20032387}
-
-\bibitem{Giannakis2017}
-Giannakis, E., A. Bruggeman, 2017.
-Integrated Critical Zone modelling for sustainable soil management.
-\textit{Science of the Total Environment}, 599--600: 1746--1758.
-\url{https://doi.org/10.1016/j.scitotenv.2017.05.120}
-
-\bibitem{Benavidez2018}
-Benavidez, R., B. Jackson, D. Maxwell, K. Norton, 2018.
-A review of the (Revised) Universal Soil Loss Equation ((R)USLE): With a view
-to increasing its global applicability and improving soil loss estimates.
-\textit{Hydrology and Earth System Sciences}, 22(11): 6059--6086.
-\url{https://doi.org/10.5194/hess-22-6059-2018}
-
-\bibitem{Sadhukhan2022}
-Sadhukhan, J., R. Smith, 2022.
-Life cycle assessment approaches for sustainable environmental management.
-\textit{Environmental Science and Pollution Research}, 29: 11234--11249.
-\url{https://doi.org/10.1007/s11356-021-17067-8}
-
-\bibitem{Lu2020}
-Lu, H., X. Ma, 2020.
-Vine copula models for environmental risk assessment and soil pollution
-analysis.
-\textit{Ecological Indicators}, 117: 106621.
-\url{https://doi.org/10.1016/j.ecolind.2020.106621}
-
-\bibitem{Fan2025}
-Fan, Y., J. Wang, 2025.
-Remote sensing and hyperspectral technologies for soil contamination
-monitoring.
-\textit{Remote Sensing of Environment}, 315: 114402.
-\url{https://doi.org/10.1016/j.rse.2024.114402}
-
-\bibitem{Xu2026}
-Xu, L., Y. Chen, 2026.
-FTIR spectroscopy for rapid detection of contaminants in agricultural soils.
-\textit{Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy},
-321: 124512.
-\url{https://doi.org/10.1016/j.saa.2025.124512}
-
-\bibitem{Guo2025}
-Guo, X., P. Li, 2025.
-X-ray photoelectron spectroscopy applications in soil pollutant
-characterization.
-\textit{Applied Surface Science}, 678: 160245.
-\url{https://doi.org/10.1016/j.apsusc.2024.160245}
-
-\bibitem{Lemenkova2025b}
-Lemenkova, P., 2025.
-Remote sensing approaches for environmental assessment of polluted soils.
-\textit{Environmental Monitoring and Assessment}, 197(3): 245.
-\url{https://doi.org/10.1007/s10661-025-13542-1}
-
-\bibitem{Proshad2025}
-Proshad, R., M. Islam, 2025.
-Machine learning techniques for prediction and mapping of soil contaminants.
-\textit{Chemosphere}, 367: 143215.
-\url{https://doi.org/10.1016/j.chemosphere.2024.143215}
-
-\bibitem{Lemenkova2025d}
-Lemenkova, P., 2025.
-Artificial intelligence applications in environmental soil monitoring and
-pollution modelling.
-\textit{Ecological Informatics}, 84: 102831.
-\url{https://doi.org/10.1016/j.ecoinf.2025.102831}
-
-\bibitem{Feng2024}
-Feng, Q., H. Zhao, 2024.
-Computer vision and deep learning methods for soil pollution detection.
-\textit{Computers and Electronics in Agriculture}, 222: 108945.
-\url{https://doi.org/10.1016/j.compag.2024.108945}
-
-\bibitem{Rosskopfova2012}
-Rosskopfova, O., M. Galambos, 2012.
-Limitations and applications of synchrotron radiation in environmental
-geochemistry.
-\textit{Journal of Radioanalytical and Nuclear Chemistry}, 293(2): 641--647.
-\url{https://doi.org/10.1007/s10967-012-1724-8}
-
-\bibitem{Klaucol2017}
-Klauco, M., B. Gregorova, 2017.
-Spatial heterogeneity of soil properties and ecosystem interactions.
-\textit{Catena}, 156: 279--289.
-\url{https://doi.org/10.1016/j.catena.2017.04.021}
-
-\bibitem{Lemenkova2023}
-Lemenkova, P., 2023.
-Geospatial analysis of soil ecosystem services and environmental variability.
-\textit{Geoderma Regional}, 35: e00621.
-\url{https://doi.org/10.1016/j.geodrs.2023.e00621}
-
-\bibitem{Li2023}
-Li, Y., X. Zhang, 2023.
-Artificial intelligence and uncertainty analysis in soil pollution prediction.
-\textit{Environmental Pollution}, 331: 121873.
-\url{https://doi.org/10.1016/j.envpol.2023.121873}
-
-\bibitem{Liu2020}
-Liu, Z., S. Wang, 2020.
-Computational approaches for modelling contaminant transport in soils.
-\textit{Journal of Hazardous Materials}, 393: 122423.
-\url{https://doi.org/10.1016/j.jhazmat.2020.122423}
-
-\bibitem{Zhang2021}
-Zhang, T., W. Chen, 2021.
-Advanced computational methods for soil contamination assessment.
-\textit{Science of the Total Environment}, 755: 142645.
-\url{https://doi.org/10.1016/j.scitotenv.2020.142645}
-
-\bibitem{Shi2021}
-Shi, Z., W. Ji, 2021.
-Hyperspectral imaging for soil contamination detection and mapping.
-\textit{Remote Sensing}, 13(9): 1760.
-\url{https://doi.org/10.3390/rs13091760}
-
-\bibitem{Zhang2022}
-Zhang, Y., J. Li, 2022.
-Remote sensing technologies for monitoring soil pollution and ecosystem
-degradation.
-\textit{International Journal of Applied Earth Observation and
-Geoinformation}, 112: 102889.
-\url{https://doi.org/10.1016/j.jag.2022.102889}
-
-\bibitem{Karlen2019}
-Karlen, D., C. Rice, 2019.
-Soil quality assessment: Past achievements and future challenges.
-\textit{Soil and Tillage Research}, 195: 104365.
-\url{https://doi.org/10.1016/j.still.2019.104365}
-
-\bibitem{Lal2020}
-Lal, R., 2020.
-Soil health and ecosystem services.
-\textit{Soil and Tillage Research}, 196: 104420.
-\url{https://doi.org/10.1016/j.still.2019.104420}
-
-\bibitem{Robinson2014}
-Robinson, D.A., I. Hockley, M. Cooper et al., 2014.
-Natural capital, ecosystem services, and soil change: Why soil science must
-embrace an ecosystems approach.
-\textit{Vadose Zone Journal}, 13(1): vzj2013.05.0071.
-\url{https://doi.org/10.2136/vzj2013.05.0071}
-
-\bibitem{Hepperly2009}
-Hepperly, P., D. Lotter, C.Z. Ulsh et al., 2009.
-Compost, manure and synthetic fertilizer influences crop yields, soil
-properties, nitrate leaching and crop nutrient content.
-\textit{Compost Science \& Utilization}, 17(2): 117--126.
-\url{https://doi.org/10.1080/1065657X.2009.10702410}
-
-\bibitem{Rahman2014}
-Rahman, M.M., D.A. Gathala, M.S. Hossain et al., 2014.
-Long-term fertilizer use influences soil properties and crop productivity in
-rice-based systems.
-\textit{Archives of Agronomy and Soil Science}, 60(10): 1429--1440.
-\url{https://doi.org/10.1080/03650340.2014.881671}
-
-\bibitem{Atoloye2024}
-Atoloye, I.A., A. Ojo, M. Bello, 2024.
-Microbial decomposition and nutrient cycling in agricultural soils under
-pollution stress.
-\textit{Soil Biology and Biochemistry}, 191: 109245.
-\url{https://doi.org/10.1016/j.soilbio.2024.109245}
-
-\bibitem{Ma2024}
-Ma, X., Y. Chen, H. Zhao, 2024.
-Nutrient imbalance effects on soil microbial communities and ecosystem
-functioning.
-\textit{Environmental Pollution}, 347: 123456.
-\url{https://doi.org/10.1016/j.envpol.2024.123456}
-
-\bibitem{Vishwanath2025}
-Vishwanath, R., P. Kumar, S. Singh, 2025.
-Organic matter mineralization and nutrient dynamics in contaminated soils.
-\textit{Geoderma}, 457: 116789.
-\url{https://doi.org/10.1016/j.geoderma.2024.116789}
-
-\bibitem{Pan2019}
-Pan, Y., X. Wang, L. Guo et al., 2019.
-Eutrophication and nutrient pollution in agricultural ecosystems.
-\textit{Science of the Total Environment}, 690: 123--133.
-\url{https://doi.org/10.1016/j.scitotenv.2019.06.340}
-
-\bibitem{Shen2024}
-Shen, Y., L. Wang, Y. Ding et al., 2024.
-Trends in the analysis and exploration of per- and polyfluoroalkyl substances
-(PFAS) in environmental matrices: A review.
-\textit{Critical Reviews in Analytical Chemistry}, 54(8): 3171--3195.
-\url{https://doi.org/10.1080/10408347.2023.2231535}
-
-\bibitem{Guan2024}
-Guan, Q., Z. Li, Y. Huang et al., 2024.
-Nutrient pollution and ecological risks in agricultural soils: A global
-review.
-\textit{Environmental Research}, 248: 118234.
-\url{https://doi.org/10.1016/j.envres.2024.118234}
-
-\bibitem{Baghaie2020}
-Baghaie, A.H., M. Aghili, M. Jafarinia, 2020.
-Assessment of heavy metal accumulation and ecological risks in agricultural
-soils.
-\textit{Chemosphere}, 243: 125348.
-\url{https://doi.org/10.1016/j.chemosphere.2019.125348}
-
-\bibitem{Luo2017}
-Luo, L., Y. Ma, S. Zhang et al., 2017.
-An inventory of trace element inputs to agricultural soils in China.
-\textit{Journal of Environmental Management}, 90(8): 2524--2530.
-\url{https://doi.org/10.1016/j.jenvman.2009.01.011}
-
-\bibitem{Vogel2018}
-Vogel, H.J., U. Weller, O. Schlüter, 2018.
-Quantification of soil structure based on Minkowski functions.
-\textit{Computers and Geosciences}, 114: 108--117.
-\url{https://doi.org/10.1016/j.cageo.2018.02.007}
-
-\bibitem{Six2004}
-Six, J., H. Bossuyt, S. Degryze, K. Denef, 2004.
-A history of research on the link between (micro)aggregates, soil biota, and
-soil organic matter dynamics.
-\textit{Soil and Tillage Research}, 79(1): 7--31.
-\url{https://doi.org/10.1016/j.still.2004.03.008}
-
-\bibitem{Lal2015}
-Lal, R., 2015.
-Restoring soil quality to mitigate soil degradation.
-\textit{Sustainability}, 7(5): 5875--5895.
-\url{https://doi.org/10.3390/su7055875}
-
-\bibitem{Baveye2016}
-Baveye, P.C., J. Baveye, J. Gowdy, 2016.
-Soil “ecosystem” services and natural capital: Critical appraisal of
-research on uncertain ground.
-\textit{Frontiers in Environmental Science}, 4: 41.
-\url{https://doi.org/10.3389/fenvs.2016.00041}
-
-\bibitem{Lehmann2020}
-Lehmann, J., D.A. Bossio, I. Kögel-Knabner, M.C. Rillig, 2020.
-The concept and future prospects of soil health.
-\textit{Nature Reviews Earth \& Environment}, 1: 544--553.
-\url{https://doi.org/10.1038/s43017-020-0080-8}
-
-\bibitem{Brevik2015}
-Brevik, E.C., L.C. Burgess, 2015.
-Soils and human health.
-\textit{CRC Press / Springer Environmental Science Series}, 12: 29--56.
-\url{https://doi.org/10.1007/978-94-017-9649-1}
-
-\bibitem{Amundson2019}
-Amundson, R., A.A. Berhe, J.W. Hopmans et al., 2019.
-Soil and human security in the 21st century.
-\textit{Science}, 348(6235): 1261071.
-\url{https://doi.org/10.1126/science.1261071}
-
-\bibitem{Baveye2016}
-Baveye, P.C., J. Baveye \& J. Gowdy, 2016.
-Soil ``Ecosystem'' Services and Natural Capital: Critical Appraisal of Research 
-on Uncertain Ground.
-\textit{Frontiers in Environmental Science}, 4: 41.
-\url{https://doi.org/10.3389/fenvs.2016.00041}
-
-\end{thebibliography}
 
 \end{document}
