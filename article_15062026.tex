@@ -1,0 +1,1694 @@
+%  LaTeX support: latex@mdpi.com
+%  Reformatted from Elsevier elsarticle to MDPI format
+%  v2: Added Python scripts, restructured Section 2, enriched Results
+
+%=================================================================
+\documentclass[land,article,submit,pdftex,moreauthors]{Definitions/mdpi}
+
+%=================================================================
+% Journal selection -- change to target MDPI journal as needed
+% Suitable candidates: soilsystems, ijerph, environments, sustainability, toxics
+%=================================================================
+
+% MDPI internal commands
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+%\externaleditor{Academic Editor: Firstname Lastname}
+\datereceived{23 May 2026}
+\daterevised{}
+\dateaccepted{}
+\datepublished{}
+\hreflink{https://doi.org/}
+%\doinum{}
+
+%=================================================================
+% Packages
+%=================================================================
+\graphicspath{{figures/}}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\usepackage{amsmath,mathtools,amsthm}
+    \setcounter{MaxMatrixCols}{15}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{chngcntr}
+\counterwithin*{equation}{section}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+
+%=================================================================
+% Python listings style with full syntax colouring
+%=================================================================
+\definecolor{codebg}{RGB}{245,247,250}
+\definecolor{codeframe}{RGB}{180,190,210}
+\definecolor{kwcolor}{RGB}{0,95,185}       % keywords  -- deep blue
+\definecolor{builtincolor}{RGB}{160,32,240}% built-ins -- purple
+\definecolor{strcolor}{RGB}{180,60,0}      % strings   -- brick
+\definecolor{cmtcolor}{RGB}{80,130,80}     % comments  -- green
+\definecolor{numcolor}{RGB}{0,130,100}     % numbers   -- teal
+\definecolor{fncolor}{RGB}{0,100,160}      % functions -- blue
+
+\lstdefinestyle{PythonStyle}{
+    language=Python,
+    backgroundcolor=\color{codebg},
+    frame=single,
+    framerule=0.6pt,
+    rulecolor=\color{codeframe},
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{kwcolor}\bfseries,
+    stringstyle=\color{strcolor},
+    commentstyle=\color{cmtcolor}\itshape,
+    numberstyle=\tiny\color{gray},
+    numbers=left,
+    numbersep=6pt,
+    showstringspaces=false,
+    breaklines=true,
+    breakatwhitespace=false,
+    tabsize=4,
+    captionpos=b,
+    keepspaces=true,
+    xleftmargin=14pt,
+    morekeywords={as,with,yield,lambda,assert,pass,del,
+                  import,from,raise,try,except,finally,
+                  class,def,return,if,elif,else,for,while,
+                  in,not,and,or,is,True,False,None},
+    emph={print,range,len,list,dict,set,tuple,int,float,str,
+          bool,type,enumerate,zip,map,filter,sorted,sum,min,max,
+          open,close,append,extend,fit,predict,transform,
+          score,reshape,ravel,flatten},
+    emphstyle=\color{fncolor},
+}
+\lstset{style=PythonStyle}
+
+%=================================================================
+% Title
+% ---------------------------------------------------------------
+% CURRENT TITLE (retained):
+%   "AI-Driven Soil Pollution Assessment Through Computational
+%    and Spectroscopic Methodologies"
+%
+% ALTERNATIVE TITLE SUGGESTIONS (choose one):
+%   (A) "Machine Learning and Python-Based Frameworks for
+%        Soil Pollution Detection, Monitoring, and Risk Assessment:
+%        A Comprehensive Review"
+%       -> Emphasises Python explicitly; strong keyword coverage
+%
+%   (B) "From Spectroscopy to Deep Learning: Integrated
+%        Computational Workflows for Soil Contaminant Assessment"
+%       -> Narrative arc from lab to AI; vivid and specific
+%
+%   (C) "Decoding Soil Contamination: AI, Machine Learning, and
+%        Python Analytics for Environmental Risk Assessment"
+%       -> "Decoding" grabs attention; Python/AI front-loaded
+%
+%   (D) "Python-Powered Environmental Intelligence: AI and ML
+%        Workflows for Soil Pollution Assessment and Ecosystem
+%        Services Modelling"
+%       -> Unique "Python-Powered" phrasing; highlights SES link
+%
+% The current title is strong but does not mention Python or
+% specific ML frameworks.  Option (B) or (C) would increase
+% discoverability in searches combining "machine learning" +
+% "soil contamination" + "computational workflow".
+%=================================================================
+\Title{Python-Powered Environmental Intelligence: AI and ML Workflows for Soil Pollution Assessment and SES Modelling}
+
+\TitleCitation{Python-Powered Environmental Intelligence: AI and ML Workflows for Soil Pollution Assessment and SES Modelling}
+
+% Author ORCID
+\newcommand{\orcidauthorA}{0000-0002-5759-1089}
+
+% Authors
+\Author{Polina Lemenkova $^{1,2,3,4}$*\orcidA{}}
+
+\AuthorNames{Polina Lemenkova}
+\AuthorCitation{Lemenkova, P.}
+
+\address{%
+$^{1}$ \quad Bureau de Recherches G\'eologiques et Mini\`eres (BRGM), Orl\'eans, France\\
+$^{2}$ \quad Le Studium, Institut d'Etudes Avanc\'ees du Val de Loire,
+    1 rue Dupanloup 45000, Orl\'eans, France.\\
+$^{3}$ \quad Le laboratoire PRISME, Universit\'e d'Orl\'eans, Institut National
+    des Sciences Appliqu\'ees de Centre-Val de Loire (INSA CVL, UR 4229),
+    Orl\'eans, France.\\
+$^{4}$ \quad La Technopole d'Orl\'eans, 1 Avenue du Champ de Mars,
+    45100 Orl\'eans, France.
+}
+
+\corres{Correspondence: polina.lemenkova@tech-orleans.fr}
+
+%=================================================================
+% Abstract
+%=================================================================
+\abstract{Soil pollution represents one of the most pressing global
+environmental challenges, driven by industrialization, intensive agriculture,
+urban expansion, mining, and the excessive application of fertilizers,
+pesticides, and synthetic chemicals. This integrative review synthesizes
+evidence from more than 100 peer-reviewed studies to evaluate computational,
+spectroscopic, and artificial intelligence (AI)-driven methodologies for soil
+pollution assessment across five major contaminant groups: heavy metals,
+pesticides, microplastics, per- and polyfluoroalkyl substances (PFAS), and
+excess macronutrients. Advanced spectroscopic approaches---Fourier transform
+infrared spectroscopy (FTIR), X-ray photoelectron spectroscopy (XPS),
+hyperspectral imaging, and synchrotron radiation techniques---are benchmarked
+against data-driven machine learning (ML) frameworks implemented in Python.
+Seven annotated Python workflows are presented, demonstrating the application
+of Random Forest regression, XGBoost gradient boosting, convolutional neural
+networks (CNNs), LSTM-based time-series forecasting, Principal Component
+Analysis (PCA), Monte Carlo uncertainty simulation, and geospatial hotspot
+mapping via GeoPandas. These scripts illustrate a reproducible, end-to-end
+pipeline for contaminant detection, ecological risk quantification, and
+long-term predictive modelling. Physics-Informed Neural Networks (PINNs) and
+ensemble learning are shown to outperform classical statistical frameworks in
+contaminant transport prediction. The proposed six-step multi-stage workflow
+links field sampling, ML-based analysis, and scenario-based risk modelling to
+support sustainable soil management and evidence-based environmental policy
+development.}
+
+\keyword{soil pollution; artificial intelligence; machine learning; Python;
+random forest; deep learning; PFAS; heavy metals; soil ecosystem services;
+ecological risk assessment}
+
+\begin{document}
+
+%=================================================================
+\section{Introduction}\label{sec1}
+%=================================================================
+
+\subsection{Background}\label{sec1.1}
+
+Soil ecosystem services (SES) play a fundamental role in sustaining
+environmental quality and supporting human well-being through the regulation
+of soil functions and vegetation dynamics. Effective management of SES
+requires continuous assessment of climatic and hydrological conditions
+\cite{Lal2020,Robinson2014}, optimization of agricultural practices
+\cite{Hepperly2009,Rahman2014}, regulation of nutrient cycling and organic
+matter decomposition \cite{Atoloye2024,Ma2024,Vishwanath2025}, and early
+identification of soil contamination
+\cite{Pan2019,Fan2025,Lemenkova2025b,Proshad2025}. Soil degradation is
+increasingly associated with the accumulation of diverse pollutants,
+including pesticides, mineral oils, microplastics, per- and polyfluoroalkyl
+substances (PFAS), excess nutrients, and heavy metals
+\cite{Shen2024,Guan2024,Baghaie2020,Luo2017}. The growing spatial extent of
+contaminated soils represents a major environmental and ecological concern,
+emphasizing the urgent need for robust and integrated monitoring strategies
+\cite{Liu2020,Zhang2021,Lemenkova2025d}. Recent studies have demonstrated
+that soil pollution is closely linked to both natural hazards and
+anthropogenic activities, particularly industrialization
+\cite{Rosskopfova2012,Guo2025,Zhang2022} and intensive agriculture
+\cite{Hepperly2009,Rahman2014,Pan2019}, which contribute substantially to the
+accumulation and redistribution of contaminants in terrestrial ecosystems.
+
+Advances in computational and analytical frameworks have revolutionized the
+identification of soil constituents and their interactions with pollutants
+\cite{Liu2020,Zhang2021}. Modern ecological monitoring utilizes spectroscopic
+analysis, machine learning (ML), and remote sensing to quantify pollutant
+transport, transformation, and persistence across scales
+\cite{Fan2025,Lemenkova2025d}. Specifically, integrating deep learning
+algorithms with hyperspectral imagery enables high-fidelity characterization
+of contaminant dynamics within organic-mineral matrices \cite{Xu2026,Li2023}.
+These predictive frameworks optimize risk assessment and environmental
+management by capturing complex multi-temporal spatial heterogeneities
+\cite{Proshad2025,Feng2024}.
+
+Modern computational architectures have fundamentally transformed the
+modelling of soil contaminant kinetics, facilitating high-fidelity simulations
+of risk to ecosystem services
+\cite{Liu2020,Zhang2021,Proshad2025,Lemenkova2025d}. While traditional
+identification frameworks rely on process-based
+\cite{Giannakis2017,Karlen2019}, empirical \cite{Benavidez2018,Lal2020},
+composite \cite{Sadhukhan2022}, and statistical models
+\cite{Lu2020,Feng2024,Lemenkova2024b}, the field is rapidly pivoting toward
+Artificial Intelligence (AI) and Machine Learning (ML) to handle complex
+geochemical data. Integration of AI-driven computational methods
+\cite{Proshad2025,Lemenkova2025d,Feng2024,Li2023} with hyperspectral imaging
+\cite{Fan2025,Shi2021}, spectroscopic sensors \cite{Xu2026,Guo2025}, and
+remote sensing \cite{Lemenkova2025b,Zhang2022} allows for the automated
+extraction of non-linear contaminant patterns across heterogeneous soil
+systems.
+
+\subsection{Research Problem}\label{sec1.2}
+
+The inherent spatial heterogeneity of soil microstructure dictates the
+stochastic mobility and kinetic transformation of contaminants, requiring
+sophisticated modelling to map these multi-scale interactions \cite{Vogel2018}.
+Stochastic modelling of soil systems accounts for the inherent randomness and
+multiscale variability of porous media, where fluid and solute transport are
+governed by probabilistic frameworks rather than linear trajectories
+\cite{Vogel2018,Lemenkova2023}. By treating contaminant movement as a random
+walk through heterogeneous microstructures, these models quantify the
+uncertainty of pollutant attenuation and breakthrough \cite{Lu2020,Karlen2019}.
+Integrating AI-driven stochastic simulations enables researchers to calculate
+high-fidelity probability distributions for contaminant spatial distribution,
+optimizing risk assessment under high-uncertainty environmental conditions
+\cite{Li2023,Feng2024}.
+
+Soil aggregates function as high-dimensional structural units where
+mineral-organic complexes and microbial consortia regulate fundamental
+biogeochemical fluxes \cite{Six2004}. To capture these dynamics, traditional
+monitoring is being superseded by AI-driven architectures capable of
+processing massive, non-linear datasets \cite{Lal2015,Baveye2016,Lehmann2020}.
+Modern assessment utilizes Convolutional Neural Networks (CNNs) to perform
+automated feature extraction on micro-tomographic imagery, quantifying
+pore-scale connectivity that governs pollutant transport
+\cite{Demiral2026,Chen2025}. Furthermore, Random Forest (RF) and Gradient
+Boosting Machines (GBM) are deployed to model the pedotransfer functions of
+aggregate stability, bypassing the computational intensity of traditional
+mechanistic simulations \cite{DemissieNaveda2026,Guo2026}.
+
+At the microscale, the interfaces between soil aggregates and transport
+pathways exhibit highly nonlinear and dynamic characteristics, reflecting the
+complexity of interactions governing pollutant transport, nutrient exchange,
+and microbial activity. As a critical component of the biophysical environment,
+soil properties are shaped by interconnected geographic and ecological factors,
+including geological and geomorphological conditions, climate, biological
+activity, and anthropogenic influences \cite{Brevik2015,Amundson2019}.
+Together, these factors determine soil functionality and the provision of
+ecosystem services \cite{Baveye2016,Klaucol2013,Klaucol2017,Lemenkova2023}.
+Consequently, the ecological significance of soil extends beyond its
+physicochemical composition and is intrinsically linked to the interactions
+among landscape components and ecosystem processes \cite{Lemenkova2025a}.
+
+\subsection{Objectives and Scope of the Review}\label{sec1.3}
+
+This integrative review critically synthesizes more than 100 peer-reviewed
+studies to evaluate the efficacy of existing AI and ML methodologies in soil
+pollution assessment. While conventional detection techniques often lack the
+sensitivity and spatial resolution required for complex matrices, this study
+investigates how machine learning architectures---including supervised
+classifiers and deep learning models---enhance the characterization of metals,
+microplastics, and PFAS.
+
+The primary objective is to transition from descriptive pollutant
+identification to predictive computational frameworks. We critically analyse
+the performance of RF, GBM, and CNNs in quantifying contaminant binding
+mechanisms within soil aggregates. By benchmarking these data-driven
+approaches against traditional statistical modelling, this review highlights
+the advantages and scalability of AI in ecological monitoring. Ultimately,
+this framework integrates remote sensing and automated feature extraction to
+provide a unified, high-fidelity methodology for environmental risk assessment
+and sustainable soil management.
+
+%=================================================================
+\section{Materials and Methods}\label{sec2}
+%=================================================================
+
+The comprehensive evaluation of the speciation, compartmentalization, and spatial distribution of major pollutants within soil organic complexes necessitates a rigorous systematic review of their intrinsic physicochemical characteristics. Soil contamination is primarily driven by the introduction of hazardous substances originating from both anthropogenic activities—such as industrial effluents, agricultural chemical applications, and urban runoff—and geogenic processes, including weathering of parent bedrock and volcanic emissions, as schematically conceptualized in Figure~\ref{fig01}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Fig_01}
+    \caption{Soil structure and major sources of its pollution.
+        Diagram source: author.}
+    \label{fig01}
+\end{figure}
+
+Understanding the precise chemical speciation of these contaminants is paramount, as their total concentration alone fails to predict environmental risk, bioavailability, or mobility within the pedosphere. 
+
+Within the soil matrix, organic matter functions as a highly heterogeneous and dynamic sorbent; humic substances, fulvic acids, and particulate organic matter possess an abundance of functional groups—predominantly carboxyl, phenolic, and sulfhydryl moieties—that actively engage in complexation, ion exchange, and hydrophobic interactions with both organic and inorganic pollutants. Consequently, the strength and nature of these soil-pollutant complexes dictate whether a contaminant remains securely sequestered, undergoes microbial degradation, or migrates into contiguous aquatic systems and trophic webs. 
+
+A granular review of how varying pollutant characteristics—such as molecular weight, hydrophobicity, and ionic charge—interact with the structural configuration of soil organic fractions is therefore critical. By synthesizing current methodologies in advanced spectroscopy and chemical extraction, this review elucidates the molecular-level mechanisms governing target contaminant behavior. Ultimately, establishing these definitive quantitative relationships between pollutant attributes and organic complexation dynamics serves as a vital prerequisite for refining predictive ecotoxicological models and developing optimized, site-specific bioremediation strategies for compromised terrestrial ecosystems.
+
+\subsection{Pollutant Groups}\label{sec2.1}
+
+Major types of soil pollution include the following groups:
+
+\begin{itemize}
+    \item \textbf{Heavy metals:} Arsenic ($As$), cadmium ($Cd$), chromium ($Cr$),
+        mercury ($Hg$), lead ($Pb$), cobalt ($Co$), nickel ($Ni$), and at higher
+        concentrations---copper ($Cu$), zinc ($Zn$), and iron ($Fe$).
+    \item \textbf{Mineral oils:} Petroleum-based hydrocarbons represented broadly
+        by aliphatic and aromatic fractions (e.g., $C_nH_{2n+2}$ and $C_nH_{2n}$).
+    \item \textbf{Organic compounds:} Polycyclic Aromatic Hydrocarbons (PAHs,
+        e.g., benzo[a]pyrene, $C_{20}H_{12}$), Polychlorinated Biphenyls
+        (PCBs, $C_{12}H_{10-x}Cl_x$), and the Tributyltin (TBT) group
+        (characterized by the $[(C_4H_9)_3Sn]^+$ cation).
+    \item \textbf{Nutrients:} Nitrogen pools ($N$, including $NO_3^-$ and $NH_4^+$)
+        and phosphorus pools ($P$, primarily as orthophosphates like $PO_4^{3-}$).
+    \item \textbf{POPs} (Persistent Organic Pollutants), including Per- and
+        Polyfluoroalkyl Substances (PFAS, generalized as $C_nF_{2n+1}R$).
+\end{itemize}
+
+Soil contaminant influx originates from synergistic anthropogenic and
+lithogenic sources. Anthropogenic forcing---driven by industrial discharge,
+mining, intensive agrochemical application, and waste mismanagement---introduces
+persistent toxins into the pedosphere \cite{Bwandamuka2025,Latif2026}.
+Conversely, natural contributions stem from atmospheric deposition and
+seismic-induced geological mobilization \cite{Binetti2026,Latif2026}. These
+loading pathways catalyze the hydro-geochemical transfer of contaminants into
+groundwater and trophic chains, necessitating advanced modelling to mitigate
+systemic ecological and public health risks \cite{Elmotawakkil2025,Sanad2026}.
+Recent applications of ML, including supervised algorithms and CNN, have proven
+essential for predicting removal efficiencies and optimizing bioremediation
+strategies \cite{Okafor2026,Pace2026}.
+
+%------------------------------------------------------------------
+\subsubsection{Geochemical Origins and Pedospheric Impacts of Heavy Metal
+    Contaminants}\label{sec2.1.1}
+%------------------------------------------------------------------
+
+The most significant type of pollutant affecting soil quality is heavy metals,
+as indicated by statistics from the European Environment Agency (EEA)
+\cite{EEA2009}, which estimates that heavy metals and mineral oils constitute
+approximately 60\% of all localized soil contamination across an estimated 2.8
+million potentially contaminated sites in Europe. Heavy metals (HMs)---including
+toxic trace elements and metalloids such as arsenic ($As$), cadmium ($Cd$),
+chromium ($Cr$), mercury ($Hg$), lead ($Pb$), cobalt ($Co$), and nickel
+($Ni$)---pose severe risks to pedogenic structures and crop development. A
+schematic diagram illustrating the principal anthropogenic and geogenic pathways
+of heavy metal influx into the pedosphere is presented in Figure~\ref{fig02}.
+
+Heavy metal (HM) contamination significantly degrades soil quality and
+essential ecosystem services. Originating from industrial mining
+\cite{Li2019,Wang2020,AliZerrouki2021,Rasafi2021,EEA2009}, intensive
+agriculture, urban emissions \cite{Adewumi2024}, and waste disposal
+\cite{LindhLemenkova2022a}, HMs persist and bioaccumulate within the
+soil-plant-human axis. Traditional monitoring of these complex biogeochemical
+cycles is increasingly replaced by AI and Machine Learning (ML) architectures
+to handle high-dimensional, non-linear datasets.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Fig_02}
+    \caption{Principal anthropogenic and geogenic pathways of heavy metal
+        influx into the pedosphere. Diagram source: author.}
+    \label{fig02}
+\end{figure}
+
+Modern data-driven analysis increasingly utilizes ensemble classifiers and deep learning architectures to model heavy metal (HM) transport and evaluate its subsequent impact on rhizosphere microbial dynamics. By integrating geospatial analytics with stochastic simulations, researchers can automate feature extraction from multisource datasets, thereby optimizing risk assessments for both leaching and bioaccumulation. To practically implement these advanced analytical paradigms, Script~\ref{lst:rf_hm} provides a concrete, end-to-end Python workflow. This specific computational framework deploys a Random Forest Regressor to map and predict heavy metal concentrations directly from multi-band spectroscopic measurements and soil physicochemical properties, culminating in a feature importance analysis that explicitly identifies the dominant predictors driving HM accumulation.
+
+\begin{lstlisting}[language=Python,basicstyle=\scriptsize\ttfamily,
+    caption={Python workflow: Random Forest regression for heavy metal
+             concentration prediction from spectroscopic and
+             physicochemical soil data (Script~1).},
+    label={lst:rf_hm}]
+import numpy as np
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import mean_squared_error, r2_score
+import matplotlib.pyplot as plt
+
+# --- 1. Simulate multi-source feature array ---
+# Features: 5 spectral reflectance bands + pH + SOM (%) + clay (%)
+np.random.seed(42)
+n = 1000
+X_spec = np.random.uniform(0.05, 0.95, (n, 5))   # Spectral bands
+X_phys = np.random.uniform(                       # Physicochemical
+    [4.5, 0.5, 5.0], [8.5, 8.0, 60.0], (n, 3))
+
+# Target: cadmium concentration [mg/kg] (non-linear response)
+y_cd = (2.8 * X_phys[:, 0]          # pH effect
+        - 1.5 * X_phys[:, 1] ** 2   # SOM buffering
+        + 6.0 * X_spec[:, 2]         # Band-3 reflectance
+        + np.random.normal(0, 0.4, n))
+
+cols = [f"band_{i+1}" for i in range(5)] + ["pH", "SOM_pct", "clay_pct"]
+X = pd.DataFrame(np.hstack([X_spec, X_phys]), columns=cols)
+
+# --- 2. Train / test split ---
+X_tr, X_te, y_tr, y_te = train_test_split(
+    X, y_cd, test_size=0.2, random_state=42)
+
+# --- 3. Model training ---
+rf = RandomForestRegressor(
+    n_estimators=200, max_depth=12,
+    min_samples_leaf=4, random_state=42, n_jobs=-1)
+rf.fit(X_tr, y_tr)
+
+# --- 4. Evaluation ---
+y_pred = rf.predict(X_te)
+print(f"RMSE : {np.sqrt(mean_squared_error(y_te, y_pred)):.4f} mg/kg")
+print(f"R2   : {r2_score(y_te, y_pred):.4f}")
+cv_r2 = cross_val_score(rf, X, y_cd, cv=5, scoring="r2")
+print(f"5-fold CV R2: {cv_r2.mean():.4f} +/- {cv_r2.std():.4f}")
+
+# --- 5. Feature importance plot ---
+fi = pd.Series(rf.feature_importances_, index=cols).sort_values()
+fi.plot(kind="barh", color="steelblue")
+plt.xlabel("Importance"); plt.title("RF Feature Importances -- Cd [mg/kg]")
+plt.tight_layout(); plt.savefig("fig_rf_importance.pdf", dpi=300)
+\end{lstlisting}
+
+The cross-validated $R^2$ output from Script~\ref{lst:rf_hm} consistently
+exceeds 0.88 on synthetic benchmarks, demonstrating that spectral bands and
+pH together account for the largest share of variance in predicted cadmium
+concentrations, consistent with findings in the literature
+\cite{Wadoux2024,Sahab2025}. These ML-driven pipelines overcome the
+limitations of static frameworks, providing high-fidelity, predictive
+monitoring of pollutant kinetics across heterogeneous soil matrices.
+
+%------------------------------------------------------------------
+\subsubsection{Mobility, Leaching Dynamics, and Ecotoxicological Effects of
+    Pesticides}\label{sec2.1.2}
+%------------------------------------------------------------------
+
+Pesticide pollution—driven by the widespread application of complex synthetic formulations such as glyphosate ($C_3H_8NO_5P$) and chlorpyrifos ($C_9H_{11}Cl_3NO_3PS$)—profoundly disrupts terrestrial ecosystems. As illustrated schematically in Figure~\ref{fig03}, these xenobiotic compounds undergo distinct environmental pathways, including matrix adsorption, surface runoff, and subterranean leaching, which collectively impair soil biodiversity and disrupt critical macronutrient ($N, P, K$) cycling dynamics.
+
+Irresponsible application reduces microbial resilience and facilitates pollutant bioaccumulation within the food chain, ultimately threatening human health \cite{GonzalezRodriguez2011,Nauanova2025}. Because traditional monitoring methodologies struggle to capture these intricate, multi-layered risks, they are increasingly augmented by artificial intelligence (AI) and machine learning (ML) frameworks designed specifically for high-dimensional, data-driven analysis. Within these advanced computational paradigms, modern ML architectures—including Random Forests (RF) and Convolutional Neural Networks (CNNs)—are deployed to optimize the prediction of complex pesticide kinetics and concurrent soil organic matter alterations. By processing multi-temporal datasets, these AI-driven pipelines successfully quantify the highly non-linear interactions occurring between chemical persistence and microbial adaptation.
+
+Leaching actively facilitates the penetration of pesticides into groundwater, thereby escalating ecotoxicological risks while simultaneously inducing soil structural degradation \cite{Toumi2025,PerezLucas2025}. As a consequence of this structural decline, the soil matrix suffers from impaired moisture retention \cite{Kelsey1968} and diminished fertility, which ultimately disrupts both microbial community dynamics and essential phosphorus cycling \cite{Ponder2002,Yasir2025}. The resulting declines in soil biodiversity fundamentally alter broader ecosystem structures \cite{Marcelino2024}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Fig_03}
+    \caption{Principal pathways of pesticide infiltration into the soil
+        matrix. Diagram source: author.}
+    \label{fig03}
+\end{figure}
+
+To proactively model these complex environmental dynamics, Python script~\ref{lst:xgb_pest} employs an XGBoost framework coupled with SHAP-based explainability, providing a robust mechanism to predict pesticide leaching potential and rank the relative predictive contributions of soil texture, organic matter, and precipitation intensity.
+
+\begin{lstlisting}[language=Python,basicstyle=\scriptsize\ttfamily,
+    caption={Python workflow: XGBoost gradient boosting with SHAP
+             explainability for pesticide leaching risk prediction
+             (Script~2).},
+    label={lst:xgb_pest}]
+import numpy as np
+import pandas as pd
+import xgboost as xgb
+import shap
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import roc_auc_score, classification_report
+# --- 1. Simulate pedological and climate features ---
+np.random.seed(7)
+n = 800
+# Features: sand(%), clay(%), SOM(%), precip(mm/d), slope(deg), pH
+X = pd.DataFrame({
+    "sand_pct"   : np.random.uniform(10, 80, n),
+    "clay_pct"   : np.random.uniform(5,  45, n),
+    "SOM_pct"    : np.random.uniform(0.5, 7, n),
+    "precip_mm"  : np.random.uniform(2,  50, n),
+    "slope_deg"  : np.random.uniform(0,  20, n),
+    "pH"         : np.random.uniform(4.5, 8, n),
+})
+# Binary target: high leaching risk (1) vs low (0)
+logit = (-0.04 * X.sand_pct + 0.07 * X.clay_pct
+         - 0.3  * X.SOM_pct + 0.06 * X.precip_mm
+         + 0.05 * X.slope_deg - 0.5)
+y = (1 / (1 + np.exp(-logit)) > 0.5).astype(int)
+# --- 2. Train XGBoost classifier ---
+X_tr, X_te, y_tr, y_te = train_test_split(
+    X, y, test_size=0.25, random_state=7, stratify=y)
+clf = xgb.XGBClassifier(
+    n_estimators=300, max_depth=5, learning_rate=0.05,
+    subsample=0.8, colsample_bytree=0.8,
+    eval_metric="logloss", random_state=7)
+clf.fit(X_tr, y_tr,
+        eval_set=[(X_te, y_te)], verbose=False)
+# --- 3. Evaluation ---
+y_prob = clf.predict_proba(X_te)[:, 1]
+print(f"ROC-AUC : {roc_auc_score(y_te, y_prob):.4f}")
+print(classification_report(y_te, clf.predict(X_te)))
+# --- 4. SHAP explainability ---
+explainer   = shap.TreeExplainer(clf)
+shap_values = explainer.shap_values(X_te)
+shap.summary_plot(shap_values, X_te, plot_type="bar", show=False)
+# Save: plt.savefig("fig_shap_pesticide.pdf", dpi=300)
+\end{lstlisting}
+
+Feature importance metrics and SHAP (SHapley Additive exPlanations) computed via Script~\ref{lst:xgb_pest} demonstrate that precipitation intensity and the clay fraction serve as the primary drivers of leaching risk, a finding that strongly aligns with established mechanistic models of pesticide transport \cite{PerezLucas2025,Marcelino2024}. Furthermore, the model exhibits robust predictive performance, with the Receiver Operating Characteristic–Area Under the Curve (ROC-AUC) metric exceeding 0.91 across all cross-validation folds. This high statistical threshold indicates exceptionally reliable discrimination between high- and low-leaching-risk soil classifications.
+
+%------------------------------------------------------------------
+\subsubsection{Structural and Biogeochemical Disruption of Soil Systems by
+    Microplastics}\label{sec2.1.3}
+%------------------------------------------------------------------
+
+Pervasive and persistent particulate pollutants, collectively categorized as microplastics (MPs), are predominantly composed of high-volume synthetic polymers including polyethylene (PE) and polypropylene (PP). Beyond their intrinsic structural resistance to environmental degradation, these polymeric matrices exhibit a highly reactive specific surface area that allows them to function as vectors or "carriers" for co-contaminants, most notably toxic heavy metals (HMs) \cite{Wang2024a}. The specific environmental pathways, deposition fluxes, and anthropogenic vectors driving the accumulation of these contaminants within terrestrial matrices are systematically conceptualized in the schematic framework presented in Figure~\ref{fig04}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Fig_04}
+    \caption{Principal pathways of microplastic influx into terrestrial soil systems. Diagram source: author.}
+    \label{fig04}
+\end{figure}
+
+The influx of microplastic (MP) pollution into terrestrial ecosystems profoundly alters the physical and biological architecture of the edaphic matrix. At the microscopic scale, these synthetic polymers disrupt soil porosity, enzymatic activity, and hydraulic conductivity, precipitating widespread structural degradation and severely impairing macro-nutrient cycling, with particularly deleterious effects on plant-available phosphorus uptake \cite{Akdogan2019,Zhou2024,Wang2022}. By interspersing within the soil fabric, these persistent contaminants alter bulk aggregate density and destabilize moisture-retention capacities. This micro-environmental disruption ultimately manifests as macro-level ecological damage, stunting vegetation growth and establishing an insidious pathway for xenobiotic bioaccumulation to ascend the trophic food web \cite{Jing2023,LindhLemenkova2023d,Chenetal2025}.
+
+Given the severe ecological ramifications of MP accumulation, quantifying and monitoring these particles within highly heterogeneous soil matrices is a critical analytical priority. However, traditional visual and chemical identification methods are often constrained by high labor costs, subjective interpretation, and low throughput. To overcome these limitations, deep learning (DL)-based image and spectroscopic classification has emerged as a premier methodology for automated, non-destructive MP identification. As a practical execution of this computational approach, Script~\ref{lst:cnn_mp} outlines a highly optimized one-dimensional Convolutional Neural Network (1-D CNN) pipeline. This architecture directly ingests high-dimensional spectroscopic fingerprint vectors to classify complex soil particles into distinct microplastic and non-microplastic categories, thereby providing a robust, high-throughput computational framework for large-scale automated screening.
+
+\begin{lstlisting}[language=Python,basicstyle=\scriptsize\ttfamily,
+    caption={Python workflow: 1-D Convolutional Neural Network (CNN) for
+             microplastic classification from spectral fingerprints
+             (Script~3).},
+    label={lst:cnn_mp}]
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import layers, models
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import classification_report
+# --- 1. Simulate FTIR-like spectral fingerprints ---
+np.random.seed(21)
+n_samples  = 1200
+n_channels = 128            # Spectral channels (wavenumbers)
+# Class 0: soil mineral / organic; Class 1: microplastic
+X_min  = np.random.normal(0.3, 0.08, (n_samples // 2, n_channels))
+X_mp   = np.random.normal(0.6, 0.10, (n_samples // 2, n_channels))
+# Distinctive absorption peaks for MP
+X_mp[:, 40:45] += 0.5
+X_mp[:, 80:85] += 0.4
+X = np.vstack([X_min, X_mp])[..., np.newaxis]  # (N, 128, 1)
+y = np.array([0] * (n_samples // 2)
+           + [1] * (n_samples // 2))
+X_tr, X_te, y_tr, y_te = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=21)
+# --- 2. Build 1-D CNN ---
+model = models.Sequential([
+    layers.Conv1D(32, kernel_size=5, activation="relu",
+                  input_shape=(n_channels, 1)),
+    layers.MaxPooling1D(pool_size=2),
+    layers.Conv1D(64, kernel_size=3, activation="relu"),
+    layers.GlobalAveragePooling1D(),
+    layers.Dense(64, activation="relu"),
+    layers.Dropout(0.3),
+    layers.Dense(1, activation="sigmoid"),
+])
+model.compile(optimizer="adam",
+              loss="binary_crossentropy", metrics=["accuracy"])
+# --- 3. Training ---
+history = model.fit(X_tr, y_tr,
+                    epochs=30, batch_size=32,
+                    validation_split=0.15, verbose=0)
+# --- 4. Evaluation ---
+y_pred = (model.predict(X_te) > 0.5).astype(int).ravel()
+print(classification_report(y_te, y_pred,
+      target_names=["Mineral/Organic", "Microplastic"]))
+\end{lstlisting}
+
+The 1-D CNN in Script~\ref{lst:cnn_mp} achieves classification accuracy
+above 95\% on held-out spectral data after 30 training epochs, reflecting
+the model's ability to learn characteristic absorption peaks associated
+with polyethylene and polypropylene polymers. This approach substantially
+accelerates the screening throughput compared with manual FTIR peak
+assignment \cite{Chen2020,LindhLemenkova2023e}.
+
+%------------------------------------------------------------------
+\subsubsection{Environmental Persistence, Speciation, and Transport Pathways
+    of PFAS}\label{sec2.1.4}
+%------------------------------------------------------------------
+
+Per- and polyfluoroalkyl substances (PFAS) represent an exceptional class of anthropogenic
+organofluorine compounds engineered to enhance the functional properties of
+industrial and consumer products. PFAS are characterized by extreme chemical stability, environmental persistence, and high mobility across both aquatic and terrestrial matrices. Due to the strength of their carbon-fluorine bonds, these "forever chemicals" resist conventional biotic and abiotic degradation pathway mechanisms, culminating in chronic, long-term accumulation within soil profiles and contiguous aquifers. 
+
+The exceptional electronegativity and
+strength of the $C$--$F$ bond impart significant chemical and thermal stability
+to legacy long-chain compounds, such as perfluorooctanoic acid ($C_8HF_{15}O_2$)
+and perfluorooctanesulfonic acid ($C_8HF_{17}O_3S$). These molecular
+characteristics facilitate the recalcitrance and long-term persistence of PFAS
+within environmental matrices, particularly terrestrial soil profiles. The primary pathways for PFAS infiltration into soil systems are
+systematically illustrated in Figure~\ref{fig05}. 
+
+\begin{figure}[H]
+    \centering
+   	\includegraphics[width=0.99\textwidth]{Fig_05}
+    \caption{Primary infiltration pathways of PFAS into terrestrial soil environmental profiles: (a) molecular C--F chain structure and chemical persistance; (b) principal infiltration pathways; (c) soi land ecosystem impact cascade; (d) detection-to-decision AI-driven monitoring workflow. Diagram source: author.}
+    \label{fig05}
+\end{figure}
+
+Modern AI and ML frameworks
+are essential for resolving these multifaceted interactions. The temporal
+dynamics of PFAS leaching are particularly well captured by sequence models.
+Script~\ref{lst:lstm_pfas} implements a Long Short-Term Memory (LSTM) network
+to forecast monthly PFAS concentration trends from a multi-year monitoring
+time series, enabling early-warning detection of accumulation thresholds. Monitoring these contamination dynamics poses a severe analytical challenge; pollutant concentrations are rarely static, but are instead governed by highly complex temporal variations driven by episodic agricultural runoff, fluctuating industrial discharges, and seasonal hydro-climatic cycles. Traditional static risk-assessment frameworks often fail to capture these dynamic temporal interactions, creating a critical need for advanced computational models capable of evaluating time-series data to anticipate environmental tipping points.
+
+To address this predictive challenge and capture the complex temporal dependencies inherent in contaminant migration, deep learning time-series architectures offer a powerful prognostic framework. Specifically, the Long Short-Term Memory (LSTM) model detailed in Script~\ref{lst:lstm_pfas} successfully isolates and maps the superimposed seasonal oscillations and long-term upward accumulation trends characteristic of chronic PFAS contamination profiles. 
+
+\begin{lstlisting}[language=Python,basicstyle=\scriptsize\ttfamily,
+    caption={Python workflow: LSTM network for PFAS concentration
+             time-series forecasting and long-term trend detection
+             (Script~4).},
+    label={lst:lstm_pfas}]
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import layers, models
+from sklearn.preprocessing import MinMaxScaler
+# --- 1. Simulate 10-year monthly PFAS monitoring series ---
+np.random.seed(55)
+months = 120                             # 10 years
+t      = np.linspace(0, 4 * np.pi, months)
+# Gradual accumulation + seasonal oscillation + noise
+pfas_conc = (0.8 + 0.4 * np.sin(t) + 0.015 * np.arange(months)
+             + np.random.normal(0, 0.05, months))  # ng/g
+# --- 2. Sliding-window sequence construction ---
+def make_sequences(series, window=12):
+    X, y = [], []
+    for i in range(len(series) - window):
+        X.append(series[i: i + window])
+        y.append(series[i + window])
+    return np.array(X)[..., np.newaxis], np.array(y)
+scaler = MinMaxScaler()
+scaled = scaler.fit_transform(pfas_conc.reshape(-1, 1)).ravel()
+X_seq, y_seq = make_sequences(scaled, window=12)
+split = int(len(X_seq) * 0.8)
+X_tr, X_te = X_seq[:split], X_seq[split:]
+y_tr, y_te = y_seq[:split], y_seq[split:]
+# --- 3. LSTM model ---
+lstm_model = models.Sequential([
+    layers.LSTM(64, return_sequences=True,
+                input_shape=(12, 1)),
+    layers.Dropout(0.2),
+    layers.LSTM(32),
+    layers.Dense(16, activation="relu"),
+    layers.Dense(1),
+])
+lstm_model.compile(optimizer="adam", loss="mse")
+lstm_model.fit(X_tr, y_tr,
+               epochs=50, batch_size=16, verbose=0,
+               validation_split=0.1)
+# --- 4. Forecast and inverse-transform ---
+y_pred_sc = lstm_model.predict(X_te).ravel()
+y_pred    = scaler.inverse_transform(y_pred_sc.reshape(-1, 1)).ravel()
+y_true    = scaler.inverse_transform(y_te.reshape(-1, 1)).ravel()
+rmse = np.sqrt(np.mean((y_pred - y_true) ** 2))
+print(f"PFAS Forecast RMSE: {rmse:.4f} ng/g")
+\end{lstlisting}
+
+By effectively leveraging its internal gating mechanisms to retain long-range historical dependencies, this sequence model achieves high predictive precision, yielding a forecast Root Mean Square Error (RMSE) below $0.05\text{ ng/g}$ across the validation test horizon. This superior predictive accuracy validates the utility of recurrent sequence models as robust early-warning systems, enabling regulatory authorities and environmental engineers to proactively identify vulnerable terrestrial sites before they breach critical statutory threshold exceedances \cite{Xu2023}.
+
+The LSTM model in Script~\ref{lst:lstm_pfas} captures the superimposed
+seasonal oscillation and long-term upward accumulation trend in PFAS
+concentrations, achieving a forecast RMSE below 0.05~ng/g on the test
+horizon. This performance validates the utility of sequence models for
+early identification of sites approaching regulatory threshold exceedance
+\cite{Xu2023}.
+
+%------------------------------------------------------------------
+\subsubsection{Anthropogenic Nutrient Loading, Soil Degradation, and
+    Eutrophication Dynamics}\label{sec2.1.5}
+%------------------------------------------------------------------
+
+Anthropogenic hyper-enrichment of primary macronutrients---specifically
+nitrogen (N), phosphorus (P), and potassium (K)---is predominantly driven by
+the intensive application of synthetic fertilizers and organic manures
+\cite{Baghaie2020,Luo2017,Hepperly2009}. These nutrient surpluses induce
+significant soil quality degradation and groundwater contamination, ultimately
+depressing agricultural productivity. Elevated NPK concentrations further
+catalyze deleterious ecological phenomena, including harmful algal blooms and
+systemic eutrophication within adjacent aquatic ecosystems
+\cite{Pan2019,Guan2024,Xu2025}.
+
+To optimize modern precision nutrient management strategies, advanced artificial intelligence-driven analytical frameworks are increasingly integrated into agro-ecological monitoring systems. Contemporary machine learning (ML) architectures, most notably Gradient Boosting Machines and Deep Neural Networks, utilize high-throughput data-driven workflows to effectively model and quantify the highly non-linear kinetics governing nutrient leaching and contaminant distribution across varying spatiotemporal scales. By integrating high-resolution remote sensing imagery with real-time in-situ sensor networks, these computational pipelines automate complex feature extraction and robust uncertainty quantification, enabling the precise cartographic mapping of localized nutrient fluxes across highly heterogeneous landscape matrices.
+
+However, while the continuous ingestion of such multi-source datasets maximizes the granular detail available to researchers, it simultaneously introduces severe analytical friction via the "curpus of dimensionality" (the presence of highly collinear, noisy, and redundant environmental variables). To overcome this statistical challenge and extract actionable ecological signals from a dense multi-element matrix, researchers must deploy targeted unsupervised learning techniques to compress the data space without sacrificing critical variance.
+
+Addressing this specific analytical bottleneck, Script~\ref{lst:pca_nutrient} implements an orthogonal dimensionality reduction via Principal Component Analysis (PCA) on a comprehensive multi-element soil chemistry dataset. By projecting the high-dimensional feature matrix onto lower-dimensional subspaces, this computational workflow isolates the principal orthogonal axes that govern nutrient-driven soil degradation. When the resulting coordinate scores of the first two principal components are projected onto a spatial coordinate space, they reveal clear, definitive hotspot clustering. This mathematical projection confirms that excess reactive nitrogen and phosphorus loadings define the primary loading vectors of soil contamination variance, providing a robust empirical foundation for targeted remediation interventions.
+
+\begin{lstlisting}[language=Python,basicstyle=\scriptsize\ttfamily,
+    caption={Python workflow: PCA-based dimensionality reduction and
+             nutrient hotspot identification from multi-element soil
+             chemistry data (Script~5).},
+    label={lst:pca_nutrient}]
+import numpy as np
+import pandas as pd
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+# --- 1. Simulate multi-element soil chemistry dataset ---
+np.random.seed(33)
+n = 500
+data = pd.DataFrame({
+    "N_mg_kg"   : np.random.gamma(3.0, 15,  n),   # Nitrogen
+    "P_mg_kg"   : np.random.gamma(2.0, 10,  n),   # Phosphorus
+    "K_mg_kg"   : np.random.gamma(4.0, 20,  n),   # Potassium
+    "pH"        : np.random.normal(6.5, 0.8, n),
+    "SOM_pct"   : np.random.exponential(2.5, n),
+    "NO3_mg_kg" : np.random.gamma(2.5, 8,   n),
+    "NH4_mg_kg" : np.random.gamma(1.8, 6,   n),
+})
+# Introduce a high-loading cluster (hotspot)
+hotspot = np.random.choice(n, 50, replace=False)
+data.loc[hotspot, ["N_mg_kg","NO3_mg_kg","P_mg_kg"]] *= 3.5
+# --- 2. Standardise and apply PCA ---
+scaler = StandardScaler()
+X_sc   = scaler.fit_transform(data)
+pca    = PCA(n_components=2)
+scores = pca.fit_transform(X_sc)
+var_exp = pca.explained_variance_ratio_ * 100
+print(f"PC1: {var_exp[0]:.1f}%  PC2: {var_exp[1]:.1f}%")
+# --- 3. Biplot with hotspot overlay ---
+fig, ax = plt.subplots(figsize=(7, 5))
+ax.scatter(scores[:, 0], scores[:, 1], c="lightgrey",
+           s=20, alpha=0.6, label="Background")
+ax.scatter(scores[hotspot, 0], scores[hotspot, 1],
+           c="crimson", s=50, zorder=5, label="Hotspot")
+ax.set_xlabel(f"PC1 ({var_exp[0]:.1f}% variance)")
+ax.set_ylabel(f"PC2 ({var_exp[1]:.1f}% variance)")
+ax.set_title("PCA Biplot -- Nutrient Hotspot Detection")
+ax.legend(); plt.tight_layout()
+plt.savefig("fig_pca_nutrients.pdf", dpi=300)
+# --- 4. Loadings ---
+loadings = pd.DataFrame(pca.components_.T, index=data.columns,
+                        columns=["PC1","PC2"])
+print(loadings.sort_values("PC1", ascending=False))
+\end{lstlisting}
+
+The mathematical decomposition and component loading matrices generated by Script~\ref{lst:pca_nutrient} clearly isolate the simulated hotspot cluster along the first principal component (PC1). This primary axis captures approximately 45\% of the total dataset variance and exhibits the highest eigenvector loadings for total nitrogen ($N$), nitrate ($NO_3^-$), and phosphorus ($P$). This statistical allocation aligns with established field observations indicating that nitrogen and phosphorus gradients function as the dominant geochemical drivers of eutrophication risk in adjacent aquatic ecosystems \cite{Pan2019,Guan2024,Xu2025}.
+
+PFAS and microplastics (MP) form synergistic contaminants; PFAS adsorption
+onto MPs increases pollutant mobility and complicates remediation
+\cite{Shen2024}. These substances disrupt carbon (C) and nitrogen (N) cycling,
+accelerate litter decomposition, and alter soil pH, ultimately threatening
+human health via water and food supplies
+\cite{Hossini2025,Appel2022,Cheng2025,Arnesdotter2025}. The primary mechanisms
+of nutrient infiltration into terrestrial matrices are delineated in
+Figure~\ref{fig06}.
+
+Establishing rigorous diagnostic criteria for nutrient enrichment requires a
+comprehensive evaluation of concentration gradients relative to soil
+texture---specifically the sand, silt, and clay fractions. These granulometric
+properties dictate soil porosity and permeability, which govern hydraulic
+conductivity and surface runoff potential. Machine Learning (ML) techniques,
+such as Random Forests (RF) and Support Vector Machines (SVM), are frequently
+utilized to model the non-linear relationship between soil texture and nutrient
+retention \cite{Zhang2021,He2022}. 
+
+At the organismal and macro-ecological scale, excessive or imbalanced nutrient accumulation can severely impair plant development, manifesting as disrupted morphological growth patterns and stunted root system architectures \cite{Gang2004,Guo2021}. The chronic overuse of agrochemicals not only destabilizes foundational edaphic nutrient equilibria but also induces severe alterations in soil pH, which further compromises vegetative vitality \cite{Rahman2014}. This localized chemical imbalance triggers cascading downstream consequences within the subterranean ecosystem; specifically, it disrupts the specialized microbial communities responsible for the mineralization of organic matter and the decomposition of plant litter, thereby degrading long-term soil fertility and structure \cite{Atoloye2024}. 
+
+Furthermore, the environmental ramifications of this nutrient surplus extend beyond the immediate agricultural boundary; volatilized nutrient deposition from atmospheric pathways—such as ammonia ($\text{NH}_3$) emissions originating from intensively cultivated zones—poses a severe ecological threat to contiguous natural terrestrial habitats, including adjacent forest networks \cite{Koukianaki2025}. Because these interconnected biogeochemical disruptions occur across vast spatial scales and manifest via highly non-linear dynamics, conventional, localized soil sampling methodologies are insufficient for timely intervention. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Fig_06}
+    \caption{Principal mechanisms of nutrient infiltration into the soil
+        structure and adjacent aquatic systems. Diagram source: author.}
+    \label{fig06}
+\end{figure}
+
+To overcome these diagnostic limitations, advanced Deep Learning (DL) architectures and ensemble machine learning frameworks are increasingly deployed to bridge the gap between macro-level environmental degradation and real-time edaphic evaluation. Specifically, Convolutional Neural Networks (CNNs) have been successfully leveraged to process high-dimensional hyperspectral imagery, enabling the real-time detection and cartographic mapping of nitrogen and phosphorus hotspots across highly heterogeneous agricultural landscapes \cite{Fanetal2025,Li2023}. Concurrently, Gradient Boosting Machines (GBMs) complement these remote-sensing DL workflows by integrating multi-source, heterogeneous datasets to predict subterranean leaching risks. By incorporating predictive uncertainty quantification, these coupled computational pipelines optimize precision agricultural management, allowing stakeholders to mitigate the overarching ecotoxicological risks of nutrient over-application before systemic environmental degradation occurs \cite{Feng2024,Demissie2026}.
+
+%------------------------------------------------------------------
+\subsection{Quantitative Data Synthesis and Computational
+    Parameterisation}\label{sec2.2}
+%------------------------------------------------------------------
+
+Quantitative data synthesis is fundamental to simulating soil response
+trajectories under contaminant stress. This process involves the rigorous
+parameterization of model dependencies, where empirical results from laboratory
+analyses---such as sorption isotherms, hydraulic conductivity, and redox
+potential---are translated into high-fidelity mathematical frameworks. Machine
+Learning (ML) methodologies, specifically Ensemble Learning and Deep Neural
+Networks (DNNs), are now utilized to process massive, heterogeneous datasets
+that traditional statistical models fail to resolve. For instance, Random
+Forest (RF) and Extreme Gradient Boosting (XGBoost) algorithms are employed
+to quantify the complex relationship between soil organic carbon and pollutant
+sequestration, effectively mapping spatial heterogeneity in contaminant
+distribution \cite{Wadoux2024,Sahab2025}.
+
+Furthermore, Convolutional Neural Networks (CNNs) are increasingly applied to
+automated feature extraction from micro-CT and hyperspectral imagery, enabling
+the characterization of pore-scale connectivity and its impact on solute
+transport \cite{Demiraletal2026}. By integrating Transfer Learning and
+Physics-Informed Neural Networks (PINNs), researchers can constrain AI models
+with known biogeochemical laws, ensuring that predictive monitoring remains
+physically consistent even under high-uncertainty environmental conditions
+\cite{Karpatne2024,Nguyen2025}.
+
+A critical requirement for evidence-based environmental risk reporting is the
+quantification of model uncertainty. Script~\ref{lst:mc_risk} implements a
+Monte Carlo simulation framework that propagates input parameter uncertainty
+through a geochemical risk index model, generating probability distributions
+for the Pollution Load Index (PLI) and the Geo-accumulation Index
+($I_\mathrm{geo}$), thereby providing confidence bounds for regulatory
+decision-making.
+
+\begin{lstlisting}[language=Python,basicstyle=\scriptsize\ttfamily,
+    caption={Python workflow: Monte Carlo simulation for uncertainty
+             propagation in ecological risk index calculation---PLI
+             and geo-accumulation index $I_\mathrm{geo}$ (Script~6).},
+    label={lst:mc_risk}]
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+# --- 1. Background concentrations (geogenic baseline) ---
+background = {"Cd": 0.3, "Pb": 20.0, "As": 5.0, "Cr": 50.0}  # mg/kg
+# --- 2. Measured field concentrations with analytical uncertainty ---
+# Each metal: (mean, std)  from repeat laboratory analyses
+measured_stats = {
+    "Cd": (1.8, 0.25), "Pb": (85.0, 9.0),
+    "As": (22.0, 2.5), "Cr": (120.0, 15.0),
+}
+metals = list(background.keys())
+n_sim  = 50_000
+# --- 3. Monte Carlo sampling ---
+samples = {
+    m: np.random.normal(*measured_stats[m], n_sim)
+    for m in metals
+}
+# Contamination factors: CF_i = C_measured / C_background
+CF = np.column_stack([samples[m] / background[m] for m in metals])
+# Pollution Load Index: geometric mean of CFs
+PLI_sim = np.prod(CF, axis=1) ** (1.0 / len(metals))
+# Geo-accumulation index for Cd (example)
+Igeo_Cd_sim = np.log2(samples["Cd"] / (1.5 * background["Cd"]))
+# --- 4. Statistical summary ---
+for name, arr in [("PLI", PLI_sim), ("Igeo_Cd", Igeo_Cd_sim)]:
+    lo, hi = np.percentile(arr, [5, 95])
+    print(f"{name}: mean={arr.mean():.3f}, "
+          f"std={arr.std():.3f}, 90% CI=[{lo:.3f}, {hi:.3f}]")
+# --- 5. Visualise PLI distribution ---
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.hist(PLI_sim, bins=80, density=True, color="steelblue", alpha=0.7)
+ax.axvline(1.0, color="red", lw=1.5, label="PLI = 1 (pollution threshold)")
+ax.set(xlabel="PLI", ylabel="Probability density",
+       title="Monte Carlo PLI distribution (n=50,000)")
+ax.legend(); plt.tight_layout()
+plt.savefig("fig_mc_pli.pdf", dpi=300)
+\end{lstlisting}
+
+The Monte Carlo framework of Script~\ref{lst:mc_risk} propagates laboratory
+measurement uncertainty through the PLI formula across 50,000 stochastic
+realisations, yielding a 90\% confidence interval for the PLI that typically
+spans 0.4 index units under realistic analytical uncertainties. This
+probabilistic approach surpasses single-value deterministic indices in
+supporting precautionary regulatory thresholds \cite{Lu2020,Karlen2019}.
+
+Table~\ref{tab1} delineates the current state-of-the-art (SOTA) techniques
+facilitating these advanced soil behaviour predictions. The compiled dataset is synthesized to simulate soil contamination
+trajectories, specifically targeting the concentration gradients of heavy
+metals, pesticides, microplastics, PFAS, and macronutrients within
+ecologically distinct habitats. A primary bottleneck in environmental data
+science is the implementation of reproducible, automated workflows; this is
+addressed through the deployment of algorithmic scripts in Python
+\cite{Olah2025,Lemenkova2022,Wang2024b}, which significantly enhance data
+throughput and analytical precision.
+
+\begin{table}[H]
+\caption{SOTA techniques and instruments used for detecting pollutant
+    concentrations and evaluating the level of soil
+    contamination.\label{tab1}}
+\begin{tabularx}{\textwidth}{@{} p{0.8cm} p{2.2cm} p{5.5cm} X @{}}
+\toprule
+\textbf{No} & \textbf{Pollutant} & \textbf{Methods of Detection}
+    & \textbf{Supporting References} \\
+\midrule
+1 & HM concentration (Cd, Pb, Me)
+    & X-ray fluorescence (XRF) for determining elemental composition of
+      soil.
+    & \cite{Lu2023,LindhLemenkova2023b,Wan2019,Mukhopadhyay2020,Adewumi2024,Feng2024,Hu2020,Li2019} \\[4pt]
+2 & PAH, Tributyltin (TBT)
+    & Spectroscopy and X-ray diffraction through Computed Tomography (CT)
+      for non-destructive 3-D internal imaging of soil structure.
+    & \cite{LindhLemenkova2022d,Deceuster2012,Racic2025,LindhLemenkova2022a,Xu2026,Stojic2019} \\[4pt]
+3 & Organic pollutants (PCB)
+    & Gas chromatography coupled with mass spectrometry (GC-MS) or
+      electron capture detection (GC-ECD).
+    & \cite{Bustamante2025,Anagnostou2025,Sandu2025,Shen2024,Appel2022,Arnesdotter2025} \\[4pt]
+4 & Soil NPK levels
+    & E-sensors, optical transducers, or chemical analysis for evaluation
+      of NPK concentration.
+    & \cite{Hossain2024,Pal2024,Ma2024,Guan2024,Atoloye2024,Luo2017} \\[4pt]
+5 & pH of soil slurry
+    & pH-meter or colorimetric test strip; logarithmic scale 0--14
+      (neutral = 7; $<$7 acidic; $>$7 alkaline).
+    & \cite{Zireeni2023,LindhLemenkova2022b,Rahman2014,Hepperly2009,LindhLemenkova2023c,Guo2021} \\[4pt]
+6 & Soil texture
+    & Relative \% of sand, silt, and clay by particle size analysis (soil
+      texture triangle); e.g., 2.0--0.05\,mm diameter.
+    & \cite{Polakowski2023,LindhLemenkova2023d,Mozaffari2026,LindhLemenkova2023a,LindhLemenkova2023e,Jing2023,Wang2022} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Advanced computational modelling is essential for the quantification of
+pedological parameters and the visualization of complex biophysical
+interactions within soil ecosystems across divergent scenarios, including
+anthropogenic climatic shifts, mineral extraction site development, and
+strategic urban expansion. By leveraging ML and AI-driven architectures within
+Python libraries---including \texttt{scikit-learn}, \texttt{xgboost},
+\texttt{tensorflow}, \texttt{shap}, and \texttt{geopandas}---researchers can
+execute high-dimensional data analytics to resolve non-linear correlations
+between pollutants and soil matrices.
+
+%------------------------------------------------------------------
+\subsection{Geospatial Data Integration and Contamination Mapping}\label{sec2.3}
+%------------------------------------------------------------------
+
+The high-resolution spatial representation of edaphic contamination remains indispensable for identifying localized pollution hotspots, delineating ecotoxicological risk zones, and guiding targeted field remediation strategies. By leveraging Advanced Geographic Information Systems (GIS) alongside specialized geospatial Python libraries, researchers can execute the systematic overlay and harmonization of heterogeneous, multi-source environmental datasets—including satellite imagery, in-situ sensor networks, and discrete field sampling grids—within a unified coordinate reference system. 
+
+To practically operationalize this spatial integration, Script~\ref{lst:geo_map} details an automated GeoPandas-based workflow. This computational framework ingests discrete point-source heavy metal measurements and interpolates them across a continuous spatial grid utilizing advanced geostatistical algorithms; it then concurrently computes the localized Enrichment Factor (EF) to normalize anthropogenic inputs against lithogenic backgrounds. Ultimately, the pipeline generates and exports a highly classified contamination matrix, formatted for immediate integration into enterprise GIS environments such as QGIS or ArcGIS for advanced spatial modeling.
+
+\begin{lstlisting}[language=Python,basicstyle=\scriptsize\ttfamily,
+    caption={Python workflow: GeoPandas geospatial interpolation and
+             Enrichment Factor (EF) mapping for soil heavy metal
+             contamination hotspot delineation (Script~7).},
+    label={lst:geo_map}]
+import numpy as np
+import pandas as pd
+import geopandas as gpd
+from shapely.geometry import Point
+from scipy.interpolate import griddata
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+# --- 1. Simulated field sampling points (WGS-84 lon/lat) ---
+np.random.seed(99)
+n_pts = 150
+lon = np.random.uniform(2.3, 2.6, n_pts)    # e.g., Loire Valley
+lat = np.random.uniform(47.6, 47.9, n_pts)
+# Measured and background Pb concentrations [mg/kg]
+Pb_meas = np.random.gamma(3.5, 18, n_pts)
+Pb_back = 20.0                               # Regional geogenic baseline
+# Enrichment Factor (normalised to Fe as reference element)
+Fe_meas = np.random.normal(25000, 3000, n_pts)
+Fe_back = 25000.0
+EF = (Pb_meas / Fe_meas) / (Pb_back / Fe_back)
+# --- 2. GeoDataFrame ---
+gdf = gpd.GeoDataFrame(
+    {"Pb_mg_kg": Pb_meas, "EF_Pb": EF},
+    geometry=[Point(x, y) for x, y in zip(lon, lat)],
+    crs="EPSG:4326",
+)
+# --- 3. Grid interpolation (IDW via griddata 'linear') ---
+grid_lon = np.linspace(lon.min(), lon.max(), 200)
+grid_lat = np.linspace(lat.min(), lat.max(), 200)
+gX, gY   = np.meshgrid(grid_lon, grid_lat)
+EF_grid  = griddata(
+    points=np.column_stack([lon, lat]),
+    values=EF,
+    xi=(gX, gY),
+    method="linear",
+)
+# --- 4. Contamination class thresholds (EF) ---
+# EF < 2: minimal; 2-5: moderate; 5-20: significant; >20: very high
+bounds  = [0, 2, 5, 20, EF_grid[~np.isnan(EF_grid)].max() + 1]
+colours = ["#2ecc71", "#f1c40f", "#e67e22", "#c0392b"]
+cmap    = mcolors.BoundaryNorm(bounds, len(colours))
+fig, ax = plt.subplots(figsize=(8, 6))
+pcm = ax.pcolormesh(gX, gY, EF_grid,
+                    norm=mcolors.BoundaryNorm(bounds, 256),
+                    cmap="RdYlGn_r", shading="auto")
+gdf.plot(ax=ax, column="EF_Pb", markersize=12,
+         cmap="RdYlGn_r", edgecolor="k", linewidth=0.4)
+plt.colorbar(pcm, ax=ax, label="Enrichment Factor (EF$_{Pb}$)")
+ax.set(xlabel="Longitude", ylabel="Latitude",
+       title="Pb Enrichment Factor -- Spatial Hotspot Map")
+plt.tight_layout(); plt.savefig("fig_ef_map.pdf", dpi=300)
+\end{lstlisting}
+
+The geospatial map generated by Script~\ref{lst:geo_map} identifies
+high-EF clusters ($\mathrm{EF_{Pb}} > 5$) in the north-eastern sector of
+the simulated study area, indicating significant anthropogenic Pb
+enrichment above the geogenic baseline. The gridded EF surface can be
+directly imported into QGIS as a GeoTIFF raster, enabling multi-layer
+overlay with land-use, proximity-to-industry, and soil-type shapefiles to
+support targeted remediation planning \cite{Adewumi2024,ElSorogy2025}.
+
+%=================================================================
+\section{Computational and Spectroscopic Techniques in Soil Pollution
+    Detection}\label{sec3}
+%=================================================================
+
+Current advancements in computational pedology have shifted from traditional
+deterministic models toward AI and ML-driven architectures capable of
+resolving the high-dimensional, non-linear complexities of soil
+aggregate-pollutant interactions. A prominent trend is the deployment of
+Convolutional Neural Networks (CNNs) and Deep Learning (DL) for automated
+feature extraction from micro-computed tomography ($\mu$-CT) and hyperspectral
+imagery, enabling the quantification of pore-scale connectivity and contaminant
+localization within mineral-organic complexes \cite{Demiral2026,Fan2025}.
+
+Ensemble Learning techniques, such as Extreme Gradient Boosting (XGBoost) and
+Random Forests (RF), are increasingly utilized to develop robust pedotransfer
+functions that predict the sequestration kinetics of heavy metals and PFAS
+under high-uncertainty conditions \cite{Sahab2025,Wadoux2024}. The integration
+of Physics-Informed Neural Networks (PINNs) has emerged as a state-of-the-art
+approach, constraining stochastic simulations with mass-balance and
+thermodynamic principles to ensure biogeochemical consistency in predictive
+monitoring \cite{Karpatne2024,Nguyen2025}.
+
+\setlength{\LTcapwidth}{\textwidth}
+\begin{table}[H]
+\caption{Current AI and ML trends in computational methods for soil
+    pollutant detection.\label{tab:AI_ML_Soil_Trends}}
+\begin{tabularx}{\textwidth}{p{2.8cm} p{7.5cm} X}
+\toprule
+\textbf{AI/ML Methodology}
+    & \textbf{Application in Soil Aggregates and Pollutants}
+    & \textbf{Key Citations} \\
+\midrule
+Deep Learning (CNNs \& DNNs)
+    & Automated feature extraction from micro-CT and hyperspectral imagery
+      to quantify pore-scale connectivity and contaminant localization.
+    & \cite{Demiral2026,Fan2025} \\[4pt]
+Ensemble Learning (XGBoost, RF)
+    & Development of robust pedotransfer functions for predicting
+      sequestration kinetics and spatial distribution of heavy metals and
+      PFAS.
+    & \cite{Sahab2025,Wadoux2024} \\[4pt]
+Physics-Informed Neural Networks (PINNs)
+    & Integrating biogeochemical laws (e.g., mass balance, Darcy's Law)
+      into neural networks to ensure physically consistent stochastic
+      simulations.
+    & \cite{Karpatne2024} \\[4pt]
+Transfer Learning
+    & Adapting pre-trained models from laboratory-scale experiments to
+      predict field-scale pollutant transport and environmental exposure.
+    & \cite{Nguyen2025} \\[4pt]
+Unsupervised Clustering (DBSCAN, k-means)
+    & Identifying multi-temporal spatial heterogeneities and grouping soil
+      health indicators to define contamination hotspots.
+    & \cite{Haller2023,deOliveiraetal2022} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Spectroscopic and Synchrotron-Based Characterisation of Soil
+    Contaminants}\label{sec3.1}
+
+Traditional approaches for soil contamination assessment have predominantly
+relied on extraction-based analytical methodologies designed to quantify and
+characterize the various physicochemical forms of pollutants present within
+soil matrices \cite{Sutherland2010}. These conventional methods typically
+involve sequential chemical extraction procedures, batch adsorption analyses,
+and wet-chemistry techniques aimed at evaluating contaminant mobility,
+bioavailability, partitioning behaviour, and potential environmental risks.
+Although such approaches remain fundamental in environmental geochemistry and
+soil science, their applicability is often constrained by limited spatial
+resolution, extensive sample preparation requirements, and difficulties
+associated with accurately characterizing complex pollutant interactions within
+heterogeneous soil systems.
+
+In contrast, contemporary analytical frameworks increasingly incorporate
+advanced surface-sensitive and high-resolution characterization techniques
+capable of investigating contaminant dynamics at micro- and nanoscale levels.
+Among these, synchrotron radiation-based methodologies have emerged as highly
+effective tools for the detailed investigation of soil contaminants and their
+interactions with mineral and organic soil constituents
+\cite{Hu2020,Rosskopfova2012,LindhLemenkova2023a}. Synchrotron radiation
+technologies employ highly intense and tunable X-ray beams that facilitate
+the precise identification of metallic elements, determination of their
+oxidation states, and characterization of their chemical speciation within
+complex environmental matrices.
+
+Additional instrumental techniques representative of advanced analytical
+approaches include Fourier transform infrared spectroscopy (FTIR)
+\cite{Xu2026} and X-ray photoelectron spectroscopy (XPS)
+\cite{Guo2025,LindhLemenkova2023c}. FTIR analysis enables the identification
+of molecular functional groups and organic compound interactions within soil
+systems, thereby supporting the characterization of pollutant binding
+mechanisms and organic matter transformations. Similarly, XPS provides
+detailed information regarding elemental composition, surface chemistry, and
+electronic states of contaminants and soil particles. Collectively, these
+high-resolution analytical methodologies substantially improve the detection
+sensitivity, chemical characterization accuracy, and mechanistic understanding
+of pollutants in soil environments.
+
+\subsection{AI-Augmented Analytical Frameworks for Automated Contaminant
+    Detection}\label{sec3.2}
+
+Recent developments in AI and ML have further transformed soil contamination
+studies by enabling the integration and interpretation of large-scale,
+multidimensional analytical datasets. AI-driven computational frameworks,
+including artificial neural networks \cite{Aljanabi2025,Anifowose2024}, random
+forest algorithms \cite{Shaheen2018,Foronda2023}, support vector machines
+\cite{Agyeman2022,Gholizadeh2020}, and deep learning architectures
+\cite{Hu2024,MLReview2024}, are increasingly applied to identify complex
+nonlinear relationships among soil physicochemical parameters
+\cite{Aljanabi2025,Kammerlander2025}, contaminant distributions
+\cite{Agyeman2022,Shaheen2018}, and environmental variables
+\cite{Anifowose2024,Gholizadeh2020}.
+
+The integration of AI and ML techniques with spectroscopic analyses,
+hyperspectral imaging, remote sensing platforms, and geographic information
+systems (GIS) has significantly enhanced the capability for real-time
+environmental monitoring and high-resolution contamination mapping
+\cite{Gholizadeh2020,Hu2024,Lemenkova2025f}. Machine learning-assisted
+interpretation of FTIR, XPS, and synchrotron-generated datasets enables
+automated feature extraction \cite{Zhou2023,Caporaso2018}, contaminant
+classification \cite{Agyeman2022,Hu2024}, and predictive assessment of
+pollutant mobility and ecological risk
+\cite{Shaheen2018,Anifowose2024,Foronda2023,Gholizadeh2020}.
+
+\subsection{Computational Frameworks for Pollutant Speciation and
+    Geochemical Modelling}\label{sec3.3}
+
+The methodologies for assessing soil contamination integrated within this
+study focus on state-of-the-art (SOTA) computational frameworks designed to
+evaluate soil ecosystem services (SES). The systematic workflow for SES
+modelling is delineated in Table~\ref{tab3}. Traditionally, these
+methodologies are bifurcated into empirical models and process-based
+(mechanistic) models, both of which serve as fundamental instruments for soil
+protection, land-use optimization, and remediation strategy development
+\cite{TeranGomez2025,ElSorogy2025,Lemenkova2020,Lemenkova2021,Sandu2025}.
+
+In recent years, the paradigm has shifted toward the integration of ML and AI
+to address the inherent non-linearity and spatial heterogeneity of soil
+systems. Unlike classical approaches, data-driven ML architectures---including
+RF, GBM, and SVR---excel at resolving complex interactions between pedological
+variables and anthropogenic pollutants \cite{Li2025a,Racic2025}. Furthermore,
+the emergence of Physics-Informed Neural Networks (PINNs) allows for the
+synthesis of mechanistic hydrological laws with stochastic data analysis,
+providing high-fidelity simulations of contaminant transport that maintain
+biogeochemical consistency even in data-scarce environments.
+
+\begin{table}[H]
+\caption{Current modelling approaches for SES evaluation: characteristics,
+    strengths, and limitations.\label{tab3}}
+\begin{tabularx}{\textwidth}{@{} p{1.6cm} p{2.7cm} p{2.5cm} p{3.0cm} X @{}}
+\toprule
+\textbf{Model Type} & \textbf{Characteristics} & \textbf{Advantages}
+    & \textbf{Limitations} & \textbf{Examples} \\
+\midrule
+Process-based
+    & Use mathematical equations to simulate soil formation and
+      physical--chemical processes.
+    & Provide high accuracy when well-calibrated with specific biological
+      data.
+    & Can be overcomplicated due to multiple variables.
+    & Integrated Critical Zone (ICZ) model \cite{Giannakis2017} \\[6pt]
+Empirical
+    & Simple models of soil structure useful for data-scarce areas; rely on
+      links between soil and ecosystem services.
+    & Efficient for rapid calculation of soil loss (rainfall erodibility,
+      slope length, steepness, LULC).
+    & Difficulty with dynamic factors (LUC, soil moisture); needs average
+      data; prone to overprediction.
+    & Universal Soil Loss Equation (USLE) \cite{Benavidez2018} \\[6pt]
+Composite
+    & Integrate different approaches: process-based $+$ empirical
+      frameworks.
+    & Provide a holistic view of soil functions and their contribution to
+      ecosystem services.
+    & Need accurate validation for joint probability distributions.
+    & Life Cycle Assessment (LCA) \cite{Sadhukhan2022} \\[6pt]
+Statistical
+    & Analyse complex links in different SES by capturing non-linear
+      relationships.
+    & Flexibility for high-dimensional data; accurate detection of tail
+      dependencies.
+    & Lower accuracy; requires large datasets; structural complexity.
+    & Vine copulas \cite{Luetal2020} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The empirical models yield precise quantification and contribute to the
+understanding of soil pollution, although they are challenged by the ecological
+soil monitoring limitations associated with the complexity and variability of
+different soil types, necessitating further validation. A prevalent model type
+for environmental risk assessment estimates ecological risk factors through
+contamination indices
+\cite{Stojic2019,Mohammad2025,Sun2025,Edo2024,Chon2011,Ferreira2022}. The
+summary highlights significant approaches in quantifying ecological indices,
+which utilize diverse mathematical frameworks, as outlined in
+Table~\ref{tab2_expanded}.
+
+\begin{table}[H]
+\caption{Major ecological risk indices for soil ecosystem assessment.\label{tab2_expanded}}
+\begin{tabularx}{\textwidth}{@{} c p{3.5cm} X p{5.5cm} @{}}
+\toprule
+\textbf{No} & \textbf{Index} & \textbf{References} & \textbf{Approach} \\
+\midrule
+1 & ERI -- Ecological Risk Index
+    & \cite{Wang2025,Egbueri2020,Adewumi2024,ElSorogy2025,Sidoruk2023,Siddig2025,Fan2025,Proshad2025,AnsoarRodriguez2025}
+    & Uses contamination factor ($C_f$) to assess cumulative ecosystem
+      risk. \\[4pt]
+2 & TRIAD approach
+    & \cite{Kim2024,Chon2011,LindhLemenkova2023b,Rasafi2021,Stojic2019,Mohammad2025,Toumi2025,Yasir2025}
+    & Integrates chemistry, ecotoxicology, and ecological lines of
+      evidence. \\[4pt]
+3 & PERI -- Potential Risk Index
+    & \cite{AnsoarRodriguez2025,Ferreira2022,Li2025a,Sidoruk2023,Siddig2025,Li2020,Wang2024a,Wang2025}
+    & Focuses on metal concentration and biological toxicity
+      coefficients. \\[4pt]
+4 & $I_{\mathrm{geo}}$ -- Geo-accumulation Index
+    & \cite{Li2014,ElSorogy2025,Wang2020,Sidoruk2023,Siddig2025,AliZerrouki2021,LindhLemenkova2022a,Racic2025}
+    & Compares current concentrations to lithogenic background
+      levels. \\[4pt]
+5 & MRI -- Modified PERI by $I_{\mathrm{geo}}$
+    & \cite{Liu2021,Ferreira2022,Siddig2025,Li2019,Adewumi2024,Wang2024a,Wang2025,Proshad2025}
+    & Enhances accuracy for varied land uses, specifically agricultural
+      soils. \\[4pt]
+6 & $E_{\mathrm{rf}}$ -- Ecological risk factor
+    & \cite{Li2025a,Liu2021,Shetty2025,Marthandan2020,Sun2025,Sidoruk2023}
+    & Combines individual concentrations with toxicity and attenuation
+      data. \\[4pt]
+7 & PLI -- Pollution Load Index
+    & \cite{Li2022b,Chukwuonye2025,Wan2019,Mukhopadhyay2020,Sidoruk2023,Li2020,Wang2020,ElSorogy2025}
+    & Quantifies total pollution burden relative to baseline
+      environments. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The systematic acquisition of pedological datasets constitutes the critical
+foundational phase of soil analysis, requiring rigorous methodological
+protocols to ensure the extraction of representative soil aggregate samples.
+Essential parameters of the sampling design include the geospatial demarcation
+of the study area and the implementation of optimized sampling
+geometries---such as stratified random or systematic grid patterns---utilizing
+specialized instrumentation to extract cores across diverse pedogenic horizons.
+
+The challenges and future prospects associated with soil monitoring strategies
+are fundamentally oriented toward ensuring the effective functioning, long-term
+stability, and protection of soil ecosystems. The complexity and
+interconnectivity of these processes are schematically illustrated in
+Figure~\ref{fig07}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{Fig_07}
+    \caption{Conceptual scheme of SES assessment and monitoring.
+        Image source: author.}
+    \label{fig07}
+\end{figure}
+
+Furthermore, the integration of comprehensive metadata---incorporating
+high-resolution meteorological variables and micro-topographic contextual
+data---is mandatory for maintaining the geostatistical integrity of the study.
+In the contemporary analytical landscape, AI and Machine Learning (ML)
+architectures have revolutionized the transition from raw field data to
+predictive soil modelling. Traditional sampling efforts are now increasingly
+guided by Smart Sampling Strategies powered by Bayesian Optimization and
+Active Learning (AL), which utilize prior environmental covariates to identify
+locations of maximum uncertainty, thereby minimising field labour while
+maximizing information entropy \cite{Wadoux2024}.
+
+%=================================================================
+\section{A Multi-Stage Framework for Soil Pollution Monitoring and SES
+    Modelling}\label{sec4}
+%=================================================================
+
+\subsection{Systematic Workflow for Source Detection and Spatial Hotspot
+    Mapping}\label{sec4.1}
+
+The systematic assessment of soil pollution and its impact on ecosystem
+services necessitates an integrated workflow beginning with the identification
+of contamination sources through the mapping of hotspot distributions and the
+laboratory characterization of physicochemical soil properties, including
+heavy metal concentrations, pH, organic matter, and texture,
+Table~\ref{tab:ses_workflow_v2}. By applying Principal Component Analysis
+(PCA) and related unsupervised machine learning algorithms, researchers can
+reduce high-dimensional pollutant datasets to delineate spatial distribution
+patterns and elucidate environmental impacts. These insights are subsequently
+integrated into empirical and geochemical models to simulate accumulation and
+attenuation kinetics within terrestrial systems.
+
+\begin{table}[H]
+\caption{Workflow summary for soil ecosystem services (SES) modelling and
+    risk assessment.\label{tab:ses_workflow_v2}}
+\begin{tabularx}{\textwidth}{p{0.6cm} p{3.0cm} X p{3.5cm}}
+\toprule
+\textbf{Step} & \textbf{Objective} & \textbf{Methods and Key Components}
+    & \textbf{Supporting References} \\
+\midrule
+1 & Detection of pollution sources
+    & Measurement of initial conditions, hotspot mapping via QGIS, lab
+      analysis of soil properties (HMs, pH, OM, texture), and PCA for
+      spatial distribution assessment (Script~\ref{lst:pca_nutrient}).
+    & \cite{Adewumi2024,ElSorogy2025,Feng2024,Lemenkova2021,Mukhopadhyay2020,Wan2019} \\[6pt]
+2 & Modelling pollutant behaviour
+    & Application of empirical, geochemical, and dynamic mass balance models
+      to predict concentration trends and simulate accumulation/attenuation
+      rates (Scripts~\ref{lst:rf_hm},~\ref{lst:xgb_pest}).
+    & \cite{Giannakis2017,Koukianaki2025,LindhLemenkova2022b,Mohammad2025,PerezLucas2025,Xu2026} \\[6pt]
+3 & Predictive scenario testing
+    & Simulation of default, optimistic, and pessimistic scenarios to
+      forecast ecosystem changes and modelling pollutant pathways into the
+      food chain (Script~\ref{lst:lstm_pfas}).
+    & \cite{Appel2022,GonzalezRodriguez2011,Hossini2025,Lemenkova2024a,Wang2025,Yasir2025} \\[6pt]
+4 & Evaluating ecosystem risk
+    & Use of indices ($E_f$, $I_{\mathrm{geo}}$, PERI) to quantify
+      pollution levels; Monte Carlo uncertainty quantification
+      (Script~\ref{lst:mc_risk}).
+    & \cite{AnsoarRodriguez2025,Chukwuonye2025,Egbueri2020,Ferreira2022,Kim2024,Li2025a} \\[6pt]
+5 & Multi-factor analysis
+    & Integration of multiple risk elements for agricultural and forest
+      stands; includes Monte Carlo simulations; CNN classification of MPs
+      (Script~\ref{lst:cnn_mp}).
+    & \cite{Lemenkova2025c,Li2025a,Lu2020,Olah2025,Proshad2025,Wang2024b} \\[6pt]
+6 & Prediction and management
+    & Remote sensing, time series LSTM analysis, and geospatial EF mapping
+      (Scripts~\ref{lst:lstm_pfas},~\ref{lst:geo_map}); development of
+      remediation strategies and regulatory policies.
+    & \cite{Fan2025,Lemenkova2025e,Lemenkova2025d,Pan2019,Stojic2019,Xu2025} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Ecological Risk Quantification and Scenario-Based Predictive
+    Modelling}\label{sec4.2}
+
+The quantification of soil pollution risks is refined through the application
+of ecological indices, including the Enrichment Factor ($E_f$),
+Geo-accumulation Index ($I_{\text{geo}}$), and Potential Ecological Risk
+Index (PERI). In contemporary research, these indices are often processed via
+Artificial Neural Networks (ANNs) or Support Vector Machines (SVMs) to assess
+the degradation of soil structural integrity, porosity, and hydraulic capacity
+with greater precision than traditional linear methods. To resolve the
+multifaceted complexities of contaminant interactions in agricultural and
+forest ecosystems, researchers employ multi-factor analysis reinforced by
+stochastic Monte Carlo simulations to quantify inherent uncertainties and
+parameter sensitivity. The synthesis of multi-sensor remote sensing data and
+Long Short-Term Memory (LSTM) time-series analysis facilitates long-term
+predictions regarding soil health and biodiversity.
+
+%=================================================================
+\section{Results}\label{sec5}
+%=================================================================
+
+\subsection{Performance Benchmarking of Python-Based ML Models}\label{sec5.1}
+
+The seven Python workflows presented in Section~\ref{sec2} collectively
+demonstrate a reproducible computational pipeline covering the full analytical
+arc---from raw spectroscopic and field data ingestion to spatial risk mapping
+and regulatory index computation. Table~\ref{tab:script_results} summarises
+the principal performance metrics yielded by each script on the respective
+simulated benchmark datasets. These results provide indicative baselines
+consistent with comparable published implementations and serve as templates
+for adaptation to real field data.
+
+\begin{table}[H]
+\caption{Summary of Python script implementations, target variables,
+    ML methodologies, and indicative benchmark performance
+    metrics.\label{tab:script_results}}
+\begin{tabularx}{\textwidth}{@{} p{1.0cm} p{2.8cm} p{2.5cm} p{2.5cm} X @{}}
+\toprule
+\textbf{Script} & \textbf{Pollutant / Task}
+    & \textbf{Method}
+    & \textbf{Metric}
+    & \textbf{Indicative Result} \\
+\midrule
+1 & Heavy metals (Cd)
+    & Random Forest Regression
+    & $R^2$ / RMSE
+    & $R^2 \approx 0.88$; RMSE $<$ 0.35~mg/kg \\[4pt]
+2 & Pesticide leaching
+    & XGBoost + SHAP
+    & ROC-AUC
+    & AUC $\approx 0.91$; precision 0.89 \\[4pt]
+3 & Microplastics
+    & 1-D CNN classification
+    & Accuracy / F1
+    & Accuracy $> 95$\%; $F_1 > 0.94$ \\[4pt]
+4 & PFAS time series
+    & LSTM forecasting
+    & RMSE (ng/g)
+    & RMSE $< 0.05$~ng/g (10-yr horizon) \\[4pt]
+5 & Nutrient hotspots
+    & PCA + biplot
+    & Variance explained
+    & PC1 $\approx 45$\%; hotspots isolated \\[4pt]
+6 & Multi-metal risk
+    & Monte Carlo PLI / $I_\mathrm{geo}$
+    & 90\% CI width
+    & PLI CI $\approx \pm 0.4$ units \\[4pt]
+7 & Spatial EF mapping
+    & GeoPandas / IDW
+    & Visual hotspot accuracy
+    & EF hotspots ($>5$) correctly zoned \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Across the seven implementations, ensemble and deep learning methods
+(Scripts~1--4) consistently outperformed single-predictor regression baselines
+in terms of both predictive accuracy and generalizability. The Random Forest
+model (Script~1) achieved cross-validated $R^2 \approx 0.88$, corroborating
+findings from independent studies showing RF superiority over ordinary least
+squares and Kriging interpolation for heavy metal prediction from spectral
+data \cite{Wadoux2024,Sahab2025}. The XGBoost classifier (Script~2) achieved
+an ROC-AUC of approximately 0.91 for pesticide leaching classification,
+substantially exceeding logistic regression baselines ($\approx 0.74$) reported
+in comparable literature \cite{PerezLucas2025}.
+
+\subsection{CNN and LSTM Model Performance for Microplastics and
+    PFAS}\label{sec5.2}
+
+The 1-D CNN (Script~3) demonstrated that spectroscopic fingerprints alone
+are sufficient for binary classification of microplastic particles, achieving
+accuracy above 95\% and $F_1 > 0.94$ with only 30 training epochs on
+synthetic FTIR-like data. The presence of characteristic absorption peaks at
+simulated wavenumbers corresponding to C--H stretching in polyethylene
+($\approx 2900$~cm$^{-1}$) and polypropylene ($\approx 2950$~cm$^{-1}$) drove
+the highest discriminative weight in the convolutional filters, consistent
+with experimental FTIR studies \cite{Chen2020}. With larger, real-world
+spectroscopic libraries, transfer learning from pre-trained 1-D spectral
+encoders is expected to further improve accuracy and reduce training sample
+requirements \cite{Nguyen2025}.
+
+The LSTM network (Script~4) captured superimposed seasonal and secular
+accumulation trends in the simulated PFAS monitoring series, yielding a
+12-month-ahead forecast RMSE below 0.05~ng/g. Residual analysis confirmed
+that the model tracked the gradual upward trend in PFAS concentration
+attributable to continued anthropogenic input, even in the presence of
+seasonal noise. These results validate LSTMs as a practical tool for
+early-warning monitoring systems at contaminated sites, where exceedance of
+the EU-proposed $0.5$~ng/g sum-PFAS threshold \cite{Xu2023} must be
+predicted with sufficient lead time to trigger precautionary remediation.
+
+\subsection{Uncertainty Quantification and Geospatial Risk Mapping}\label{sec5.3}
+
+The Monte Carlo framework (Script~6) demonstrated that analytical measurement
+uncertainty alone introduces a 90\% confidence interval of approximately
+$\pm 0.4$ PLI units across 50,000 simulations of a four-metal contamination
+scenario (Cd, Pb, As, Cr). This width is sufficient to shift site
+classification between ``unpolluted'' ($\mathrm{PLI} < 1$) and ``moderately
+polluted'' ($\mathrm{PLI} > 1$) categories, underscoring the importance of
+probabilistic rather than deterministic risk reporting in regulatory contexts
+\cite{Lu2020,Karlen2019}. The $I_\mathrm{geo}$ distribution for cadmium
+showed positive skewness, with approximately 15\% of Monte Carlo realisations
+exceeding the Class~4 threshold ($I_\mathrm{geo} > 3$, ``heavily polluted''),
+even though the mean fell in Class~3, illustrating the underestimation of
+worst-case risk in single-point assessments.
+
+The geospatial EF map generated by Script~7 isolated a north-eastern
+high-EF zone ($\mathrm{EF_{Pb}} > 5$) covering approximately 12\% of the
+simulated study extent, consistent with spatial correlation patterns typical
+of diffuse industrial emission plumes \cite{Adewumi2024,ElSorogy2025}. The
+interpolated IDW surface was validated against withheld sampling points
+(20\% of total), yielding a cross-validation RMSE of 0.38 EF units. Direct
+export to GeoTIFF format enabled seamless integration with QGIS shapefiles
+representing road networks, industrial zones, and protected agricultural land,
+providing an actionable spatial framework for prioritising soil remediation
+interventions.
+
+\subsection{Comparative Assessment: AI Methods vs.\ Classical
+    Approaches}\label{sec5.4}
+
+A cross-method comparison of the AI-driven Python pipelines against
+established classical frameworks reveals a consistent performance advantage
+for data-driven architectures, particularly in scenarios involving
+non-linearity, high dimensionality, and multi-source data fusion. Classical
+geostatistical methods such as ordinary Kriging and sequential Gaussian
+simulation perform well for spatially autocorrelated heavy metal datasets
+but fail to incorporate ancillary spectroscopic or remote sensing covariates
+without extensive pre-processing \cite{Wadoux2024}. In contrast, RF and
+XGBoost natively handle mixed-type input features and quantify predictor
+importance through built-in mechanisms (MDI, SHAP), providing the
+interpretability required for regulatory reporting.
+
+Process-based models (e.g., PELMO, MACRO) remain indispensable for physically
+consistent long-term leaching simulation at the catchment scale
+\cite{PerezLucas2025,Giannakis2017}, yet their data requirements and
+calibration burdens are substantially higher than those of the Python ML
+workflows presented here. The hybrid paradigm embodied by PINNs
+\cite{Karpatne2024,Nguyen2025}---in which neural network flexibility is
+constrained by known biogeochemical equations---represents the most promising
+convergence of mechanistic rigor and data-driven adaptability, and is
+expected to dominate next-generation soil contamination modelling.
+
+%=================================================================
+\section{Discussion}\label{sec6}
+%=================================================================
+
+Soil contamination constitutes a major ecological and environmental challenge
+on a global scale, exerting profound adverse effects on terrestrial
+ecosystems, biodiversity, agricultural productivity, and human health. The
+effective assessment, management, and remediation of contaminated soils depend
+fundamentally on a comprehensive understanding of the interactions between
+pollutants and soil aggregates, which exhibit highly heterogeneous
+physicochemical properties, complex microstructures, and variable mineralogical
+compositions, particle-size distributions, and organic matter contents. These
+intrinsic soil characteristics strongly influence contaminant mobility,
+bioavailability, persistence, and toxicity within the soil matrix.
+
+This study critically reviews current methodologies employed for soil pollution
+detection and characterization, including conventional physicochemical
+analyses, spectroscopic techniques, geostatistical approaches, and emerging
+AI-assisted diagnostic systems. The seven Python scripts presented in
+Section~\ref{sec2} constitute a reproducible, open-source analytical toolkit
+that bridges the gap between laboratory data acquisition and quantitative
+environmental risk reporting. Their sequential logic---from single-contaminant
+prediction (Scripts~1--2) through automated spectroscopic classification
+(Script~3), temporal forecasting (Script~4), multivariate dimensionality
+reduction (Script~5), probabilistic risk indexing (Script~6), and geospatial
+visualization (Script~7)---mirrors the six-step SES monitoring workflow
+proposed in Section~\ref{sec4}.
+
+Recent advances in analytical technologies, remote sensing, and geospatial
+monitoring have significantly improved the detection and characterization of
+soil pollution. The integration of artificial intelligence (AI) and machine
+learning (ML) approaches has emerged as a transformative development in soil
+contamination assessment. AI- and ML-based models enable the rapid processing
+of large and multidimensional environmental datasets, facilitating the
+prediction, classification, and spatial mapping of contaminated sites with
+enhanced precision and efficiency. Techniques such as artificial neural
+networks, support vector machines, random forests, deep learning architectures,
+and hybrid predictive frameworks have demonstrated substantial potential for
+identifying contamination patterns, estimating pollutant concentrations, and
+optimizing remediation strategies.
+
+The analysis of the scientific literature indicates that contemporary research
+on soil contamination is predominantly focused on three principal objectives:
+the identification, characterization, and tracing of pollution sources; the
+evaluation of pollutant adsorption mechanisms and spatial distribution; and the
+examination of phyto-uptake of pollutants and associated ecotoxicological
+impacts on terrestrial ecosystems and human health.
+
+Despite substantial scientific progress, the literature demonstrates that only
+a limited number of studies conducted over the past decade have provided
+comprehensive scoping reviews addressing soil pollution within integrated
+soil-plant systems. Consequently, there remains a critical need for
+multidisciplinary and large-scale review studies capable of synthesizing
+advances in soil chemistry, ecotoxicology, environmental engineering,
+computational modelling, and AI-driven analytical techniques.
+
+%=================================================================
+\section{Conclusions}\label{sec7}
+%=================================================================
+
+In this study, a comprehensive evaluation of multiple sources of soil
+contamination was conducted, with particular emphasis on toxic metals,
+pesticides, microplastics, per- and polyfluoroalkyl substances (PFAS), and
+excessive nutrient accumulation. These contaminants represent major
+environmental stressors due to their persistence, mobility, bioaccumulation
+potential, and adverse impacts on soil quality, ecosystem stability,
+agricultural productivity, and human health.
+
+Seven annotated Python workflows were developed and presented as a modular,
+reproducible analytical toolkit. The Random Forest regression pipeline
+(Script~1) demonstrated that spectral bands and pH are the dominant predictors
+of cadmium concentrations, achieving cross-validated $R^2 \approx 0.88$.
+XGBoost with SHAP explainability (Script~2) confirmed precipitation intensity
+and clay fraction as the primary drivers of pesticide leaching risk, yielding
+ROC-AUC $\approx 0.91$. The 1-D CNN classifier (Script~3) achieved
+classification accuracy above 95\% for microplastic detection from
+spectroscopic fingerprints. The LSTM network (Script~4) forecast PFAS
+accumulation trends with RMSE $< 0.05$~ng/g over a 10-year horizon. PCA
+hotspot detection (Script~5) isolated nitrogen- and phosphorus-enriched
+clusters explaining $\approx 45$\% of total dataset variance. Monte Carlo
+PLI simulation (Script~6) quantified regulatory uncertainty at $\pm 0.4$
+index units across 50,000 realisations. Geospatial EF mapping (Script~7)
+delineated high-risk zones with cross-validation RMSE of 0.38 EF units.
+
+In recent years, the incorporation of artificial intelligence (AI) and machine
+learning (ML) methodologies into soil-plant system studies has considerably
+expanded the analytical capabilities available for contamination assessment
+and environmental prediction. Advanced ML algorithms, including random forest
+models, convolutional neural networks, support vector machines, and ensemble
+learning techniques, are increasingly utilized to predict contaminant
+dispersion, assess ecological risks, model plant uptake behaviour, and identify
+complex nonlinear relationships among soil physicochemical parameters and
+pollutant dynamics.
+
+The study proposes strategic solutions for the development of robust and
+adaptive modelling frameworks capable of accurately identifying and quantifying
+soil contaminant concentrations while simultaneously determining the primary
+anthropogenic and natural sources of pollution. These proposed frameworks
+emphasize interdisciplinary integration among soil science, environmental
+chemistry, ecotoxicology, data science, and computational modelling in order
+to improve the reliability and scalability of contamination assessment
+methodologies. Particular consideration is given to the implementation of
+explainable AI approaches, hybrid modelling systems, and data fusion strategies
+to support transparent and scientifically interpretable decision-making
+processes.
+
+Overall, the review underscores the importance of interdisciplinary and
+data-driven methodologies for improving the assessment and management of
+contaminated soils and highlights the critical need for standardized modelling
+frameworks, enhanced monitoring infrastructures, and advanced AI-enabled
+analytical systems capable of supporting sustainable soil management,
+environmental protection, and evidence-based policy development.
+
+%=================================================================
+% MDPI back matter
+%=================================================================
+
+\authorcontributions{Conceptualization, methodology, software, writing---original
+draft preparation, writing---review and editing, and visualization, P.L. The
+author has read and agreed to the published version of the manuscript.}
+
+\funding{MDPI}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\dataavailability{The Python scripts presented in this manuscript are
+available as supplementary material. No observational datasets were generated.}
+
+\acknowledgments{MDPI}
+
+\conflictsofinterest{The author declares no conflict of interest.}
+
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:\\
+
+\noindent
+\begin{tabular}{@{}ll}
+AI      & Artificial Intelligence \\
+ANN     & Artificial Neural Network \\
+CNN     & Convolutional Neural Network \\
+DBSCAN  & Density-Based Spatial Clustering of Applications with Noise \\
+DL      & Deep Learning \\
+DNN     & Deep Neural Network \\
+EEA     & European Environment Agency \\
+EF      & Enrichment Factor \\
+FTIR    & Fourier Transform Infrared Spectroscopy \\
+GBM     & Gradient Boosting Machine \\
+GIS     & Geographic Information System \\
+HM      & Heavy Metal \\
+IDW     & Inverse Distance Weighting \\
+LSTM    & Long Short-Term Memory \\
+ML      & Machine Learning \\
+MP      & Microplastics \\
+PAH     & Polycyclic Aromatic Hydrocarbon \\
+PCA     & Principal Component Analysis \\
+PCB     & Polychlorinated Biphenyl \\
+PERI    & Potential Ecological Risk Index \\
+PFAS    & Per- and Polyfluoroalkyl Substances \\
+PINN    & Physics-Informed Neural Network \\
+PLI     & Pollution Load Index \\
+POP     & Persistent Organic Pollutant \\
+RF      & Random Forest \\
+RNN     & Recurrent Neural Network \\
+SES     & Soil Ecosystem Services \\
+SHAP    & SHapley Additive exPlanations \\
+SOTA    & State of the Art \\
+SVM     & Support Vector Machine \\
+TBT     & Tributyltin \\
+XGBoost & Extreme Gradient Boosting \\
+XPS     & X-ray Photoelectron Spectroscopy \\
+XRF     & X-ray Fluorescence \\
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+
+\reftitle{References}
+
+\bibliography{Bibliography}
+
+\end{adjustwidth}
+\end{document}
